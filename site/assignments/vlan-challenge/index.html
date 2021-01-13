@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Daniel Schwalbe">
+        <link rel="canonical" href="https://info314.giantfirewall.com/assignments/vlan-challenge/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>VLAN Challenge - INFO 314 Course Resources</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INFO 314 Course Resources</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">1 - Pi Setup</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../pi-setup/" class="dropdown-item">Raspberry Pi Setup</a>
+</li>
+            
+<li>
+    <a href="../networkd-setup/" class="dropdown-item">networkd Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Wifi Reference</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">2 - Set up a DHCP Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/address-planning/" class="dropdown-item">IP Address Planning Reference</a>
+</li>
+            
+<li>
+    <a href="../dhcp-setup/" class="dropdown-item">Installing and Configuring the ISC DHCP Server</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">3 - Configure Routing and NAT</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../router-setup/" class="dropdown-item">Router Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/iptables/" class="dropdown-item">Introduction to iptables</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">4 - Configure a DNS Resolver</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../resolver-setup/" class="dropdown-item">DNS Resolver Setup</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Report - NAT and DNS Analysis</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../analysis-report/" class="dropdown-item">Instructions</a>
+</li>
+            
+<li>
+    <a href="../../resources/tshark-install/" class="dropdown-item">Installing TShark</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">5 - Configure an Authoritative Name Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../dns-zone-setup/" class="dropdown-item">Authoritative Zone Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">DNS Zone Reference</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Extra Credit</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="./" class="dropdown-item active">VLAN Challenge</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../lab1/" class="dropdown-item">Lab 1 - Core Technical Skills</a>
+</li>
+                                    
+<li>
+    <a href="../lab2/" class="dropdown-item">Lab 2 - Analyzing DHCP and ARP with Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab3/" class="dropdown-item">Lab 3 - Analyze Zeroconf in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab4/" class="dropdown-item">Lab 4 - Analyze DNS & HTTP in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab5/" class="dropdown-item">Lab 5 - Analyze TCP with ncat and Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab6/" class="dropdown-item">Lab 6 - Python and Socket Basics</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Proxy Labs</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../proxy-labs/" class="dropdown-item">Proxy Project Overview</a>
+</li>
+            
+<li>
+    <a href="../lab7/" class="dropdown-item">Proxy Part 1 (Lab 7)</a>
+</li>
+            
+<li>
+    <a href="../lab8/" class="dropdown-item">Proxy Part 2 (Lab 8)</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Concepts and Theory</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../notes/dns-overview/" class="dropdown-item">Domain Name System (DNS)</a>
+</li>
+            
+<li>
+    <a href="../../notes/router-overview/" class="dropdown-item">Routers</a>
+</li>
+            
+<li>
+    <a href="../../notes/ethernet-switches/" class="dropdown-item">Ethernet Switches</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Guides</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/pi-materials/" class="dropdown-item">Getting Pi Materials</a>
+</li>
+            
+<li>
+    <a href="../../resources/digital-ocean/" class="dropdown-item">Digital Ocean Signup</a>
+</li>
+            
+<li>
+    <a href="../../resources/address-planning/" class="dropdown-item">Basic IP Address Planning</a>
+</li>
+            
+<li>
+    <a href="../../resources/iptables/" class="dropdown-item">Introduction to Iptables</a>
+</li>
+            
+<li>
+    <a href="../../resources/netfilter-hooks/" class="dropdown-item">Understanding Netfilter/Iptables Hooks</a>
+</li>
+            
+<li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">Zone File Reference</a>
+</li>
+            
+<li>
+    <a href="../../resources/vlans-and-dummies/" class="dropdown-item">Special Network Interfaces (VLANs and Dummies)</a>
+</li>
+            
+<li>
+    <a href="../../resources/configure-routing-links/" class="dropdown-item">Configuring Routing Links</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-wireguard/" class="dropdown-item">Install and Configure WireGuard</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-frr/" class="dropdown-item">Install Free Range Routing (FRR)</a>
+</li>
+            
+<li>
+    <a href="../../resources/ssh-agent/" class="dropdown-item">Using ssh-agent</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Quick Reference</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/markdown/" class="dropdown-item">Intro to Markdown</a>
+</li>
+            
+<li>
+    <a href="../../resources/bash/" class="dropdown-item">Intro to Bash</a>
+</li>
+            
+<li>
+    <a href="../../resources/host-config/" class="dropdown-item">Mac/Win/Linux Networking</a>
+</li>
+            
+<li>
+    <a href="../../resources/wireshark-install/" class="dropdown-item">Install Wireshark</a>
+</li>
+            
+<li>
+    <a href="../../resources/tshark-install/" class="dropdown-item">Install TShark</a>
+</li>
+            
+<li>
+    <a href="../../resources/manage-dhcp/" class="dropdown-item">Troubleshooting DHCP</a>
+</li>
+            
+<li>
+    <a href="../../resources/dns-clients/" class="dropdown-item">Managing DNS Clients</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../contact/" class="nav-link">Contact Us</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../resources/zone-file-format/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../lab1/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/info314/website" class="nav-link">info314/website</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#vlan-challenge-last-edited-2020-02-06" class="nav-link">VLAN Challenge (last edited 2020-02-06)</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#instructions" class="nav-link">Instructions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#specifications" class="nav-link">Specifications</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="vlan-challenge-last-edited-2020-02-06">VLAN Challenge (last edited 2020-02-06)<a class="headerlink" href="#vlan-challenge-last-edited-2020-02-06" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The objective of this assignment is to determine a VLAN strategy and port configuration that overlays the given routing topology onto a managed 8-port switch.</p>
+<p><img alt="Group Network Topology - Network Layer" src="/img/group-topology-network.png" style="width:425px" /> <img alt="Group Network Topology - Physical Layer" src="/img/group-topology-physical.png" style="width:225px" /></p>
+<p>The routing topology that you will be working with in this challenge is representative of the topology used in our final, group project. In this topology, we have three autonomous systems, i.e., networks that are managed independently from one another. Each of our three routers serves a group of local users via a LAN segment in addition to being connected to external networks via point-to-point routing links.</p>
+<p>The network positioned at the top of the diagram will function as an Internet Service Provider (ISP) for the other networks networks, routing traffic between them and other groups within the class. The links between routers are known as routing links. Each one represents a separate point-to-point network over which the routers will forward messages and share information about the inter-network topology.</p>
+<h2 id="instructions">Instructions<a class="headerlink" href="#instructions" title="Permanent link">&para;</a></h2>
+<h3 id="identify-broadcast-domains">Identify broadcast domains<a class="headerlink" href="#identify-broadcast-domains" title="Permanent link">&para;</a></h3>
+<p>Identify the distinct broadcast domains in the system and assign a different VLAN label (between 2 and 4094) to each of these network segments. </p>
+<h3 id="define-physical-connections">Define physical connections<a class="headerlink" href="#define-physical-connections" title="Permanent link">&para;</a></h3>
+<p>Assign each physical connection to a port on the switch. Since the topology is determined by port configuration, you will need to keep track of which device and network interface is associated with each port. Choose an order that is easy to remember.</p>
+<h3 id="create-port-configurations">Create port configurations<a class="headerlink" href="#create-port-configurations" title="Permanent link">&para;</a></h3>
+<p>Once you have identified the VLANs and mapped ports to physical topology, you can begin to define the port configurations. For each port, you will define a native VLAN (untagged) and zero or more tagged VLANs. A port can have both types of VLANs associated with it, though there can only be one native VLAN configured for any port.</p>
+<p>Untagged ethernet frames received on a port will be mapped internally to the native VLAN of the port and can only be forwarded (or flooded) through links attached to ports that are configured with the same VLAN (tagged or untagged). When a VLAN is configured to be tagged on a specific port, that port will add a VLAN identifier to outgoing frames and read/remove the identifiers from incoming frames.</p>
+<p>Adding a tagged VLAN to a port creates a trunk. Trunk links expect the same tag configuration on both ends of the link, i.e., they require explicit configuration on both sides of the trunk. Ports without any tagged VLANs are called access ports. These are preferred for most applications since the VLAN configuration will be encapsulated within the switch and transparent to users.</p>
+<h4 id="lan-connections">LAN connections<a class="headerlink" href="#lan-connections" title="Permanent link">&para;</a></h4>
+<p>For simplicity, start the process by defining the port configurations for a single broadcast domain associated with one of the LANs in the topology, e.g., LAN A. Pay close attention to the requirements given in the next section, which state that LAN connections to A, B, and C should be accessible without tagging.</p>
+<h4 id="routing-links">Routing links<a class="headerlink" href="#routing-links" title="Permanent link">&para;</a></h4>
+<p>Once you have completed the configuration for independent LANs, turn your attention to the routing links between the LANs. Update the configuration for each side of the routing link (two physical ports) with the appropriate VLAN configurations. </p>
+<h4 id="uplink">Uplink<a class="headerlink" href="#uplink" title="Permanent link">&para;</a></h4>
+<p>Finally, turn your attention to the connection that forms the uplink to the core network for the class. The uplink is a routing link, and it is configured in much the same manner as the other routing links in our topology. However, pay close attention to the assignment specifications and the implications for the final port configuration.</p>
+<h2 id="specifications">Specifications<a class="headerlink" href="#specifications" title="Permanent link">&para;</a></h2>
+<p>In addition to the following the given network layer topology, please align your VLAN strategy with requirements below:</p>
+<details class="info"><summary>Layer-3 Network Diagram</summary><p><img alt="Group Network Topology - Network Layer" src="/img/group-topology-network.png" /></p>
+</details>
+<details class="info"><summary>Example Physical Diagram</summary><p><img alt="Group Network Topology - Physical Layer" src="/img/group-topology-physical.png" /></p>
+</details>
+<h3 id="access-links-to-general-lans">Access links to general LANs<a class="headerlink" href="#access-links-to-general-lans" title="Permanent link">&para;</a></h3>
+<p>LANs A, B, and C are general purpose networks and should be exposed as untagged VLANs. This enables us to alternate seamlessly between a direct connect from our laptop to Pi and a connection that runs through the switch. If we were to rely on tagged VLANs to access a given LAN, you would need to configure VLANs on your laptop in order to connect directly to the Pi.</p>
+<h3 id="tagged-routing-links">Tagged Routing Links<a class="headerlink" href="#tagged-routing-links" title="Permanent link">&para;</a></h3>
+<p>Routing links may rely on tagged VLANs. The router will connect to these VLANs via virtual network interfaces that are configured to exchange tagged Ethernet traffic rather than standard, untagged frames. The router side of this configuration is beyond the scope of this exercise.</p>
+<h3 id="untagged-uplink-connection">Untagged Uplink Connection<a class="headerlink" href="#untagged-uplink-connection" title="Permanent link">&para;</a></h3>
+<p>The remote end of the uplink connection will be untagged. Make sure that you configure the associated port accordingly.</p>
+<h3 id="eliminate-extraneous-connections">Eliminate Extraneous Connections<a class="headerlink" href="#eliminate-extraneous-connections" title="Permanent link">&para;</a></h3>
+<p>For each port, only expose the VLANs that are necessary to satisfy the routing requirements indicated in the diagram. Adding additional VLANs creates unintended paths for communication, e.g., allowing Laptop A to communicate directly with Laptop B. For the purposes of this assignment, treat this sort of unintended pathway as a security exposure.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2020 Daniel Schwalbe</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

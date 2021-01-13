@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Daniel Schwalbe">
+        <link rel="canonical" href="https://info314.giantfirewall.com/assignments/proxy-labs/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Proxy Project Overview - INFO 314 Course Resources</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INFO 314 Course Resources</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">1 - Pi Setup</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../pi-setup/" class="dropdown-item">Raspberry Pi Setup</a>
+</li>
+            
+<li>
+    <a href="../networkd-setup/" class="dropdown-item">networkd Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Wifi Reference</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">2 - Set up a DHCP Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/address-planning/" class="dropdown-item">IP Address Planning Reference</a>
+</li>
+            
+<li>
+    <a href="../dhcp-setup/" class="dropdown-item">Installing and Configuring the ISC DHCP Server</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">3 - Configure Routing and NAT</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../router-setup/" class="dropdown-item">Router Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/iptables/" class="dropdown-item">Introduction to iptables</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">4 - Configure a DNS Resolver</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../resolver-setup/" class="dropdown-item">DNS Resolver Setup</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Report - NAT and DNS Analysis</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../analysis-report/" class="dropdown-item">Instructions</a>
+</li>
+            
+<li>
+    <a href="../../resources/tshark-install/" class="dropdown-item">Installing TShark</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">5 - Configure an Authoritative Name Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../dns-zone-setup/" class="dropdown-item">Authoritative Zone Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">DNS Zone Reference</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Extra Credit</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../vlan-challenge/" class="dropdown-item">VLAN Challenge</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../lab1/" class="dropdown-item">Lab 1 - Core Technical Skills</a>
+</li>
+                                    
+<li>
+    <a href="../lab2/" class="dropdown-item">Lab 2 - Analyzing DHCP and ARP with Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab3/" class="dropdown-item">Lab 3 - Analyze Zeroconf in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab4/" class="dropdown-item">Lab 4 - Analyze DNS & HTTP in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab5/" class="dropdown-item">Lab 5 - Analyze TCP with ncat and Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab6/" class="dropdown-item">Lab 6 - Python and Socket Basics</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Proxy Labs</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="./" class="dropdown-item active">Proxy Project Overview</a>
+</li>
+            
+<li>
+    <a href="../lab7/" class="dropdown-item">Proxy Part 1 (Lab 7)</a>
+</li>
+            
+<li>
+    <a href="../lab8/" class="dropdown-item">Proxy Part 2 (Lab 8)</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Concepts and Theory</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../notes/dns-overview/" class="dropdown-item">Domain Name System (DNS)</a>
+</li>
+            
+<li>
+    <a href="../../notes/router-overview/" class="dropdown-item">Routers</a>
+</li>
+            
+<li>
+    <a href="../../notes/ethernet-switches/" class="dropdown-item">Ethernet Switches</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Guides</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/pi-materials/" class="dropdown-item">Getting Pi Materials</a>
+</li>
+            
+<li>
+    <a href="../../resources/digital-ocean/" class="dropdown-item">Digital Ocean Signup</a>
+</li>
+            
+<li>
+    <a href="../../resources/address-planning/" class="dropdown-item">Basic IP Address Planning</a>
+</li>
+            
+<li>
+    <a href="../../resources/iptables/" class="dropdown-item">Introduction to Iptables</a>
+</li>
+            
+<li>
+    <a href="../../resources/netfilter-hooks/" class="dropdown-item">Understanding Netfilter/Iptables Hooks</a>
+</li>
+            
+<li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">Zone File Reference</a>
+</li>
+            
+<li>
+    <a href="../../resources/vlans-and-dummies/" class="dropdown-item">Special Network Interfaces (VLANs and Dummies)</a>
+</li>
+            
+<li>
+    <a href="../../resources/configure-routing-links/" class="dropdown-item">Configuring Routing Links</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-wireguard/" class="dropdown-item">Install and Configure WireGuard</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-frr/" class="dropdown-item">Install Free Range Routing (FRR)</a>
+</li>
+            
+<li>
+    <a href="../../resources/ssh-agent/" class="dropdown-item">Using ssh-agent</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Quick Reference</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/markdown/" class="dropdown-item">Intro to Markdown</a>
+</li>
+            
+<li>
+    <a href="../../resources/bash/" class="dropdown-item">Intro to Bash</a>
+</li>
+            
+<li>
+    <a href="../../resources/host-config/" class="dropdown-item">Mac/Win/Linux Networking</a>
+</li>
+            
+<li>
+    <a href="../../resources/wireshark-install/" class="dropdown-item">Install Wireshark</a>
+</li>
+            
+<li>
+    <a href="../../resources/tshark-install/" class="dropdown-item">Install TShark</a>
+</li>
+            
+<li>
+    <a href="../../resources/manage-dhcp/" class="dropdown-item">Troubleshooting DHCP</a>
+</li>
+            
+<li>
+    <a href="../../resources/dns-clients/" class="dropdown-item">Managing DNS Clients</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../contact/" class="nav-link">Contact Us</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../lab6/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../lab7/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/info314/website" class="nav-link">info314/website</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#http-proxy-labs" class="nav-link">HTTP Proxy Labs</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#what-is-a-proxy" class="nav-link">What is a proxy?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#project-overview" class="nav-link">Project Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#background-material" class="nav-link">Background Material</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="http-proxy-labs">HTTP Proxy Labs<a class="headerlink" href="#http-proxy-labs" title="Permanent link">&para;</a></h1>
+<h2 id="what-is-a-proxy">What is a proxy?<a class="headerlink" href="#what-is-a-proxy" title="Permanent link">&para;</a></h2>
+<p>A proxy is a network service that receives a connection and reads data
+from a client, acts on it, and passes that data out to another server.
+The proxy will also read the server&apos;s response, act on it, and send it
+back to the client. This simple pattern appears frequently in networks
+and distributed systems and quite frequently provide</p>
+<p>The value provided by a proxy is determined by the actions it takes on
+the data. Here are a few applications of HTTP proxies:</p>
+<ul>
+<li>security (e.g., inspecting HTTP content for malware)</li>
+<li>policy enforcement (e.g., preventing employees from accessing unauthorized content at work)</li>
+<li>software development (e.g., decrypting and examining HTTPS traffic)</li>
+</ul>
+<p>For this sequence of assignments, we are building a proxy to log
+metadata about HTTP requests and responses.</p>
+<h2 id="project-overview">Project Overview<a class="headerlink" href="#project-overview" title="Permanent link">&para;</a></h2>
+<p>This sequence of labs is divided into 3 parts.</p>
+<ol>
+<li>Create a simple TCP server that is able to parse incoming HTTP/1.0 GET requests and generate a log of requests that have been received.</li>
+<li>Extend your server so that it can parse the remaining HTTP/1.0 message types and build a new HTTP message from the fields it received.</li>
+<li></li>
+</ol>
+<h2 id="background-material">Background Material<a class="headerlink" href="#background-material" title="Permanent link">&para;</a></h2>
+<h3 id="application-layer-messages">Application Layer Messages<a class="headerlink" href="#application-layer-messages" title="Permanent link">&para;</a></h3>
+<h4 id="data-structure">Data structure<a class="headerlink" href="#data-structure" title="Permanent link">&para;</a></h4>
+<p>Application protocols follow predictable patterns to marshall more
+complex data into byte-oriented message structures. The following
+patterns are commonly used for marshalling/unmarshalling data and will
+be discussed briefly in lab:</p>
+<ul>
+<li>Delimiters</li>
+<li>Type/Length/Value</li>
+<li>Fixed length fields</li>
+</ul>
+<h4 id="text-encoding">Text encoding<a class="headerlink" href="#text-encoding" title="Permanent link">&para;</a></h4>
+<p>In addition to the higher-level concern of marshalling the data
+structures into a stream of bytes, network applications must also define
+the manner in which they encode/decode between characters and byte
+representation. There are many different ways to encode a set of
+characters into bytes. These are generally grouped into single and
+multi-byte encodings based on the number of bytes that are required to
+encode each character.</p>
+<p>The most prominent single-byte encodings are ASCII and ISO-8859-1, which
+use 7-bits and 8-bits per character respectively. These encodings are
+simple to work with, but they are quite limited in the size of alphabet
+that they can support.</p>
+<p>The advantage of multi-byte encodings, such as those defined by the
+Unicode standard, is the ability to represent different languages,
+alphabets, and sets of symbols within the application.</p>
+<p>One of the most common encodings in modern applications is UTF-8, a
+variable-length encoding that provides backwards compatibility with
+ASCII while also supporting multi-byte encodings required for broad
+Unicode compatibility.</p>
+<p>For the bulk of our work on developing an HTTP proxy, we will utilize
+the ISO-8859-1 and ASCII encodings (per the RFCs that define the
+protocol).</p>
+<h4 id="control-characters">Control Characters<a class="headerlink" href="#control-characters" title="Permanent link">&para;</a></h4>
+<p>As users, we're generally most concerned with the visible letters of the
+alphabet -- or cute symbols such as 💩(represented as F0 9F 92 A9 in
+UTF-8).</p>
+<p>As developers, we often need to pay attention to the non-printable
+character codes. For the sake of parsing the HTTP protocol, we will
+concern ourselves with various types of white space, including the CRLF
+(0D 0A in ASCII, ISO-8859-1, and UTF-8) sequence that is used to signify
+the end of a line in HTTP messages.</p>
+<h3 id="http-message-structure">HTTP Message Structure<a class="headerlink" href="#http-message-structure" title="Permanent link">&para;</a></h3>
+<p>HTTP messages may be formatted as ASCII (per RFC 7230) or ISO-8859-1
+(per historic RFCs). Decoding text as <code>iso-8859-1</code> will allow for the
+maximum versatility.</p>
+<p>RFC 7230 defines the structures used to represent HTTP/1.1 requests and
+responses <a href="https://tools.ietf.org/html/rfc7230#section-3">https://tools.ietf.org/html/rfc7230#section-3</a> .</p>
+<div class="highlight"><pre><span></span><code>    HTTP-message   = start-line
+                      *( header-field CRLF )
+                      CRLF
+                      [ message-body ]
+</code></pre></div>
+<h4 id="requests">Requests<a class="headerlink" href="#requests" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>request-line - method, URI,  and protocol version
+[header]*
+empty line
+[message body]
+</code></pre></div>
+<h4 id="responses">Responses<a class="headerlink" href="#responses" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code>status-line:
+        protocol version, 
+        a success or error code, 
+        and textual reason phrase
+[header]*
+empty line
+[message body]
+</code></pre></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2020 Daniel Schwalbe</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

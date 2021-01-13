@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Daniel Schwalbe">
+        <link rel="canonical" href="https://info314.giantfirewall.com/resources/tshark-install/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Install TShark - INFO 314 Course Resources</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INFO 314 Course Resources</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">1 - Pi Setup</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../assignments/pi-setup/" class="dropdown-item">Raspberry Pi Setup</a>
+</li>
+            
+<li>
+    <a href="../../assignments/networkd-setup/" class="dropdown-item">networkd Setup</a>
+</li>
+            
+<li>
+    <a href="../wifi-reference/" class="dropdown-item">Wifi Reference</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">2 - Set up a DHCP Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../address-planning/" class="dropdown-item">IP Address Planning Reference</a>
+</li>
+            
+<li>
+    <a href="../../assignments/dhcp-setup/" class="dropdown-item">Installing and Configuring the ISC DHCP Server</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">3 - Configure Routing and NAT</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../assignments/router-setup/" class="dropdown-item">Router Setup</a>
+</li>
+            
+<li>
+    <a href="../iptables/" class="dropdown-item">Introduction to iptables</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">4 - Configure a DNS Resolver</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../assignments/resolver-setup/" class="dropdown-item">DNS Resolver Setup</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Report - NAT and DNS Analysis</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../assignments/analysis-report/" class="dropdown-item">Instructions</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item">Installing TShark</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">5 - Configure an Authoritative Name Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../assignments/dns-zone-setup/" class="dropdown-item">Authoritative Zone Setup</a>
+</li>
+            
+<li>
+    <a href="../zone-file-format/" class="dropdown-item">DNS Zone Reference</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Extra Credit</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../assignments/vlan-challenge/" class="dropdown-item">VLAN Challenge</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../assignments/lab1/" class="dropdown-item">Lab 1 - Core Technical Skills</a>
+</li>
+                                    
+<li>
+    <a href="../../assignments/lab2/" class="dropdown-item">Lab 2 - Analyzing DHCP and ARP with Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../../assignments/lab3/" class="dropdown-item">Lab 3 - Analyze Zeroconf in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../../assignments/lab4/" class="dropdown-item">Lab 4 - Analyze DNS & HTTP in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../../assignments/lab5/" class="dropdown-item">Lab 5 - Analyze TCP with ncat and Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../../assignments/lab6/" class="dropdown-item">Lab 6 - Python and Socket Basics</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Proxy Labs</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../assignments/proxy-labs/" class="dropdown-item">Proxy Project Overview</a>
+</li>
+            
+<li>
+    <a href="../../assignments/lab7/" class="dropdown-item">Proxy Part 1 (Lab 7)</a>
+</li>
+            
+<li>
+    <a href="../../assignments/lab8/" class="dropdown-item">Proxy Part 2 (Lab 8)</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Concepts and Theory</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../notes/dns-overview/" class="dropdown-item">Domain Name System (DNS)</a>
+</li>
+            
+<li>
+    <a href="../../notes/router-overview/" class="dropdown-item">Routers</a>
+</li>
+            
+<li>
+    <a href="../../notes/ethernet-switches/" class="dropdown-item">Ethernet Switches</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Guides</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../pi-materials/" class="dropdown-item">Getting Pi Materials</a>
+</li>
+            
+<li>
+    <a href="../digital-ocean/" class="dropdown-item">Digital Ocean Signup</a>
+</li>
+            
+<li>
+    <a href="../address-planning/" class="dropdown-item">Basic IP Address Planning</a>
+</li>
+            
+<li>
+    <a href="../iptables/" class="dropdown-item">Introduction to Iptables</a>
+</li>
+            
+<li>
+    <a href="../netfilter-hooks/" class="dropdown-item">Understanding Netfilter/Iptables Hooks</a>
+</li>
+            
+<li>
+    <a href="../wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
+    <a href="../zone-file-format/" class="dropdown-item">Zone File Reference</a>
+</li>
+            
+<li>
+    <a href="../vlans-and-dummies/" class="dropdown-item">Special Network Interfaces (VLANs and Dummies)</a>
+</li>
+            
+<li>
+    <a href="../configure-routing-links/" class="dropdown-item">Configuring Routing Links</a>
+</li>
+            
+<li>
+    <a href="../setup-wireguard/" class="dropdown-item">Install and Configure WireGuard</a>
+</li>
+            
+<li>
+    <a href="../setup-frr/" class="dropdown-item">Install Free Range Routing (FRR)</a>
+</li>
+            
+<li>
+    <a href="../ssh-agent/" class="dropdown-item">Using ssh-agent</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Quick Reference</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../markdown/" class="dropdown-item">Intro to Markdown</a>
+</li>
+            
+<li>
+    <a href="../bash/" class="dropdown-item">Intro to Bash</a>
+</li>
+            
+<li>
+    <a href="../host-config/" class="dropdown-item">Mac/Win/Linux Networking</a>
+</li>
+            
+<li>
+    <a href="../wireshark-install/" class="dropdown-item">Install Wireshark</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Install TShark</a>
+</li>
+            
+<li>
+    <a href="../manage-dhcp/" class="dropdown-item">Troubleshooting DHCP</a>
+</li>
+            
+<li>
+    <a href="../dns-clients/" class="dropdown-item">Managing DNS Clients</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../contact/" class="nav-link">Contact Us</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../wireshark-install/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../manage-dhcp/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/info314/website" class="nav-link">info314/website</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#install-tshark" class="nav-link">Install TShark</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#performing-a-capture" class="nav-link">Performing a Capture</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="install-tshark">Install TShark<a class="headerlink" href="#install-tshark" title="Permanent link">&para;</a></h2>
+<p>To perform captures from your pi you will need to install <code>tshark</code> (command line version of wireshark) using the <code>apt</code> command. When prompted to allow non-root users to run packet captures, say <strong>yes</strong>.</p>
+<p>After install, run <code>sudo usermod -aG wireshark pi</code> and <strong>reboot</strong>. This command is adding the <code>pi</code> user to the <code>wireshark</code> group. This group was created when you installed <code>tshark</code> and it is used to allow non-root users to run packet captures.</p>
+<p>After rebooting, test <code>tshark</code> by running <code>tshark -i wlan0</code> and confirming that packets are captured. Type <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> to quit capturing.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Use the command <code>man tshark</code> from the pi for more info about tshark and how to use it.</p>
+</div>
+<h2 id="performing-a-capture">Performing a Capture<a class="headerlink" href="#performing-a-capture" title="Permanent link">&para;</a></h2>
+<p>Tshark is a terminal based tool, but that doesn't mean you are limited to conducting all of your analysis on the commandline. Follow along below to explore two different approaches to get your tshark captures into wireshark for analysis.</p>
+<h3 id="capturing-to-a-file">Capturing to a file<a class="headerlink" href="#capturing-to-a-file" title="Permanent link">&para;</a></h3>
+<p>The first approach we present is the easiest, but requires some manual effort to complete the capture and copy back to your computer with ssh/scp. Once the file is saved to your computer, you can open it in Wireshark and perform analysis just as you would with a native Wireshark capture.</p>
+<p><code>tshark</code> allows you to specify the interface on which to capture using the <code>-i</code> argument as well as a filename to record the capture using <code>-w</code>. You may also pass a capture filter as the final argument of the  command.</p>
+<div class="highlight"><pre><span></span><code># Capture DNS traffic from wlan0 and write the output into a file named cap.pcapng
+tshark -i wlan0 -w cap.pcapng &#39;port 53&#39;
+</code></pre></div>
+<h3 id="live-capture-to-wireshark">Live Capture to Wireshark<a class="headerlink" href="#live-capture-to-wireshark" title="Permanent link">&para;</a></h3>
+<p>With a little more effort, Wireshark can leverage tshark for a remote capture. In this case, we are launching a capture with tshark and piping the results back through the SSH session into Wireshark (instead of saving to a file on the Pi). There is an ulterior motive for sharing this method. For some students, the live capture does provide a more natural workflow. However, this is a good opportunity to give you a small taste of what SSH can accomplish<sup id="fnref:beast-mode"><a class="footnote-ref" href="#fn:beast-mode">1</a></sup>.</p>
+<div class="admonition important">
+<p class="admonition-title">Windows users</p>
+<p>Add the wireshark program directory (<code>c:\program files\wireshark\</code>) to the system path and then use the standard command prompt rather than Powershell to launch the remote capture. </p>
+</div>
+<p>The following command will launch a remote capture on your Pi (see additional notes for Windows below): </p>
+<div class="highlight"><pre><span></span><code>ssh pi@titan.local tshark -s0 -F libpcap -i wlan0 -w - &#39;port 53&#39; | wireshark -k -i -
+</code></pre></div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:beast-mode">
+<p>Live Wireshark captures are cool, but we've hardly scratched the surface of secure shell's super powers.&#160;<a class="footnote-backref" href="#fnref:beast-mode" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2020 Daniel Schwalbe</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
