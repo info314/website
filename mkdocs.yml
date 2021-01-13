@@ -1,12 +1,12 @@
 # Project Information
 site_name: INFO 314 Course Resources
 site_description: Documentation and Resources for INFO 314
-site_author: Clinton Campbell
-site_url: https://info314.tcpip.dev
+site_author: Daniel Schwalbe
+site_url: https://info314.giantfirewall.com/
 
 # Repository
-repo_name: quirktree/info314-website
-repo_url: https://github.com/quirktree/info314-website
+repo_name: info314/website
+repo_url: https://github.com/info314/website
 edit_uri: ""
 
 # Site Layout
@@ -108,4 +108,4 @@ markdown_extensions:
     custom_checkbox: true
 - pymdownx.tilde
 
-copyright: 'Copyright &copy; 2020 Clinton Campbell'
+copyright: 'Copyright &copy; 2020 Daniel Schwalbe'
