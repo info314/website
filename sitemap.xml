@@ -16,91 +16,7 @@
      <lastmod>2021-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://info314.giantfirewall.com/resources/address-planning/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/dhcp-setup/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/router-setup/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/resources/iptables/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/resolver-setup/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/analysis-report/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/resources/tshark-install/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/dns-zone-setup/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/resources/zone-file-format/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/vlan-challenge/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
      <loc>https://info314.giantfirewall.com/assignments/lab1/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/lab2/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/lab3/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/lab4/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/lab5/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/lab6/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/proxy-labs/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/lab7/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/lab8/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/notes/dns-overview/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/notes/router-overview/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/notes/ethernet-switches/</loc>
      <lastmod>2021-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
@@ -113,38 +29,6 @@
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/address-planning/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/resources/iptables/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/resources/netfilter-hooks/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/resources/wifi-reference/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/resources/zone-file-format/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/resources/vlans-and-dummies/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/resources/configure-routing-links/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/resources/setup-wireguard/</loc>
-     <lastmod>2021-01-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url><url>
-     <loc>https://info314.giantfirewall.com/resources/setup-frr/</loc>
      <lastmod>2021-01-13</lastmod>
      <changefreq>daily</changefreq>
     </url><url>

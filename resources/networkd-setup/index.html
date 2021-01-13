@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="Daniel Schwalbe">
-        <link rel="canonical" href="https://info314.giantfirewall.com/assignments/networkd-setup/">
+        <link rel="canonical" href="https://info314.giantfirewall.com/resources/networkd-setup/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>networkd Setup - INFO 314 Course Resources</title>
+        <title>Networkd Setup for Raspbian (2020-01-22) - INFO 314 Course Resources</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -36,7 +36,7 @@
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -45,15 +45,15 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../pi-setup/" class="dropdown-item">Raspberry Pi Setup</a>
+    <a href="../../assignments/pi-setup/" class="dropdown-item">Raspberry Pi Setup</a>
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">networkd Setup</a>
+    <a href="../../assignments/networkd-setup/" class="dropdown-item">networkd Setup</a>
 </li>
             
 <li>
-    <a href="../../resources/wifi-reference/" class="dropdown-item">Wifi Reference</a>
+    <a href="../wifi-reference/" class="dropdown-item">Wifi Reference</a>
 </li>
     </ul>
   </li>
@@ -64,7 +64,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../lab1/" class="dropdown-item">Lab 1 - Core Technical Skills</a>
+    <a href="../../assignments/lab1/" class="dropdown-item">Lab 1 - Core Technical Skills</a>
 </li>
                                 </ul>
                             </li>
@@ -77,19 +77,19 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../../resources/pi-materials/" class="dropdown-item">Getting Pi Materials</a>
+    <a href="../pi-materials/" class="dropdown-item">Getting Pi Materials</a>
 </li>
             
 <li>
-    <a href="../../resources/digital-ocean/" class="dropdown-item">Digital Ocean Signup</a>
+    <a href="../digital-ocean/" class="dropdown-item">Digital Ocean Signup</a>
 </li>
             
 <li>
-    <a href="../../resources/address-planning/" class="dropdown-item">Basic IP Address Planning</a>
+    <a href="../address-planning/" class="dropdown-item">Basic IP Address Planning</a>
 </li>
             
 <li>
-    <a href="../../resources/ssh-agent/" class="dropdown-item">Using ssh-agent</a>
+    <a href="../ssh-agent/" class="dropdown-item">Using ssh-agent</a>
 </li>
     </ul>
   </li>
@@ -99,31 +99,31 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../../resources/markdown/" class="dropdown-item">Intro to Markdown</a>
+    <a href="../markdown/" class="dropdown-item">Intro to Markdown</a>
 </li>
             
 <li>
-    <a href="../../resources/bash/" class="dropdown-item">Intro to Bash</a>
+    <a href="../bash/" class="dropdown-item">Intro to Bash</a>
 </li>
             
 <li>
-    <a href="../../resources/host-config/" class="dropdown-item">Mac/Win/Linux Networking</a>
+    <a href="../host-config/" class="dropdown-item">Mac/Win/Linux Networking</a>
 </li>
             
 <li>
-    <a href="../../resources/wireshark-install/" class="dropdown-item">Install Wireshark</a>
+    <a href="../wireshark-install/" class="dropdown-item">Install Wireshark</a>
 </li>
             
 <li>
-    <a href="../../resources/tshark-install/" class="dropdown-item">Install TShark</a>
+    <a href="../tshark-install/" class="dropdown-item">Install TShark</a>
 </li>
             
 <li>
-    <a href="../../resources/manage-dhcp/" class="dropdown-item">Troubleshooting DHCP</a>
+    <a href="../manage-dhcp/" class="dropdown-item">Troubleshooting DHCP</a>
 </li>
             
 <li>
-    <a href="../../resources/dns-clients/" class="dropdown-item">Managing DNS Clients</a>
+    <a href="../dns-clients/" class="dropdown-item">Managing DNS Clients</a>
 </li>
     </ul>
   </li>
@@ -140,16 +140,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href="../pi-setup/" class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../../resources/wifi-reference/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                             <li class="nav-item">
                                 <a href="https://github.com/info314/website" class="nav-link">info314/website</a>
                             </li>
@@ -244,7 +234,7 @@ sudo systemd-tmpfiles --create --prefix /var/log/journal
 <p>At runtime, <strong>networkd</strong> gathers files using the <strong><code>.network</code></strong> extension from several locations, including <strong><code>/etc/systemd/network/</code></strong>. To determine the order in which to apply configuration, <strong>networkd</strong> sorts all of these files lexically. </p>
 <p>To maintain proper control over execution order, we can prepend a two digit numeric value to the filename. This allows us to set up high-numbered default configurations that are overriden on a case-by-case basis by low-numberd configs files.</p>
 </div>
-<p><strong>Create the following <code>.network</code> files in <code>/etc/systemd/network/</code> to handle the default settings for wired and wireless interfaces.</strong> </p>
+<p><strong>Create the following <code>.network</code> files  in **<code>/etc/systemd/network/</code> **to handle the default settings for wired and wireless interfaces.</strong> </p>
 <h4 id="default-ethernet-configuration"><strong>Default ethernet configuration</strong><a class="headerlink" href="#default-ethernet-configuration" title="Permanent link">&para;</a></h4>
 <p><strong><code>/etc/systemd/network/99-eth.network</code></strong>
 <div class="highlight"><pre><span></span><code>[Match]
