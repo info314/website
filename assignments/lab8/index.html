@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Daniel Schwalbe">
+        <link rel="canonical" href="https://info314.giantfirewall.com/assignments/lab8/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Proxy Part 2 (Lab 8) - INFO 314 Course Resources</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INFO 314 Course Resources</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">1 - Pi Setup</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../pi-setup/" class="dropdown-item">Raspberry Pi Setup</a>
+</li>
+            
+<li>
+    <a href="../networkd-setup/" class="dropdown-item">networkd Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Wifi Reference</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">2 - Set up a DHCP Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/address-planning/" class="dropdown-item">IP Address Planning Reference</a>
+</li>
+            
+<li>
+    <a href="../dhcp-setup/" class="dropdown-item">Installing and Configuring the ISC DHCP Server</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">3 - Configure Routing and NAT</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../router-setup/" class="dropdown-item">Router Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/iptables/" class="dropdown-item">Introduction to iptables</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">4 - Configure a DNS Resolver</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../resolver-setup/" class="dropdown-item">DNS Resolver Setup</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Report - NAT and DNS Analysis</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../analysis-report/" class="dropdown-item">Instructions</a>
+</li>
+            
+<li>
+    <a href="../../resources/tshark-install/" class="dropdown-item">Installing TShark</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">5 - Configure an Authoritative Name Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../dns-zone-setup/" class="dropdown-item">Authoritative Zone Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">DNS Zone Reference</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Extra Credit</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../vlan-challenge/" class="dropdown-item">VLAN Challenge</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../lab1/" class="dropdown-item">Lab 1 - Core Technical Skills</a>
+</li>
+                                    
+<li>
+    <a href="../lab2/" class="dropdown-item">Lab 2 - Analyzing DHCP and ARP with Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab3/" class="dropdown-item">Lab 3 - Analyze Zeroconf in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab4/" class="dropdown-item">Lab 4 - Analyze DNS & HTTP in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab5/" class="dropdown-item">Lab 5 - Analyze TCP with ncat and Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab6/" class="dropdown-item">Lab 6 - Python and Socket Basics</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Proxy Labs</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../proxy-labs/" class="dropdown-item">Proxy Project Overview</a>
+</li>
+            
+<li>
+    <a href="../lab7/" class="dropdown-item">Proxy Part 1 (Lab 7)</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">Proxy Part 2 (Lab 8)</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Concepts and Theory</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../notes/dns-overview/" class="dropdown-item">Domain Name System (DNS)</a>
+</li>
+            
+<li>
+    <a href="../../notes/router-overview/" class="dropdown-item">Routers</a>
+</li>
+            
+<li>
+    <a href="../../notes/ethernet-switches/" class="dropdown-item">Ethernet Switches</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Guides</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/pi-materials/" class="dropdown-item">Getting Pi Materials</a>
+</li>
+            
+<li>
+    <a href="../../resources/digital-ocean/" class="dropdown-item">Digital Ocean Signup</a>
+</li>
+            
+<li>
+    <a href="../../resources/address-planning/" class="dropdown-item">Basic IP Address Planning</a>
+</li>
+            
+<li>
+    <a href="../../resources/iptables/" class="dropdown-item">Introduction to Iptables</a>
+</li>
+            
+<li>
+    <a href="../../resources/netfilter-hooks/" class="dropdown-item">Understanding Netfilter/Iptables Hooks</a>
+</li>
+            
+<li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">Zone File Reference</a>
+</li>
+            
+<li>
+    <a href="../../resources/vlans-and-dummies/" class="dropdown-item">Special Network Interfaces (VLANs and Dummies)</a>
+</li>
+            
+<li>
+    <a href="../../resources/configure-routing-links/" class="dropdown-item">Configuring Routing Links</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-wireguard/" class="dropdown-item">Install and Configure WireGuard</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-frr/" class="dropdown-item">Install Free Range Routing (FRR)</a>
+</li>
+            
+<li>
+    <a href="../../resources/ssh-agent/" class="dropdown-item">Using ssh-agent</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Quick Reference</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/markdown/" class="dropdown-item">Intro to Markdown</a>
+</li>
+            
+<li>
+    <a href="../../resources/bash/" class="dropdown-item">Intro to Bash</a>
+</li>
+            
+<li>
+    <a href="../../resources/host-config/" class="dropdown-item">Mac/Win/Linux Networking</a>
+</li>
+            
+<li>
+    <a href="../../resources/wireshark-install/" class="dropdown-item">Install Wireshark</a>
+</li>
+            
+<li>
+    <a href="../../resources/tshark-install/" class="dropdown-item">Install TShark</a>
+</li>
+            
+<li>
+    <a href="../../resources/manage-dhcp/" class="dropdown-item">Troubleshooting DHCP</a>
+</li>
+            
+<li>
+    <a href="../../resources/dns-clients/" class="dropdown-item">Managing DNS Clients</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../contact/" class="nav-link">Contact Us</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../lab7/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../notes/dns-overview/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/info314/website" class="nav-link">info314/website</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#lab-8-proxy-part-ii" class="nav-link">Lab 8 - proxy part II</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#python-concepts" class="nav-link">Python concepts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#instructions" class="nav-link">Instructions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="lab-8-proxy-part-ii">Lab 8 - proxy part II<a class="headerlink" href="#lab-8-proxy-part-ii" title="Permanent link">&para;</a></h1>
+<p>TODO <a href="https://canvas.uw.edu/courses/1373089/assignments/5369625">Lab 8 Assignment page on Canvas</a></p>
+<h2 id="python-concepts">Python concepts<a class="headerlink" href="#python-concepts" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Slicing lists / strings</li>
+<li>Converting strings to/from numbers</li>
+<li>Creating and using enumerations</li>
+<li>Format strings, e.g., <code>"{}: {}\r\n".format(header_name, header_value)</code></li>
+</ul>
+<h2 id="instructions">Instructions<a class="headerlink" href="#instructions" title="Permanent link">&para;</a></h2>
+<h3 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h3>
+<p>As always, create a new branch dedicated to this lab within your http-proxy repository. All code development for this task should take place in <code>http-proxy.py</code>.</p>
+<p>In the previous lab, we started to build the server component of your proxy. This component is designed to receive incoming requests from web clients and then eventually forward responses that were received from an upstream web server. The core of the server is established on a request parser, which we also started to develop in the last assignment.</p>
+<p>In this lab, we'll extend our proxy to recognize more complex HTTP requests and build the logic to forward these requests to the intended target. This will require us to: a) create a new function that can rebuild an HTTP request in byte form based on the dictionary representation generated by your parsing code and b) open a new client socket to a dynamic location each time we receive a request.</p>
+<h3 id="parsing-requests-cont">Parsing Requests (cont.)<a class="headerlink" href="#parsing-requests-cont" title="Permanent link">&para;</a></h3>
+<p>Extend your parsing function built in the previous lab to handle more complex HTTP requests, such as the POST or PUT type. You'll recall that the GET request structure allows a variable number of CRLF terminated header lines followed by an empty CRLF line. The full HTTP specification allows for an additional message body following the HTTP headers, however there are some important points you need to observe as you handle this part of the HTTP request:</p>
+<ol>
+<li>
+<p>While the header portion of the message is ISO-8859-1 encoded per specification, the body/payload should be treated as raw, binary data (even when it looks like standard text-based HTML). Always handle this portion of the request in Python byte form. DO NOT DECODE THE PAYLOAD TO STRING. This will have side effects that can make it impossible to recognize the end of the message.</p>
+</li>
+<li>
+<p>Unlike the header portion of the message, line-endings occuring in the data/payload portion of the HTTP request are coincidental. They do not imply anything about the structure of the message from an HTTP point-of-view. DO NOT SPLIT/STRIP NEWLINES IN THE PAYLOAD. As before, any changes you make to this portion of the message will impact your ability to recognize the message boundary.</p>
+</li>
+</ol>
+<p>The structure of a POST, PUT, and other HTTP requests expands on the GET request, allowing a chunk of raw data to be appended after the CRLF that signals the end of the HTTP headers. Unlike the lines that came before, this data is raw, i.e., unstructured, and it will require a different approach based on the expected length of the data. As such, we need to find out the length of the body component before we can determine whether it's been received completely.</p>
+<p>In HTTP 1.0, the body length is defined by an HTTP header called <code>Content-Length</code>.<sup id="fnref:oversimplification"><a class="footnote-ref" href="#fn:oversimplification">1</a></sup> The value of <code>Content-Length</code> will be a numeric string that defines the length of the body payload. If you see this field while you are parsing your headers, you should record it's value within a variable and add it to your message dictionary, e.g.,</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">header</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Content-Length&#39;</span><span class="p">:</span>
+    <span class="n">message</span><span class="p">[</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+</code></pre></div>
+<p>Taking into account that a message may contain a payload, we need to make sure that <code>parse_message</code> waits for the complete payload before returning a valid message back to the main recv() loop. You will need to check for several possible edge cases in order to handle this correctly.</p>
+<ol>
+<li>If content-length is defined and greater than zero, you need to look at the unparsed portion of the buffer for the message body.</li>
+<li>If the unparsed portion of the buffer is shorter (see <code>len()</code>) than content-length, you should return to the recv() loop and wait for the remaining data.</li>
+<li>If the unparsed portion of the buffer is longer than content-length, the extra bytes should remain in the buffer. </li>
+</ol>
+<p>If you succeed in parsing a complete message, save the bytes into the message dictionary that contains the other fields you've parsed. Remove all of the correctly parsed bytes from the buffer and return to your main function. As in the previous lab, you should leave the buffer untouched if parsing fails. Return control to your connection handling loop in main and continue to wait for the rest of the message.</p>
+<!-- ### Parsing Responses
+Structurally, there is almost no difference between an HTTP request with a message body and an HTTP response. In fact, the only difference from your parser's perspective is the order of fields in the first line of the message.[^http-syntax]
+
+Extend your parser to handle both types of messages based on an additional `message_type` argument to your parser function. Modify the behavior of the function to parse the first line properly based on this argument, include the `message_type` in the parsed message.
+
+A standard way to represent a value representing a message type is using an enumeration, e.g.:
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Required imports</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">auto</span>
+
+<span class="c1"># Enumeration to represent message types </span>
+<span class="k">class</span> <span class="nc">MessageType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">REQUEST</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">RESPONSE</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+
+<span class="c1"># Use the is operator rather than == to test an enumeration …</span>
+<span class="c1"># if message[‘type’] is MessageType.REQUEST:</span>
+</code></pre></div>
+
+[^http-syntax]: More information available at [HTTP syntax overview](/assignments/proxy-labs)  -->
+
+<h3 id="get-destination-url">Get Destination URL<a class="headerlink" href="#get-destination-url" title="Permanent link">&para;</a></h3>
+<p>Our HTTP/1.0 proxy will expect exactly one HTTP request to be delivered per connection. After our parsing logic determines that we have received a complete/valid message, we can break out of our receiving loop and continue processing the request. Our next step in processing a request is to determine where the browser intended to send the message. We'll use this information in order to open a client socket to the destination server.</p>
+<p>The information we need to locate the destination is contained in the URI of the request. If you followed the sample code from the previous lab, this value should have been saved as the <code>'uri'</code> element of the message dictionary. Parsing this field with the Python <code>urllib</code> library will provide us with a host name/address and port that you can use to establish a client socket with the target (see echo-client.py for syntax to open a client socket).</p>
+<p>Since Python provides a URL parsing module, this is theoretically an easy task. However, it turns out that real browsers produce a variety of edge cases that will cause <code>urllib</code> to choke. In order to constrain the difficulty of this lab, we are providing you with the following function to complete this section.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Be sure to add the import to the top of your code</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
+
+<span class="c1"># returns the host and port</span>
+<span class="c1"># run by doing:  h, p = parse_uri(dest)</span>
+<span class="k">def</span> <span class="nf">parse_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">):</span>
+    <span class="n">uri_parts</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+    <span class="n">scheme</span> <span class="o">=</span> <span class="n">uri_parts</span><span class="o">.</span><span class="n">scheme</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">uri_parts</span><span class="o">.</span><span class="n">hostname</span>
+    <span class="c1"># urlparse can&#39;t deal with partial URI&#39;s that don&#39;t include the </span>
+    <span class="c1"># protocol, e.g., push.services.mozilla.com:443</span>
+    <span class="k">if</span> <span class="n">host</span><span class="p">:</span> <span class="c1"># correctly parsed</span>
+        <span class="k">if</span> <span class="n">uri_parts</span><span class="o">.</span><span class="n">port</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="n">uri_parts</span><span class="o">.</span><span class="n">port</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getservbyname</span><span class="p">(</span><span class="n">scheme</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c1"># incorrectly parsed</span>
+        <span class="n">uri_parts</span> <span class="o">=</span> <span class="n">uri</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="n">uri_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">uri_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="mi">80</span>
+    <span class="k">return</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span>
+</code></pre></div>
+<h3 id="build-message">Build Message<a class="headerlink" href="#build-message" title="Permanent link">&para;</a></h3>
+<p>At this point, we have a request, and we know it's destination. The last objective for this week is to create a new function that takes a decomposed message (the dictionary returned from your parser) and generates a new message in byte form. This function is the inverse of the parsing logic you wrote in the last two labs (with one modification for now).<sup id="fnref:really?"><a class="footnote-ref" href="#fn:really?">2</a></sup> </p>
+<p>The easiest way to rebuild a message from it's parts is to use Python3 format strings, as shown in the example below. At this point, we would like you to make one change to the original request. Regardless of which HTTP version is defined, rebuild the message as an HTTP/1.0 request.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">build_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="c1"># Please note that we are replacing the original version (this is intentional)</span>
+    <span class="n">message_header</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;method&#39;</span><span class="p">],</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">],</span> <span class="s1">&#39;HTTP/1.0&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">header</span> <span class="ow">in</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;headers&#39;</span><span class="p">]:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;TODO&#39;</span><span class="p">)</span> <span class="c1"># Format each header properly</span>
+
+    <span class="c1"># Don&#39;t forget to add a terminating CRLF</span>
+    <span class="c1"># Encode the header portion of the message as bytes</span>
+    <span class="c1"># Do you have a message body? Add it back now</span>
+</code></pre></div>
+<!-- Replace the HTTP version you received with `HTTP/1.0`
+-   Add or update a `Via` header (per RFC 7230) for the proxied connection, e.g.,
+    -   `Via: 1.0 127.0.0.1:9999`
+    -   If a `Via` already exists, append your entry as a comma separated value to the end of the existing header -->
+
+<h3 id="client-socket">Client Socket<a class="headerlink" href="#client-socket" title="Permanent link">&para;</a></h3>
+<p>We'll conclude this sequence of tasks by establishing our outbound client socket and sending the request to it's destination. The most important point to remember at this point is how the end-to-end connection flow works. Your main code block should contain a loop to accept connections from browsers. </p>
+<p>Each connection that you accept will be used to service one outbound request and a corresponding inbound response. The request is received over the server socket you've already established. You used a second loop to call Socket.recv() until you could parse a valid request. </p>
+<p>Using the <code>parse_uri(request['uri'])</code> function from above, determine the host and port for the outbound client socket. Follow the pattern established in the echo_client to open the connection to this destination. </p>
+<p>Use <code>build_message(request)</code> to convert the parsed request back into byte form and send it with the <code>Socket.sendall(data)</code> function demonstrated in the echo_client and RealPython guides. Finally, attempt one call to <code>Socket.recv()</code> to try and receive the first part of the response.</p>
+<p>If you have been successful in receiving and rebuilding the request, you should receive a response immediately from the server. Errors in the preceeding step may result in your proxy hanging (while waiting for a response) or the server resetting the connection due to bad data.</p>
+<p>We have two more weeks to debug your code. If it breaks here, comment out the final recv() and print a summary of the request you've received as shown below.</p>
+<h3 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
+<p>Once all parts of your code are working, print the following summary (replace the output from the previous lab) and close the connection. This will return to the start of your loop to listen for new connections.</p>
+<p><strong>Request summary</strong>  </p>
+<ul>
+<li>Connection Source: &lt; IP address returned from the call to Socket.accept() &gt;  </li>
+<li>HTTP Method: &lt; Name of method, e.g., GET, OPTION, or POST  &gt;  </li>
+<li>Destination: &lt; URI extracted from the request &gt;  </li>
+<li>Headers: &lt; Comma delimited list of header names &gt;</li>
+<li>Target: &lt; Hostname of server obtained from request &gt;</li>
+<li>Message: &lt; Raw bytes of the rebuilt request &gt;</li>
+<li>Reponse: &lt; First 50 bytes of the response (if working) &gt;</li>
+</ul>
+<details class="note"><summary> What are these diamonds "&lt;   &gt;" ?</summary><p>These are placeholders. When you see these it means you should fill in information that is between them and then delete the symbols. It's a quick way of saying "hey something needs to be filled in" for the developer world.</p>
+</details>
+<h3 id="testing-your-code-with-testpy">Testing your code with test.py<a class="headerlink" href="#testing-your-code-with-testpy" title="Permanent link">&para;</a></h3>
+<p>The resources directory of the project repository contains a simple
+python script called test.py that you can use to send HTTP requests from
+a file into your proxy code.</p>
+<div class="highlight"><pre><span></span><code># Send the request from sample-request.txt on port 9999 250 bytes at a time with a short delay between
+
+python3 test.py 9999 get_request.http 250
+</code></pre></div>
+<p>Note: Testing at this stage can be more challenging. Please ask for help via the course Slack if you need it.</p>
+<h3 id="capturing-proxied-requests-for-testing">Capturing proxied requests for testing<a class="headerlink" href="#capturing-proxied-requests-for-testing" title="Permanent link">&para;</a></h3>
+<p>Use the following method to capture valid requests that you can use for
+testing:</p>
+<ul>
+<li>Open ncat to listen for incoming connections, e.g., <code>ncat -o &lt;FILENAME&gt; -l &lt;PORT&gt;</code></li>
+<li>Configure Firefox with an HTTP proxy on <code>127.0.0.1 &lt;PORT&gt;</code></li>
+<li>Enter the URL of an HTTP-only site into the FF address bar (the request will hang)</li>
+<li>Manually stop the request from the browser</li>
+<li>Verify that the request was captured in ncat (ncat will close automatically)</li>
+</ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:oversimplification">
+<p>This is an oversimplification of the RFC for HTTP/1.0, but it will be sufficient for our purposes.&#160;<a class="footnote-backref" href="#fnref:oversimplification" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:really?">
+<p>I realize it seems strange to rebuild the message you just spent time tearing apart, but this approach gives you more leverage in terms of what functions your proxy can provide. For example, notice how easily we can modify the HTTP version and add new headers.&#160;<a class="footnote-backref" href="#fnref:really?" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2020 Daniel Schwalbe</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

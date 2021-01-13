@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Daniel Schwalbe">
+        <link rel="canonical" href="https://info314.giantfirewall.com/assignments/lab1/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Lab 1 - Core Technical Skills - INFO 314 Course Resources</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INFO 314 Course Resources</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">1 - Pi Setup</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../pi-setup/" class="dropdown-item">Raspberry Pi Setup</a>
+</li>
+            
+<li>
+    <a href="../networkd-setup/" class="dropdown-item">networkd Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Wifi Reference</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">2 - Set up a DHCP Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/address-planning/" class="dropdown-item">IP Address Planning Reference</a>
+</li>
+            
+<li>
+    <a href="../dhcp-setup/" class="dropdown-item">Installing and Configuring the ISC DHCP Server</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">3 - Configure Routing and NAT</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../router-setup/" class="dropdown-item">Router Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/iptables/" class="dropdown-item">Introduction to iptables</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">4 - Configure a DNS Resolver</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../resolver-setup/" class="dropdown-item">DNS Resolver Setup</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Report - NAT and DNS Analysis</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../analysis-report/" class="dropdown-item">Instructions</a>
+</li>
+            
+<li>
+    <a href="../../resources/tshark-install/" class="dropdown-item">Installing TShark</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">5 - Configure an Authoritative Name Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../dns-zone-setup/" class="dropdown-item">Authoritative Zone Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">DNS Zone Reference</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Extra Credit</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../vlan-challenge/" class="dropdown-item">VLAN Challenge</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Lab 1 - Core Technical Skills</a>
+</li>
+                                    
+<li>
+    <a href="../lab2/" class="dropdown-item">Lab 2 - Analyzing DHCP and ARP with Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab3/" class="dropdown-item">Lab 3 - Analyze Zeroconf in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab4/" class="dropdown-item">Lab 4 - Analyze DNS & HTTP in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab5/" class="dropdown-item">Lab 5 - Analyze TCP with ncat and Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab6/" class="dropdown-item">Lab 6 - Python and Socket Basics</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Proxy Labs</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../proxy-labs/" class="dropdown-item">Proxy Project Overview</a>
+</li>
+            
+<li>
+    <a href="../lab7/" class="dropdown-item">Proxy Part 1 (Lab 7)</a>
+</li>
+            
+<li>
+    <a href="../lab8/" class="dropdown-item">Proxy Part 2 (Lab 8)</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Concepts and Theory</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../notes/dns-overview/" class="dropdown-item">Domain Name System (DNS)</a>
+</li>
+            
+<li>
+    <a href="../../notes/router-overview/" class="dropdown-item">Routers</a>
+</li>
+            
+<li>
+    <a href="../../notes/ethernet-switches/" class="dropdown-item">Ethernet Switches</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Guides</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/pi-materials/" class="dropdown-item">Getting Pi Materials</a>
+</li>
+            
+<li>
+    <a href="../../resources/digital-ocean/" class="dropdown-item">Digital Ocean Signup</a>
+</li>
+            
+<li>
+    <a href="../../resources/address-planning/" class="dropdown-item">Basic IP Address Planning</a>
+</li>
+            
+<li>
+    <a href="../../resources/iptables/" class="dropdown-item">Introduction to Iptables</a>
+</li>
+            
+<li>
+    <a href="../../resources/netfilter-hooks/" class="dropdown-item">Understanding Netfilter/Iptables Hooks</a>
+</li>
+            
+<li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">Zone File Reference</a>
+</li>
+            
+<li>
+    <a href="../../resources/vlans-and-dummies/" class="dropdown-item">Special Network Interfaces (VLANs and Dummies)</a>
+</li>
+            
+<li>
+    <a href="../../resources/configure-routing-links/" class="dropdown-item">Configuring Routing Links</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-wireguard/" class="dropdown-item">Install and Configure WireGuard</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-frr/" class="dropdown-item">Install Free Range Routing (FRR)</a>
+</li>
+            
+<li>
+    <a href="../../resources/ssh-agent/" class="dropdown-item">Using ssh-agent</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Quick Reference</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/markdown/" class="dropdown-item">Intro to Markdown</a>
+</li>
+            
+<li>
+    <a href="../../resources/bash/" class="dropdown-item">Intro to Bash</a>
+</li>
+            
+<li>
+    <a href="../../resources/host-config/" class="dropdown-item">Mac/Win/Linux Networking</a>
+</li>
+            
+<li>
+    <a href="../../resources/wireshark-install/" class="dropdown-item">Install Wireshark</a>
+</li>
+            
+<li>
+    <a href="../../resources/tshark-install/" class="dropdown-item">Install TShark</a>
+</li>
+            
+<li>
+    <a href="../../resources/manage-dhcp/" class="dropdown-item">Troubleshooting DHCP</a>
+</li>
+            
+<li>
+    <a href="../../resources/dns-clients/" class="dropdown-item">Managing DNS Clients</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../contact/" class="nav-link">Contact Us</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../vlan-challenge/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../lab2/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/info314/website" class="nav-link">info314/website</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#lab-1-core-technical-skills" class="nav-link">Lab 1 - Core Technical Skills</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#overview" class="nav-link">Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#before-you-start" class="nav-link">Before you start</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#everyone" class="nav-link">Everyone</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#windows" class="nav-link">Windows</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#create-ssh-client-keys" class="nav-link">Create SSH client keys</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#create-a-debian-9-server-on-digitalocean" class="nav-link">Create a Debian 9 Server on DigitalOcean</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#connect-and-manage-your-server" class="nav-link">Connect and Manage your Server</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#deliverables" class="nav-link">Deliverables</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="lab-1-core-technical-skills">Lab 1 - Core Technical Skills<a class="headerlink" href="#lab-1-core-technical-skills" title="Permanent link">&para;</a></h1>
+<p><a href="https://canvas.uw.edu/courses/1373089/assignments/5369614">Lab 1 Assignment page on Canvas</a></p>
+<h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h1>
+<p>In this lab you will be introduced to working with a headless Linux server. The work you do in this lab will be extremely helpful in becoming more comfortable with your Raspberry Pi.</p>
+<p>We will walk you through all of the required steps in lab, but all the required steps are also in this webpage.</p>
+<h1 id="before-you-start">Before you start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h1>
+<h2 id="everyone">Everyone<a class="headerlink" href="#everyone" title="Permanent link">&para;</a></h2>
+<p>Confirm that you have created a DigitalOcean account, and that on the top right of the website it says you have $100.00 of credits. This will allow you to create virtual machine “Droplets” on DigitalOcean without incurring any direct cost.</p>
+<p>In addition to the email we sent on Sunday, instructions to complete this task can be found in <a href="/resources/digital-ocean.md">here</a>.</p>
+<h2 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h2>
+<p>Determine which build of Windows 10 they have installed by running </p>
+<p><code>Get-ComputerInfo -Property WindowsVersion</code></p>
+<p>in PowerShell.</p>
+<p>The minimum version of Windows 10 required for this course is 1809, but you may proceed with this lab as long as you are running 1803.</p>
+<p>For any prior version of Windows (older than 1803), please install Git for Windows from <a href="https://gitforwindows.org/">https://gitforwindows.org/</a> and use the Git Bash environment to complete the following set of exercises instead of PowerShell.</p>
+<h1 id="create-ssh-client-keys">Create SSH client keys<a class="headerlink" href="#create-ssh-client-keys" title="Permanent link">&para;</a></h1>
+<p>To use the DigitalOcean server we will soon create, you'll need a way to authenticate yourself and login to your server. While you might think a password will suffice, we will be using a more secure method of authentication through SSH keys.</p>
+<p>SSH stands for 'Secure Shell'. A 'shell' is a command line interface, such as the one's you've seen in Terminal, PowerShell, or Git Bash. Throughout this course, you'll be using the shell, remotely, to configure Linux. SSH makes the shell 'secure' by create a pair of keys that you use to authenticate yourself to a remote shell. These 'keys' are simply long strings of characters that are tied together with some complex mathematics.</p>
+<p>We will use a program called <code>ssh-keygen</code> to create this pair of keys. </p>
+<p><code>ssh-keygen</code> will generate a <strong>private</strong> key, and a <strong>public</strong> key. Your <strong>public</strong> key can be given out, to say, DigitalOcean, while your <strong>private</strong> key remains only on your computer. </p>
+<p>In short, SSH works as follows in our scenario:</p>
+<ol>
+<li>
+<p>Your computer connects to the DigitalOcean-hosted server via a remote shell</p>
+</li>
+<li>
+<p>The DigitalOcean-hosted server encrypts a file with your <strong>public</strong> key (sort of like creating a hash for it) and sends the encrypted file to you. </p>
+</li>
+<li>
+<p>Only your <strong>private</strong> key will be able to decrypt the file (sort of like getting back the original data that wash hashed). Your computer uses your <strong>private</strong> key to decrypt the file, then sends back the decrypted file to the server. </p>
+</li>
+<li>
+<p>You have now proved that you have the <strong>private</strong> key that matched the <strong>public</strong> key.</p>
+</li>
+</ol>
+<p><strong>To create your SSH keypair, use <code>ssh-keygen</code> as follows:</strong></p>
+<ol>
+<li>With either Terminal (for Mac) or PowerShell/Git Bash (for Windows) run the following command with your own email address:<br />
+<code>ssh-keygen -t ed25519 -C &lt;YOUR@EMAIL&gt;</code></li>
+<li>You will be prompted for a file name for the private SSH key. Accept the default by pressing the Enter key.</li>
+<li>You will be prompted for a passphrase. This is important as it is used to protect your private SSH key. Make it something strong, like you would a password, and commit it to memory or write it down somewhere.</li>
+<li>If you are prompted to overwrite anything, type <code>n</code> and press the Enter key</li>
+</ol>
+<p><strong><em>(OPTIONAL STEP)</em></strong> To avoid having to enter the passphrase every time you use your private key, set up <em>ssh-agent</em> as describe <a href="/resources/ssh-agent.md">in this tutorial</a>.</p>
+<h1 id="create-a-debian-9-server-on-digitalocean">Create a Debian 9 Server on DigitalOcean<a class="headerlink" href="#create-a-debian-9-server-on-digitalocean" title="Permanent link">&para;</a></h1>
+<p>Log into your DigitalOcean account, go to the 'Droplet' tab on the left, and click 'Create Droplet'. Then set the Droplet up based on the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Image</strong></th>
+<th>Debian 9.12 x64</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plan</strong></td>
+<td>Starter / $5 per month</td>
+</tr>
+<tr>
+<td><strong>Authentication</strong></td>
+<td>SSH keys</td>
+</tr>
+</tbody>
+</table>
+<p>Right under the 'SSH keys' option in the 'Authentication' section, you'll see a button that says 'New SSH Key'. Press it, and you'll be prompted for your <strong>public</strong> SSH key.</p>
+<p>To get your <strong>public</strong> SSH key, enter the following in either Terminal (for Mac) or PowerShell/Git Bash (for Windows) </p>
+<p><code>cat  ~/.ssh/id_ed25519.pub</code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure to enter the .pub extension at the end of this line! Without the extension, you will get back your private key instead of your public key!</p>
+</div>
+<p>You should then see a string like this:</p>
+<p><img alt="SSH Public Key cat output" src="../../img/ssh-cat-output.png" /></p>
+<p><strong>Copy</strong> the string (from the ssh-ed25519 all the way to the end of your email) and paste it into the 'Add public SSH key' window in DigitalOcean like so:</p>
+<p><img alt="SSH Key into Digital Ocean" src="../../img/ssh-key-in-do.png" /></p>
+<p>Then type a name for the key (something like 'My Macbook Pro') and press 'Add SSH Key'  </p>
+<p>Now you are all set to create the Droplet. Scroll down to and press 'Create Droplet'. If you want, you can create a name for this server in the 'Choose a hostname' section.</p>
+<p>Wait for the droplet to be created. When it's finished, copy the IP address of the server for the next section. It's the number right next to the server's name.</p>
+<p><img alt="Digital Ocean server IP address" src="../../img/IP-do.png" /></p>
+<h2 id="connect-and-manage-your-server">Connect and Manage your Server<a class="headerlink" href="#connect-and-manage-your-server" title="Permanent link">&para;</a></h2>
+<h3 id="log-in-to-the-droplet-as-the-root-user-via-ssh">Log in to the droplet as the root user via SSH<a class="headerlink" href="#log-in-to-the-droplet-as-the-root-user-via-ssh" title="Permanent link">&para;</a></h3>
+<p>In order to manage our remote server, we’ll use SSH to connect remotely. Since we have already associated a set of SSH keys with the server, we will be able to log in the the server as the 'root' user without directly entering a password.</p>
+<p>The 'root' user is the default user on a Linux system, and it has permission to do <em>anything</em>. This is much different from a standard user account, say 'John', who only has permission to write, read, or execute certain files, like his user directory. We will begin this lab by logging in as the 'root' user, but we will soon create another user on the server and use that instead. It's typically not advised to use the root user on a Linux system unless what you're doing requires it.</p>
+<p>The syntax for ssh is:   </p>
+<p><code>ssh &lt;USERNAME&gt;@&lt;SERVER&gt;</code> </p>
+<p>We'll log in as the 'root' user, and use the IP address we copied earlier:  </p>
+<p>e.g., <code>ssh root@&lt;SERVER_IP&gt;</code></p>
+<p>for me that's <code>ssh root@104.248.59.220</code></p>
+<p>If you entered the command correctly, you should see something like:</p>
+<div class="highlight"><pre><span></span><code>The authenticity of host &#39;104.248.59.220 (104.248.59.220)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:...
+Are you sure you want to continue connecting (yes/no)?
+</code></pre></div>
+<p>This is your computer letting you know it's never connected to this server before. That's okay, so:</p>
+<p>Type <code>yes</code> and press enter.</p>
+<p>You will then be prompted with something like:</p>
+<div class="highlight"><pre><span></span><code>Warning: Permanently added &#39;104.248.59.220&#39; (ECDSA) to the list of known hosts.
+Linux debian-info314-sp20 4.9.0-12-amd64 #1 SMP Debian 4.9.210-1 (2020-01-20) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+</code></pre></div>
+<p>And finally you see something like this:</p>
+<p><code>root@debian-fdk542-432kgs:~#</code> </p>
+<p>To receive credit for this lab, you need to create a transcript of all the commands you issue to the server.</p>
+<p>To do this, we will use the script command to capture your session. Enter:</p>
+<p><code>script root-session</code></p>
+<p>This will use the <code>script</code> program to create a log of all your shell input and save it to a file named <code>root-session</code></p>
+<p>You should see this message:</p>
+<p><code>Script started, file is root-session</code></p>
+<p>Now, everything you type in this shell will now be captured in a file named root-session within your home directory. </p>
+<p>If you need to exit the server anytime, just type <code>exit</code>.
+The first time you <code>exit</code> you'll get the output:
+<code>Script done, file is root-session</code>
+This lets you know that <code>script</code> has finished recording and have saved the transcript.
+Next, type <code>exit</code> once more and you will be logged out of the SSH session, receving the message:
+<div class="highlight"><pre><span></span><code>logout
+Connection to 104.248.59.220 closed.
+</code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It's important that if you exit from the server and then reconnect to it (via <code>ssh</code>) that you continue your script. This will ensure everything keeps being recorded and you will get full credit for the lab.  </p>
+<p>To continue the script, type:<br />
+<code>script -a root-session</code><br />
+after you SSH back into the server. You'll again be prompted with:<br />
+<div class="highlight"><pre><span></span><code>Script started, file is root-session
+</code></pre></div></p>
+<p>which ensures that your next commands will be appended to the <code>root-session</code> file </p>
+</div>
+<h3 id="create-a-second-user-account">Create a second user account<a class="headerlink" href="#create-a-second-user-account" title="Permanent link">&para;</a></h3>
+<p>In most situations, we will not work directly as the root user, since this would pose additional security risks. In fact, many Linux distributions will prevent direct root login. Let’s create a new user and practice working with this configuration. </p>
+<p>Add a new user by entering this (where <YOUR_USERNAME> is your name or something else you'll remember)</p>
+<p><code>adduser &lt;YOUR_USERNAME&gt;</code></p>
+<p>you'll be prompted for other information, such as a password and a name. Give the account a password you'll remember, and skip the other fields (such as name) by pressing 'Enter'.</p>
+<p>Then, add the user to the <em>sudo</em> group:</p>
+<p><code>usermod -aG sudo &lt;YOUR_USERNAME&gt;</code></p>
+<p>This allows the new user to use <code>sudo</code> before commands. Using <code>sudo</code> allows a user who is not <code>root</code> to use <code>root</code> privaleges on a per-command basis.</p>
+<p>By default, DigitalOcean prevents users from connecting via SSH without an SSH key. This is the correct decision from the security perspective, but we will disable it temporarily in order to explore beneath the hood.</p>
+<p>Modify <code>/etc/ssh/sshd_config</code> to enable password-based login by editing it as follows:</p>
+<p>First, open <code>sshd_config</code> in <code>nano</code> by using:</p>
+<p><code>nano /etc/ssh/sshd_config</code></p>
+<p>This will open <code>nano</code>. 
+<code>nano</code> is a terminal-based editor, and is very simple.
+You can only move the cursor by using the arrow keys.
+To copy text from a file using <code>nano</code>, select it using your mouse and then copy it as usual (Control+C on Windows, Command + C on Mac)</p>
+<p>In <code>nano</code>, Find the: 
+<code>PasswordAuthentication no</code> 
+setting and prefix it with a <code>#</code> comment character, so it should read:
+<code>#PasswordAuthentication no</code></p>
+<p>Then save the document in <code>nano</code> by pressing: Control + X in Windows, Command + X in Mac.</p>
+<p>Settings don’t take effect automatically. Use the systemctl tool to restart the sshd service:</p>
+<p><code>systemctl restart sshd</code></p>
+<h3 id="log-in-as-your-new-user">Log in as your new user<a class="headerlink" href="#log-in-as-your-new-user" title="Permanent link">&para;</a></h3>
+<p><strong>In a new terminal window</strong>, log in as the new user via SSH using the password you created above.</p>
+<p>Capture a script of your session by calling:</p>
+<p><code>script user-session</code></p>
+<p>The results of this command will be saved in a file named user-session.</p>
+<p>When you log in, run:</p>
+<p><code>pwd</code></p>
+<p>and make note of the directory. </p>
+<p>This is your home directory. Notice that the home directory for each user is different.</p>
+<p>Try listing the contents of the root user’s home directory by typing:</p>
+<p><code>ls -al /root</code></p>
+<p>You should receive a permission denied error. The /root path is owned by the root user and has permissions restricted so that other users cannot read, write, or execute the directory or anything else it contains.</p>
+<p>Since root is a special user, the restriction does not apply in the other direction. Demonstrate this difference in permissions by listing the contents of the new user’s home directory from the <strong>root user’s shell</strong>, e.g., </p>
+<p><code>ls -al /home/clinton</code> </p>
+<p>from your root login and view the contents of my user’s home directory.</p>
+<p>By default in basic Linux distributions, the root user has complete control over all system and user resources and is even able to take on the identity of other users without knowing their passwords.</p>
+<h4 id="running-administrative-commands">Running Administrative Commands<a class="headerlink" href="#running-administrative-commands" title="Permanent link">&para;</a></h4>
+<p>Many of the administration tasks we need to complete throughout the quarter require root level permissions. Since we’ve already established that we will deliberately work as a non-root user, we should determine a method to elevate our privileges. In Linux and other Unix-based operating systems, the command that allows us to do this is called <code>sudo</code>. By prefixing any valid shell command or program name with <code>sudo</code>, we will assume the identity of <code>root</code> at runtime.</p>
+<p>Test this out by comparing the results of (<strong>within the new user's shell</strong>)</p>
+<p><code>whoami</code> </p>
+<p>with the results of </p>
+<p><code>sudo whoami</code></p>
+<p>The next step will require us to log out of our current ssh session. Before you do this, type <code>exit</code> to end the current script session. You should see a message stating that the script is complete. You may now log out of ssh by running the exit command.</p>
+<h3 id="add-ssh-keys-for-your-user">Add SSH keys for your user<a class="headerlink" href="#add-ssh-keys-for-your-user" title="Permanent link">&para;</a></h3>
+<p>As you’ve seen, we can log into the <code>root</code> account without entering a password because of the SSH keys that we created at the beginning of this lab, but logging into our new user account requires a password (which is a much weaker configuration from a security perspective).</p>
+<p>Let’s resolve this by adding our public SSH key to the new user account on our Droplet. </p>
+<p>First <strong>switch back to your root shell</strong> and examine the files saved in the <code>.ssh</code> folder of root’s home directory. </p>
+<p>To do this, we'll switch to the <code>.ssh</code> directory using <code>cd</code>.</p>
+<p><code>cd</code> stands for 'Change Directory' and will let you switch the folder you are in.</p>
+<p>To change to the <code>.ssh</code> folder type:</p>
+<p><code>cd .ssh</code></p>
+<p>Now you can use <code>ls -al</code> to view the contents of the folder once you are in it.</p>
+<p>What you should see in the specified path is a file named <code>authorized_keys</code> that contains a copy of your SSH public key on a line by itself. We’ll be creating a similar file in the home directory of our new user. On each login attempt, the SSH server checks for <code>authorized_keys</code> designated for the user and loads.</p>
+<p>First, within <strong>a new terminal window</strong>, type:</p>
+<p><code>ssh &lt;YOUR_USERNAME&gt;@&lt;SERVER_IP&gt; 'mkdir -p ~/.ssh'</code></p>
+<p>This creates a quick SSH session into your user, and makes a new directory called <code>.ssh</code> for that user.</p>
+<p>Next, you'll copy your public key (<code>$HOME/.ssh/id_ed25519.pub</code>) to the Droplet using the <code>scp</code> command. <code>scp</code> is part of the OpenSSH client package and is used to copy files between paths on local and remote hosts. You will notice that it uses <code>ssh</code> syntax to identify the remote location followed by a colon and the actual source or target path at the remote location:</p>
+<p><strong>NOTE: The following command is entered as one line but is wrapped due to the constraints of the editor.</strong></p>
+<p><code>scp $HOME/.ssh/id_ed25519.pub &lt;YOUR_USERNAME&gt;@&lt;SERVER_IP&gt;:.ssh/authorized_keys</code></p>
+<p>Be aware that scp respects file permissions. When connecting as my non-root user, I cannot read or write to locations that are restricted to other users or root. </p>
+<h3 id="install-a-web-server">Install a web server<a class="headerlink" href="#install-a-web-server" title="Permanent link">&para;</a></h3>
+<p>Test that you successfully copied your public key to the server and can access the Droplet as your non-root user without having to enter a server password:</p>
+<p><code>ssh &lt;YOUR_USERNAME&gt;@&lt;SERVER_IP&gt;</code></p>
+<p><strong>You should <u>not</u> be prompted for your UNIX/Linux user password you set, it should instead use the SSH key as before, and if you set it, ask for the SSH passphrase.</strong></p>
+<p>Once you are logged back in, resume your script by running </p>
+<p><code>script -a user-session</code></p>
+<p>Install the nginx web service using the command:</p>
+<p><code>sudo apt install nginx</code></p>
+<p>Verify that the service installed correctly by running </p>
+<p><code>systemctl status nginx</code></p>
+<p>and confirming that the nginx service is loaded and running.</p>
+<p>Use a web browser to navigate to <strong>your IP address</strong> and load the default nginx site, e.g., <http://\<SERVER_IP>> , in my case <a href="http://134.209.4.234">http://134.209.4.234</a> </p>
+<p>Once you have completed these tasks, please close out the scripts from your root and user shell by typing <code>exit</code> twice on each shell.</p>
+<p>Now on your computer <strong>(no longer on the server!)</strong>, use <code>scp</code> to copy the scripts over by typing:</p>
+<p><code>scp root@&lt;SERVER_IP&gt;:root-session $HOME/Desktop</code></p>
+<p>and</p>
+<p><code>scp &lt;YOUR_USERNAME&gt;@&lt;SERVER_IP&gt;:user-session $HOME/Desktop</code></p>
+<p>They will be on your desktop.</p>
+<h2 id="deliverables">Deliverables<a class="headerlink" href="#deliverables" title="Permanent link">&para;</a></h2>
+<p>For your deliverables, you will need to submit three files.</p>
+<ul>
+<li>Your user-session file (user-session)</li>
+<li>Your root-session file (root-session)</li>
+<li>A completed lab report using the markdown template provided above, exported to PDF. The lab report can be found at <a href="https://canvas.uw.edu/courses/1373089/assignments/5369614">Lab 1 Assignment page on Canvas</a> </li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2020 Daniel Schwalbe</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
