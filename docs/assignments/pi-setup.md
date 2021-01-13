@@ -1,14 +1,14 @@
 # Raspberry Pi Setup Guide (2020-01-14)
 ## Overview 
 
-This guide will walk you through the steps necessary to install Raspbian on your Pi and connect it to Wifi. While we encourage you to search online and use other resources when you encounter questions, it's important that you follow our instructions closely. Though there are many different guides that can help you accomplish the same objectives, this guide has been built based on the needs and requirements of our projects and introduces you to tools you will need throughout the quarter.
+This guide will walk you through the steps necessary to install Raspberry Pi OS on your Pi and connect it to Wifi. While we encourage you to search online and use other resources when you encounter questions, it's important that you follow our instructions closely. Though there are many different guides that can help you accomplish the same objectives, this guide has been built based on the needs and requirements of our projects and introduces you to tools you will need throughout the quarter.
 
 The core sections of this guide will walk you through the following steps:
 
-1. Installing Raspbian on a MicroSD and enabling SSH
+1. Installing Raspberry Pi OS on a MicroSD and enabling SSH
 2. Updating defaults and other preliminary setup steps
 3. Configuring a wifi connection
-4. Updating Raspbian and installing additional packages with `apt`
+4. Updating Raspberry Pi OS and installing additional packages with `apt`
 
 Before you start setting up your Pi, please review the tasks in the following section. These steps are particularly important for students running Windows and Linux.
 
@@ -62,13 +62,13 @@ If the system reports that you are on Windows 10 and that the `WindowsVerion` is
 ### Linux Users
 Using your default package manager (likely `yum` or `apt`), confirm that __Avahi mDNS__ services are installed (mDNS is typically part of the default distribution).
 
-## Install Raspbian
-The Raspberry Pi is built with Linux distributions in mind. The official distribution, which we'll use in our labs is known as __Raspbian__ and is based on Debian Linux. If you're familiar at all with Ubuntu, you should be mostly at home working in Raspbian. Don't worry if Linux is not your jam. We'll provide plenty of guidance so that you can focus your energy on the network concepts.
+## Install Raspberry Pi OS
+The Raspberry Pi is built with Linux distributions in mind. The official distribution, which we'll use in our labs is known as __Raspberry Pi OS__ and is based on Debian Linux. If you're familiar at all with Ubuntu, you should be mostly at home working in Raspberry Pi OS. Don't worry if Linux is not your jam. We'll provide plenty of guidance so that you can focus your energy on the network concepts.
 
-### Write Raspbian to MicroSD
-Download a current image of Raspbian from http://www.raspberrypi.org/downloads. 
+### Write Raspberry Pi OS to MicroSD
+Download **"Raspberry Pi OS Lite"** from https://www.raspberrypi.org/software/operating-systems/. 
 
-We will use __Raspbian Buster Lite__ for this course. This version of Raspbian is headless, meaning that it does not include a desktop environment. We’ll leverage SSH to do all of our configuration through the CLI.
+We will use __Raspberry Pi OS Lite__ for this course. This operating system was once called __Raspbian Buster Lite__ , so many guides in this course may contain references to the old name, __Raspbian__, but please know that they are referring to __Raspberry Pi OS__. This version of Raspberry Pi OS is headless, meaning that it does not include a desktop environment. We’ll leverage SSH to do all of our configuration through the CLI.
 
 Use __[Etcher](#before-you-start)__ to write the image you've downloaded to a microSD. Be aware that this process will overwrite any data that was already stored on the card. 
 
@@ -80,23 +80,26 @@ On macOS or Windows, you'll be limited to accessing the boot partition of the ca
 You must complete the following step before the first boot.
 
 #### Enable SSH
-Due to security considerations, the newest versions of Raspian disable SSH by default, but it's easy to turn the feature on so that we can use it for initial setup. 
+Due to security considerations, the newest versions of Raspberry Pi OS disable SSH by default, but it's easy to turn the feature on so that we can use it for initial setup. 
 
 To enable SSH on the first boot, add an empty file named ssh to the boot volume. Instructions will vary slightly between macOS and Windows:
 
-```bash tab="macOS"
-# Unix-based systems mount external storage to a path in the directory tree. For a freshly written Raspbian image, this path will be /Volumes/boot.
+**For Mac and Linus users**
+```
+# Unix-based systems mount external storage to a path in the directory tree. 
+# For a freshly written Raspberry Pi OS image, this path will be /Volumes/boot.
 
 touch /Volumes/boot/ssh
 ```
 
-```powershell tab="Windows"
+**For Windows users**
+```
 # Windows mounts external storage to a drive letter. Replace E: with the letter assigned on your system.
 
 New-Item -type File E:\ssh
 ```
 
-Raspbian will check for this file during the first startup and proceed to configure the SSH _daemon_ to start automatically. The term daemon, by the way, is the name Unix operating systems use to describe a service that runs in the background (e.g., to respond to network requests). 
+Raspberry Pi OS will check for this file during the first startup and proceed to configure the SSH _daemon_ to start automatically. The term daemon, by the way, is the name Unix operating systems use to describe a service that runs in the background (e.g., to respond to network requests). 
 
 ## Initial Boot
 It's time to boot the Pi for the first time. Close your editor and any windows that are open to the microSD so that you can eject the card gracefully from your OS. 
@@ -189,7 +192,7 @@ Setting the timezone will ensure that log messages are displayed in local time, 
 sudo timedatectl set-timezone America/Los_Angeles
 ```
 
-Raspbian defaults to a British locale. This can cause issues if we ever need to troubleshoot your device using an external keyboard. Configure the locale and keymap to prevent these issues.
+Raspberry Pi OS defaults to a British locale. This can cause issues if we ever need to troubleshoot your device using an external keyboard. Configure the locale and keymap to prevent these issues.
 
 ```
 # Update /etc/locale.gen with your preferences
@@ -274,7 +277,9 @@ To complete this guide, you will need to establish Internet connectivity for you
 ### Configure the WPA Supplicant
 Wireless settings for the Pi are controlled by a service called _wpa_supplicant_, which stores network connection settings inside `/etc/wpa_supplicant/wpa_supplicant.conf`. You can edit this directly on the Pi using the nano text editor (or vi for the daring). Alternatively, you can create the file on your local system and copy it into place on the Pi.
 
-For this project, you must configure a connection to the Eduroam network. It's also a good idea at this time to configure connections to your home network.
+**If this course if being taught remotely and not in a classroom setting, you must configure a connection to the your home WiFi network if at home, or Eduoroam if living on campus, or both. It's also a good idea at this time to configure connections to any other networks you might want to use the Pi on, such as a work WiFi network.**
+
+**If this course if being taught in a classroom setting and not remotely, you must configure a connection to the Eduroam network. It's also a good idea at this time to configure connections to any other networks you might want to use the Pi on, such as a home or work WiFi network.****
 
 !!! warning 
     **Do not associate your Pi with *University of Washington* unless given direct instructions to do so. Because the network requires a browser-based login, it has been a major source of trouble for former students.**
@@ -290,7 +295,7 @@ Begin your `wpa_supplicant.conf` file with the following lines.
     # INSERT WPA2 ENTERPRISE CONFIG FOR EDUROAM
     ```
 
-Afterwards add one or more network blocks (**including a connection to `Eduroam`**). If you are new to this, there are detailed configuration instructions on how to add network blocks are available in [WPA Supplicant Configuration Reference](/resources/wifi-reference/).
+Afterwards add one or more network blocks (**including a connection to either your home WiFi network or `Eduroam`**). There are detailed configuration instructions on how to add network blocks that are available in the [WPA Supplicant Configuration Reference](/resources/wifi-reference/).
 
 When you are finished updating `wpa_supplicant.conf` reconfigure the wireless interface by calling `wpa_cli -i wlan0 reconfigure`. The command should return `OK` after a few seconds. Check that you are attached to the wireless network  by calling `wpa_cli -i wlan0 status`.
 
@@ -349,9 +354,9 @@ ip addr show wlan0
 
 ## Update Software Packages
 ---
-Let's finalize the initial setup by checking for updates to Raspbian and its default packages (this can take a few minutes on slow networks).
+Let's finalize the initial setup by checking for updates to Raspberry Pi OS and its default packages (this can take a few minutes on slow networks).
 
-As a Debian based Linux distribution, Raspbian relies on `apt` for package management. The `apt update` command is used to determine whether there are new packages to download.
+As a Debian based Linux distribution, Raspberry Pi OS relies on `apt` for package management. The `apt update` command is used to determine whether there are new packages to download.
 
 ```bash
 sudo apt update

@@ -54,7 +54,7 @@ Enabling link local addresses is a critical component of these default configura
 
 
 
-**Create the following `.network` files in `/etc/systemd/network/` to handle the default settings for wired and wireless interfaces.** 
+**Create the following `.network` files  in **`/etc/systemd/network/ ` **to handle the default settings for wired and wireless interfaces.** 
 
 
 

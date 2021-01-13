@@ -1,10 +1,10 @@
 # Lab 1 - Core Technical Skills
 
-[Lab 1 Assignment page on Canvas](https://canvas.uw.edu/courses/1373089/assignments/5369614)
+[Lab 1 Assignment page on Canvas](<INSERT LINK HERE>)
 
 # Overview
 
-In this lab you will be introduced to working with a headless Linux server. The work you do in this lab will be extremely helpful in becoming more comfortable with your Raspberry Pi.
+In this lab you will be introduced to working with a headless Linux server. The work you do in this lab will help you become more comfortable with your Raspberry Pi when you complete Checkpoint 1.
 
 We will walk you through all of the required steps in lab, but all the required steps are also in this webpage.
 
@@ -14,7 +14,7 @@ We will walk you through all of the required steps in lab, but all the required 
 
 Confirm that you have created a DigitalOcean account, and that on the top right of the website it says you have $100.00 of credits. This will allow you to create virtual machine “Droplets” on DigitalOcean without incurring any direct cost.
 
-In addition to the email we sent on Sunday, instructions to complete this task can be found in [here](/resources/digital-ocean.md).
+Instructions to complete this task can be found [here](/resources/digital-ocean/).
 
 ## Windows
 
@@ -58,13 +58,13 @@ In short, SSH works as follows in our scenario:
 3. You will be prompted for a passphrase. This is important as it is used to protect your private SSH key. Make it something strong, like you would a password, and commit it to memory or write it down somewhere.
 4. If you are prompted to overwrite anything, type `n` and press the Enter key
 
-***(OPTIONAL STEP)*** To avoid having to enter the passphrase every time you use your private key, set up *ssh-agent* as describe [in this tutorial](/resources/ssh-agent.md).
+***(OPTIONAL STEP)*** To avoid having to enter the passphrase every time you use your private key, set up *ssh-agent* as describe [in this tutorial](/resources/ssh-agent/).
 
 # Create a Debian 9 Server on DigitalOcean
 
 Log into your DigitalOcean account, go to the 'Droplet' tab on the left, and click 'Create Droplet'. Then set the Droplet up based on the following parameters:
 
-| **Image**          | Debian 9.12 x64        |
+| **Image**          | Debian 9 x64           |
 | ------------------ | ---------------------- |
 | **Plan**           | Starter / $5 per month |
 | **Authentication** | SSH keys               |
@@ -341,7 +341,7 @@ Verify that the service installed correctly by running
 
 and confirming that the nginx service is loaded and running.
 
-Use a web browser to navigate to **your IP address** and load the default nginx site, e.g., <http://<SERVER_IP>> , in my case <http://134.209.4.234> 
+Use a web browser to navigate to **your droplet's IP address** and load the default nginx site, e.g., <http://<SERVER_IP>> , in my case <http://134.209.4.234>. The webpage should display the text "welcome to nginx!".
 
 Once you have completed these tasks, please close out the scripts from your root and user shell by typing `exit` twice on each shell.
 
@@ -364,4 +364,4 @@ For your deliverables, you will need to submit three files.
 
 - Your user-session file (user-session)
 - Your root-session file (root-session)
-- A completed lab report using the markdown template provided above, exported to PDF. The lab report can be found at [Lab 1 Assignment page on Canvas](https://canvas.uw.edu/courses/1373089/assignments/5369614) 
+- A completed lab report using the markdown template provided above, exported to PDF. The lab report can be found at [Lab 1 Assignment page on Canvas](<INSERT LINK HERE>) 
