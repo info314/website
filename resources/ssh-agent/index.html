@@ -238,13 +238,14 @@ ssh-add -l
 <li>Use <code>ssh-add</code> to load your keys into the agent.</li>
 </ol>
 <h3 id="step-1_1">Step 1<a class="headerlink" href="#step-1_1" title="Permanent link">&para;</a></h3>
-<p>Launch Powershell with administrator privileges and set the startup mode for the <code>ssh-agent</code> service to <code>Manual</code> since it is configured by default as <code>Disabled</code>.</p>
+<p>Launch Powershell <strong>with administrator privileges</strong> and set the startup mode for the <code>ssh-agent</code> service to <code>Manual</code> since it is configured by default as <code>Disabled</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">Set-Service</span> <span class="n">-Name</span> <span class="n">ssh-agent</span> <span class="n">-StartupType</span> <span class="n">Manual</span>
 </code></pre></div>
 <h3 id="step-2_1">Step 2<a class="headerlink" href="#step-2_1" title="Permanent link">&para;</a></h3>
-<p>Open a normal (non-administrator) Powershell console and edit/create a profile script to automatically launch the <code>ssh-agent</code> service. </p>
+<p>Open a <strong>normal (non-administrator)</strong> Powershell console and edit/create a profile script to automatically launch the <code>ssh-agent</code> service. </p>
 <p>In order to do this, we need to enable the ability to run basic scripts on the system and then find the location of the script (automatically assigned by Windows to the <code>$PROFILE</code> variable).</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Modify Powershell policy to allow basic powershell scripts to run</span>
+<span class="c"># This command may prompt you with a security warning. Press &quot;Yes&quot; if it does.</span>
 <span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
 
 <span class="c"># Test whether the profile script exists</span>
