@@ -1,6 +1,6 @@
 # Lab 1 - Core Technical Skills
 
-[Lab 1 Assignment page on Canvas](<INSERT LINK HERE>)
+[Lab 1 Assignment page on Canvas](https://canvas.uw.edu/courses/1434918/assignments/5995601)
 
 # Overview
 
@@ -364,4 +364,4 @@ For your deliverables, you will need to submit three files.
 
 - Your user-session file (user-session)
 - Your root-session file (root-session)
-- A completed lab report using the markdown template provided above, exported to PDF. The lab report can be found at [Lab 1 Assignment page on Canvas](<INSERT LINK HERE>) 
+- A completed lab report using the markdown template provided above, exported to PDF. The lab report can be found at [Lab 1 Assignment page on Canvas](https://canvas.uw.edu/courses/1434918/assignments/5995601) 

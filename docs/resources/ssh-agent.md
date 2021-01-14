@@ -56,19 +56,20 @@ ssh-add -l
 3. Use `ssh-add` to load your keys into the agent.
 
 ### Step 1
-Launch Powershell with administrator privileges and set the startup mode for the `ssh-agent` service to `Manual` since it is configured by default as `Disabled`.
+Launch Powershell **with administrator privileges** and set the startup mode for the `ssh-agent` service to `Manual` since it is configured by default as `Disabled`.
 
 ```powershell
 Set-Service -Name ssh-agent -StartupType Manual
 ```
 
 ### Step 2
-Open a normal (non-administrator) Powershell console and edit/create a profile script to automatically launch the `ssh-agent` service. 
+Open a **normal (non-administrator)** Powershell console and edit/create a profile script to automatically launch the `ssh-agent` service. 
 
 In order to do this, we need to enable the ability to run basic scripts on the system and then find the location of the script (automatically assigned by Windows to the `$PROFILE` variable).
 
 ```powershell
 # Modify Powershell policy to allow basic powershell scripts to run
+# This command may prompt you with a security warning. Press "Yes" if it does.
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 # Test whether the profile script exists
