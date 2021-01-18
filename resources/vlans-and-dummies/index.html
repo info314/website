@@ -190,21 +190,20 @@
 <div class="admonition example">
 <p class="admonition-title">Creating a VLAN interface</p>
 <p><strong><code>/etc/systemd/network/15-vlan25.netdev</code></strong></p>
-<div class="highlight"><pre><span></span><code>[NetDev]
+<pre class="highlight"><code>[NetDev]
 Name=vlan25
 Kind=vlan
 
 [VLAN]
 # Specify the tag
-Id=25
-</code></pre></div>
+Id=25</code></pre>
 </div>
 <h3 id="add-vlans-to-a-physical-interface">Add VLANs to a Physical Interface<a class="headerlink" href="#add-vlans-to-a-physical-interface" title="Permanent link">&para;</a></h3>
 <p>In order to send and receive tagged traffic over a network link, we need to associate the newly created VLAN interfaces with the physical LAN interface. In networkd, this can be done by adding one or more VLAN properties to the physical interface's <code>.network</code> configuration. After doing this, tagged frames will be presented to the operating system as originating from the associated VLAN interface. Likewise, traffic that is sent through a VLAN interface will be tagged with the specified ID before being sent on the network.</p>
 <div class="admonition example">
 <p class="admonition-title">Linking a VLAN interface to a physical interface</p>
 <p><strong><code>/etc/systemd/network/20-eth0.network</code></strong>
-<div class="highlight"><pre><span></span><code>[Match]
+<pre class="highlight"><code>[Match]
 Name=eth0
 
 [Network]
@@ -213,8 +212,7 @@ Address=192.168.0.1/24
 
 # Tagged VLANs Referenced by Interface Name
 VLAN=vlan25
-VLAN=vlan50
-</code></pre></div></p>
+VLAN=vlan50</code></pre></p>
 </div>
 <h3 id="network-configuration-for-vlan-interfaces">Network Configuration for VLAN Interfaces<a class="headerlink" href="#network-configuration-for-vlan-interfaces" title="Permanent link">&para;</a></h3>
 <p>Attaching the VLANs to a physical interface enables traffic to be sent and received from the virtual interface via tagged frames on the physical link. At the moment, however, our VLAN interfaces do not have any network-level settings attached to them.</p>
@@ -227,14 +225,14 @@ VLAN=vlan50
 Name=vlan25</p>
 <p>[Network]
 DHCP=ipv4
-<div class="highlight"><pre><span></span><code>``` tab=&quot;Static IP&quot;
+<pre class="highlight"><code>
+``` tab="Static IP"
 [Match]
 Name=vlan25
 
 [Network]
 Address=172.16.0.1/24
-DNS=1.1.1.1
-</code></pre></div></p>
+DNS=1.1.1.1</code></pre></p>
 </div>
 <h2 id="dummy-interfaces">Dummy Interfaces<a class="headerlink" href="#dummy-interfaces" title="Permanent link">&para;</a></h2>
 <p>When we set up labs with multiple services hosted on a single physical node, it can be useful to virtualize additional network connections and interfaces to allow us to extend the logical topology of the system. Dummy interfaces are treated much like standard network interfaces, although they do not require a physical connection and do not go up and down based on link status. Like a standard ethernet interface, a dummy interface can be configured with an IP address and other layer-3 settings. Likewise, we can bind daemons to sockets on our dummy interfaces and respond to network requests received at these addresses. </p>
@@ -243,10 +241,9 @@ DNS=1.1.1.1
 <div class="admonition example">
 <p class="admonition-title">Creating a Dummy Interface</p>
 <p><strong><code>/etc/systemd/network/10-dmz0.netdev</code></strong>
-<div class="highlight"><pre><span></span><code>[NetDev]
+<pre class="highlight"><code>[NetDev]
 Name=dmz0
-Kind=dummy
-</code></pre></div></p>
+Kind=dummy</code></pre></p>
 </div>
 <h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <ul>

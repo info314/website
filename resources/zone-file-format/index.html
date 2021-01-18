@@ -196,7 +196,7 @@
 <li>Additional <strong>Resource Records</strong> used to identify service-specific resources such as name servers and email servers or to map hostnames to network addresses.</li>
 </ul>
 <p>The following simple zone file distributed with BIND9 defines a zone description for the reserved <code>localhost</code> namespace:</p>
-<div class="highlight"><pre><span></span><code>;
+<pre class="highlight"><code>;
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
@@ -209,8 +209,7 @@ $TTL    604800
 ;
 @   IN  NS  localhost.
 @   IN  A   127.0.0.1
-@   IN  AAAA    ::1
-</code></pre></div>
+@   IN  AAAA    ::1</code></pre>
 <h2 id="record-format">Record Format<a class="headerlink" href="#record-format" title="Permanent link">&para;</a></h2>
 <h3 id="standard-fields">Standard Fields<a class="headerlink" href="#standard-fields" title="Permanent link">&para;</a></h3>
 <p>Each record in a zone defines a set of parameters associated with a single DNS resource.</p>
@@ -247,7 +246,7 @@ $TTL    604800
 <blockquote>
 <p>When formatting an email address for the RNAME field, You must escape any period in the username portion of the address with a <code>\</code> and replace the <code>@</code> symbol with an unescaped period. Do not escape periods in the domain portion of the address. An example can be seen in the following SOA record.</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code>;
+<pre class="highlight"><code>;
 ; Example SOA record for washington.edu
 ; Primary NS - hanna.cac.washington.edu
 ; Administrative Email - domainmaster@cac.washington.edu
@@ -262,39 +261,35 @@ washington.edu. 462 IN SOA hanna.cac.washington.edu. domainmaster.cac.washington
     1800                ; RETRY (30 minutes)
     3600000             ; EXPIRE (1000 hours)
     600                 ; TTL (10 minutes)
-)
-</code></pre></div>
+)</code></pre>
 <h3 id="ns-record-data">NS Record Data<a class="headerlink" href="#ns-record-data" title="Permanent link">&para;</a></h3>
 <p><strong>Name Server</strong> records are used to indicate the servers that host the zone file for a domain. A zone file will normally include its own name servers and the name servers of any subdomains. </p>
 <blockquote>
 <p>In a real world scenario, your domains should be hosted by at least two name servers.</p>
 </blockquote>
 <p>NS records refer to the hostname of a server. Assigning an IP address to a NS record is a misconfiguration. Rather a zone file can define glue records, A and AAAA address records that tie the name servers' hostnames to IP addresses. Glue records are required when a zone hosts its own authoritative name servers.</p>
-<div class="highlight"><pre><span></span><code>; Name Server
+<pre class="highlight"><code>; Name Server
 washington.edu.     86400   IN  NS  hanna.cac.washington.edu.
 
 ; Glue Records
 hanna.cac.washington.edu. 86400 IN  A   140.142.5.5
-hanna.cac.washington.edu. 86400 IN  AAAA    2607:4000:200:42::5
-</code></pre></div>
+hanna.cac.washington.edu. 86400 IN  AAAA    2607:4000:200:42::5</code></pre>
 <h3 id="a-and-aaaa-record-data">A and AAAA Record Data<a class="headerlink" href="#a-and-aaaa-record-data" title="Permanent link">&para;</a></h3>
 <p><strong>Address</strong> records map hostnames to IP addresses. The value of an A record in a BIND zone file is simply the IPv4 address in dotted decimal notation. For AAAA records, BIND supports the standard shorthand rules for IPv6.</p>
 <p>It is legal (and common) for multiple address records to be provided for a given hostname. This feature allows us to support <em>dual stack</em> hosts that can be reached using either IPv4 or IPv6 addresses, but it also enables us to distribute traffic between multiple servers for redundancy and load balancing. </p>
 <p>This configuration is referred to as <em>round-robin DNS</em> and can be seen in the following example:</p>
-<div class="highlight"><pre><span></span><code>;
+<pre class="highlight"><code>;
 ; Subsequent DNS responses will list records in a random order
 ;
 www.washington.edu. IN  A   128.95.155.134
 www.washington.edu. IN  A   128.95.155.197
-www.washington.edu.     IN  A   128.95.155.198
-</code></pre></div>
+www.washington.edu.     IN  A   128.95.155.198</code></pre>
 <h3 id="cname-record-data">CNAME Record Data<a class="headerlink" href="#cname-record-data" title="Permanent link">&para;</a></h3>
 <p><strong>Canonical Name</strong> records define aliases for hostnames. CNAME records have many uses, including mapping alternate domain registrations to a primary domain (as seen below) or to improve the stability of DNS records when we do not have direct control over the underlying infrastructure.</p>
-<div class="highlight"><pre><span></span><code>;
+<pre class="highlight"><code>;
 ; www.uw.edu can be used as an alias for www.washington.edu
 ;
-www.uw.edu. IN  CNAME   www.washington.edu.
-</code></pre></div>
+www.uw.edu. IN  CNAME   www.washington.edu.</code></pre>
 <p>While CNAME records can be quite useful, there are several important restrictions to keep in mind:</p>
 <ul>
 <li>Do not define a CNAME record for the <em>apex domain name</em>, i.e., the name of the domain without any host prefix.</li>
@@ -304,7 +299,7 @@ www.uw.edu. IN  CNAME   www.washington.edu.
 <h3 id="mx-record-data">MX Record Data<a class="headerlink" href="#mx-record-data" title="Permanent link">&para;</a></h3>
 <p><strong>Mail Exchanger</strong> records are used to specify the servers that will receive mail for a given domain.</p>
 <p>An individual MX record include an integer priority and a hostname. It is common and recommended to define multiple MX records for a domain. The priority field is used by mail agents to determine the preferred mail server (lower values are given higher priority).</p>
-<div class="highlight"><pre><span></span><code>;
+<pre class="highlight"><code>;
 ; Since the three servers listed here have equal priority, a mail
 ; agent will choose one at random.
 ;
@@ -316,20 +311,18 @@ washington.edu.     10800   IN  MX  100 mxe32.s.uw.edu.
 ; The hostnames referred to by MX records must resolve to address 
 ; records are hosted in the zone for uw.edu, e.g.,
 ; 
-mxe30.s.uw.edu.     86400   IN  A   173.250.227.19
-</code></pre></div>
+mxe30.s.uw.edu.     86400   IN  A   173.250.227.19</code></pre>
 <h3 id="txt-record-data">TXT Record Data<a class="headerlink" href="#txt-record-data" title="Permanent link">&para;</a></h3>
 <p><strong>Text</strong> records hold freeform text that is generally intended for use by external services. </p>
 <p>TXT records are frequently used to:
 * Verify ownership of a domain, e.g., required to set up 3<sup>rd</sup> party email hosting or obtain a certificate for TLS.
 * Support SPAM reduction technologies such as the Sender Policy Framework (SPF) and DomainKeys Identfied Mail (DKIM).</p>
-<div class="highlight"><pre><span></span><code>;
+<pre class="highlight"><code>;
 ; SPF uses TXT to indicate which networks or hosts may be used to send
 ; email on behalf of a domain. Recipients may flag or drop email that
 ; originated from an alternate server.
 ; 
-uw.edu.         3600    IN  TXT &quot;v=spf1 ip4:128.95.242.222/32 ip4:128.208.0.5/32 ip4:128.208.181.0/26 ip4:140.142.32.0/24 ip4:140.142.234.128/25 ip4:173.250.227.0/24 ?all&quot;
-</code></pre></div>
+uw.edu.         3600    IN  TXT "v=spf1 ip4:128.95.242.222/32 ip4:128.208.0.5/32 ip4:128.208.181.0/26 ip4:140.142.32.0/24 ip4:140.142.234.128/25 ip4:173.250.227.0/24 ?all"</code></pre>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://tools.ietf.org/html/rfc1912">RFC 1912: Common DNS Operational and Configuration Errors</a></li>

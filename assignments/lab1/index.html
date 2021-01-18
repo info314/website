@@ -305,14 +305,13 @@
 <p>e.g., <code>ssh root@&lt;SERVER_IP&gt;</code></p>
 <p>for me that's <code>ssh root@104.248.59.220</code></p>
 <p>If you entered the command correctly, you should see something like:</p>
-<div class="highlight"><pre><span></span><code>The authenticity of host &#39;104.248.59.220 (104.248.59.220)&#39; can&#39;t be established.
+<pre class="highlight"><code>The authenticity of host '104.248.59.220 (104.248.59.220)' can't be established.
 ECDSA key fingerprint is SHA256:...
-Are you sure you want to continue connecting (yes/no)?
-</code></pre></div>
+Are you sure you want to continue connecting (yes/no)?</code></pre>
 <p>This is your computer letting you know it's never connected to this server before. That's okay, so:</p>
 <p>Type <code>yes</code> and press enter.</p>
 <p>You will then be prompted with something like:</p>
-<div class="highlight"><pre><span></span><code>Warning: Permanently added &#39;104.248.59.220&#39; (ECDSA) to the list of known hosts.
+<pre class="highlight"><code>Warning: Permanently added '104.248.59.220' (ECDSA) to the list of known hosts.
 Linux debian-info314-sp20 4.9.0-12-amd64 #1 SMP Debian 4.9.210-1 (2020-01-20) x86_64
 
 The programs included with the Debian GNU/Linux system are free software;
@@ -320,8 +319,7 @@ the exact distribution terms for each program are described in the
 individual files in /usr/share/doc/*/copyright.
 
 Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-permitted by applicable law.
-</code></pre></div>
+permitted by applicable law.</code></pre>
 <p>And finally you see something like this:</p>
 <p><code>root@debian-fdk542-432kgs:~#</code> </p>
 <p>To receive credit for this lab, you need to create a transcript of all the commands you issue to the server.</p>
@@ -336,17 +334,15 @@ The first time you <code>exit</code> you'll get the output:
 <code>Script done, file is root-session</code>
 This lets you know that <code>script</code> has finished recording and have saved the transcript.
 Next, type <code>exit</code> once more and you will be logged out of the SSH session, receving the message:
-<div class="highlight"><pre><span></span><code>logout
-Connection to 104.248.59.220 closed.
-</code></pre></div></p>
+<pre class="highlight"><code>logout
+Connection to 104.248.59.220 closed.</code></pre></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>It's important that if you exit from the server and then reconnect to it (via <code>ssh</code>) that you continue your script. This will ensure everything keeps being recorded and you will get full credit for the lab.  </p>
 <p>To continue the script, type:<br />
 <code>script -a root-session</code><br />
 after you SSH back into the server. You'll again be prompted with:<br />
-<div class="highlight"><pre><span></span><code>Script started, file is root-session
-</code></pre></div></p>
+<pre class="highlight"><code>Script started, file is root-session</code></pre></p>
 <p>which ensures that your next commands will be appended to the <code>root-session</code> file </p>
 </div>
 <h3 id="create-a-second-user-account">Create a second user account<a class="headerlink" href="#create-a-second-user-account" title="Permanent link">&para;</a></h3>
@@ -385,7 +381,7 @@ setting and prefix it with a <code>#</code> comment character, so it should read
 <p><code>ls -al /root</code></p>
 <p>You should receive a permission denied error. The /root path is owned by the root user and has permissions restricted so that other users cannot read, write, or execute the directory or anything else it contains.</p>
 <p>Since root is a special user, the restriction does not apply in the other direction. Demonstrate this difference in permissions by listing the contents of the new user’s home directory from the <strong>root user’s shell</strong>, e.g., </p>
-<p><code>ls -al /home/clinton</code> </p>
+<p><code>ls -al /home/dfs</code></p>
 <p>from your root login and view the contents of my user’s home directory.</p>
 <p>By default in basic Linux distributions, the root user has complete control over all system and user resources and is even able to take on the identity of other users without knowing their passwords.</p>
 <h4 id="running-administrative-commands">Running Administrative Commands<a class="headerlink" href="#running-administrative-commands" title="Permanent link">&para;</a></h4>
@@ -419,6 +415,10 @@ setting and prefix it with a <code>#</code> comment character, so it should read
 <p>Once you are logged back in, resume your script by running </p>
 <p><code>script -a user-session</code></p>
 <p>Install the nginx web service using the command:</p>
+<p><code>sudo apt install nginx</code></p>
+<p>NOTE: If you receive an error message such as <strong><em>"Unable to locate package nginx"</em></strong>, run the following command next to update the package cache:</p>
+<p><code>sudo apt update -y</code></p>
+<p>Then try installing nginx again:</p>
 <p><code>sudo apt install nginx</code></p>
 <p>Verify that the service installed correctly by running </p>
 <p><code>systemctl status nginx</code></p>
