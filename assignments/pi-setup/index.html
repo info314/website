@@ -171,7 +171,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#raspberry-pi-setup-guide-2020-01-14" class="nav-link">Raspberry Pi Setup Guide (2020-01-14)</a>
+            <li class="nav-item" data-level="1"><a href="#raspberry-pi-setup-guide" class="nav-link">Raspberry Pi Setup Guide</a>
               <ul class="nav flex-column">
             <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">Overview</a>
               <ul class="nav flex-column">
@@ -216,14 +216,14 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="raspberry-pi-setup-guide-2020-01-14">Raspberry Pi Setup Guide (2020-01-14)<a class="headerlink" href="#raspberry-pi-setup-guide-2020-01-14" title="Permanent link">&para;</a></h1>
+<h1 id="raspberry-pi-setup-guide">Raspberry Pi Setup Guide<a class="headerlink" href="#raspberry-pi-setup-guide" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>This guide will walk you through the steps necessary to install Raspberry Pi OS on your Pi and connect it to Wifi. While we encourage you to search online and use other resources when you encounter questions, it's important that you follow our instructions closely. Though there are many different guides that can help you accomplish the same objectives, this guide has been built based on the needs and requirements of our projects and introduces you to tools you will need throughout the quarter.</p>
 <p>The core sections of this guide will walk you through the following steps:</p>
 <ol>
 <li>Installing Raspberry Pi OS on a MicroSD and enabling SSH</li>
 <li>Updating defaults and other preliminary setup steps</li>
-<li>Configuring a wifi connection</li>
+<li>Configuring a WiFi connection</li>
 <li>Updating Raspberry Pi OS and installing additional packages with <code>apt</code></li>
 </ol>
 <p>Before you start setting up your Pi, please review the tasks in the following section. These steps are particularly important for students running Windows and Linux.</p>
@@ -235,11 +235,11 @@
 <p>Except when otherwise noted, I recommend that Windows users complete all Linux networking exercises within Windows PowerShell rather than Git Bash or the Command Prompt.</p>
 <div class="admonition info recommendation">
 <p class="admonition-title">Info</p>
-<p>For a much improved working experience, you should download the new <strong>Windows Terminal</strong> application. This app is available in the <strong>Microsoft Store</strong> or from <a href="https://github.com/microsoft/terminal/releases">https://github.com/microsoft/terminal/releases</a>. By default, the terminal will run PowerShell, but it also supports Command Prompt and Windows Subsystem for Linux. </p>
+<p>For a much improved working experience, you should download the new <strong>Windows Terminal</strong> application. This app is available in the <strong><a href="https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701">Microsoft Store</a></strong> or from <a href="https://github.com/microsoft/terminal/releases">https://github.com/microsoft/terminal/releases</a>. By default, the terminal will run PowerShell, but it also supports Command Prompt and Windows Subsystem for Linux.                                            <strong><em>If you download and install it via the Microsoft Store, it will likely prompt you several times to log in with a Microsoft Account. This is optional - Clicking Cancel, Close, Skip, etc. should still allow you to install the application.</em></strong></p>
 </div>
 <h4 id="text-editor">Text Editor<a class="headerlink" href="#text-editor" title="Permanent link">&para;</a></h4>
 <p>Among the many subtle differences between Windows and Unix-based machines is a difference in the control characters used to terminate lines in text files. In many cases, this difference will prevent Linux from parsing a file you've written and copied from Windows.</p>
-<p>To avoid this issue, install a code-oriented text editor that can be configured to use Unix-style line endings and use it exclusively for the labs and projects throughout this course. <strong>Visual Studio Code</strong> and <strong>Atom</strong> are common options.</p>
+<p>To avoid this issue, install a code-oriented text editor that can be configured to use Unix-style line endings and use it exclusively for the labs and projects throughout this course. <strong>Visual Studio Code</strong>, <strong>Atom</strong>, and <strong>Notepad++</strong> are common options.</p>
 <p>To configure <strong>VS Code</strong> to use Unix-style line endings:</p>
 <ol>
 <li>Open Settings</li>
@@ -251,6 +251,12 @@
 <li>Open Settings</li>
 <li>Navigate to Packages / Line Ending Selector</li>
 <li>Change the <em>Default line ending</em> to <em>LF</em></li>
+</ol>
+<p>To configure <strong>Notepad++</strong> to use Unix-style line endings:</p>
+<ol>
+<li>Click on the Edit menu</li>
+<li>Locate and click on EOL Conversion</li>
+<li>Select <em>Unix (LF)</em></li>
 </ol>
 <h4 id="verify-support-for-mdns">Verify Support for mDNS<a class="headerlink" href="#verify-support-for-mdns" title="Permanent link">&para;</a></h4>
 <p>Please check the full version of Windows that you have installed by running <code>Get-ComputerInfo -Property Windows*</code> in a PowerShell console. After a moment, you'll receive a message describing your current Windows installation (as illustrated below). </p>
@@ -409,11 +415,10 @@ ssh pi@titan.local</code></pre>
 <p>To complete this guide, you will need to establish Internet connectivity for your Pi. Since the Pi 3 has integrated wireless capabilities, we can solve the problem by connecting to local wifi. </p>
 <h3 id="configure-the-wpa-supplicant">Configure the WPA Supplicant<a class="headerlink" href="#configure-the-wpa-supplicant" title="Permanent link">&para;</a></h3>
 <p>Wireless settings for the Pi are controlled by a service called <em>wpa_supplicant</em>, which stores network connection settings inside <code>/etc/wpa_supplicant/wpa_supplicant.conf</code>. You can edit this directly on the Pi using the nano text editor (or vi for the daring). Alternatively, you can create the file on your local system and copy it into place on the Pi.</p>
-<p><strong>If this course if being taught remotely and not in a classroom setting, you must configure a connection to the your home WiFi network if at home, or Eduoroam if living on campus, or both. It's also a good idea at this time to configure connections to any other networks you might want to use the Pi on, such as a work WiFi network.</strong></p>
-<p><strong>If this course if being taught in a classroom setting and not remotely, you must configure a connection to the Eduroam network. It's also a good idea at this time to configure connections to any other networks you might want to use the Pi on, such as a home or work WiFi network.**</strong></p>
+<p><strong>Since this course is being taught remotely (as opposed to a classroom setting), you must configure a connection to the WiFi network where you live, or Eduoroam if living on campus, or both. It's also a good idea at this time to configure connections to any other networks you might want to use the Pi on, such as a work WiFi network.</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>Do not associate your Pi with <em>University of Washington</em> unless given direct instructions to do so. Because the network requires a browser-based login, it has been a major source of trouble for former students.</strong></p>
+<p><strong>Do not associate your Pi with the <em>University of Washington</em> SSID unless given direct instructions to do so. Because the network requires a browser-based login, it has been a major source of trouble for former students.</strong></p>
 </div>
 <p>Begin your <code>wpa_supplicant.conf</code> file with the following lines. </p>
 <div class="admonition example">
@@ -426,9 +431,8 @@ update_config=1
 </div>
 <p>Afterwards add one or more network blocks (<strong>including a connection to either your home WiFi network or <code>Eduroam</code></strong>). There are detailed configuration instructions on how to add network blocks that are available in the <a href="/resources/wifi-reference/">WPA Supplicant Configuration Reference</a>.</p>
 <p>When you are finished updating <code>wpa_supplicant.conf</code> reconfigure the wireless interface by calling <code>wpa_cli -i wlan0 reconfigure</code>. The command should return <code>OK</code> after a few seconds. Check that you are attached to the wireless network  by calling <code>wpa_cli -i wlan0 status</code>.</p>
-<details class="example"><summary>Example of what <code>wlan0 status</code> should print</summary><pre class="highlight"><code>wpa_cli -i wlan0 status
-
-bssid=ac:a3:1e:eb:53:c1
+<details class="example"><summary>Example of what <code>wlan0 status</code> should print (your output will contain different values)</summary><pre class="highlight"><code>wpa_cli -i wlan0 status</code></pre>
+<p>bssid=ac:a3:1e:eb:53:c1
 freq=2462
 ssid=eduroam
 id=0
@@ -448,7 +452,8 @@ EAP TLS cipher=ECDHE-RSA-AES256-GCM-SHA384
 tls_session_reused=0
 EAP-PEAPv0 Phase2 method=MSCHAPV2
 eap_session_id=19865aef996591ffbd01643fbcf1b5111ef04dd3ed4f3387752c8cc0cf3b8c88b95c40bfc4915b284b3b91f60f5cb71074baaf1360d39f7a91530143dcb3c8e4ce
-uuid=c4adf7c1-f863-5192-8179-f5d1d2e27fd7</code></pre>
+uuid=c4adf7c1-f863-5192-8179-f5d1d2e27fd7
+```</p>
 </details>
 <h3 id="testing-and-troubleshooting">Testing and Troubleshooting<a class="headerlink" href="#testing-and-troubleshooting" title="Permanent link">&para;</a></h3>
 <p>In addition to <code>wpa_cli</code>, there are several tools that can be used to check the current state of your wireless interface and determine whether it has received a valid configuration from DHCP.</p>

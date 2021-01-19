@@ -381,7 +381,7 @@ setting and prefix it with a <code>#</code> comment character, so it should read
 <p><code>ls -al /root</code></p>
 <p>You should receive a permission denied error. The /root path is owned by the root user and has permissions restricted so that other users cannot read, write, or execute the directory or anything else it contains.</p>
 <p>Since root is a special user, the restriction does not apply in the other direction. Demonstrate this difference in permissions by listing the contents of the new user’s home directory from the <strong>root user’s shell</strong>, e.g., </p>
-<p><code>ls -al /home/dfs</code></p>
+<p><code>ls -al /home/clinton</code> </p>
 <p>from your root login and view the contents of my user’s home directory.</p>
 <p>By default in basic Linux distributions, the root user has complete control over all system and user resources and is even able to take on the identity of other users without knowing their passwords.</p>
 <h4 id="running-administrative-commands">Running Administrative Commands<a class="headerlink" href="#running-administrative-commands" title="Permanent link">&para;</a></h4>
@@ -415,10 +415,6 @@ setting and prefix it with a <code>#</code> comment character, so it should read
 <p>Once you are logged back in, resume your script by running </p>
 <p><code>script -a user-session</code></p>
 <p>Install the nginx web service using the command:</p>
-<p><code>sudo apt install nginx</code></p>
-<p>NOTE: If you receive an error message such as <strong><em>"Unable to locate package nginx"</em></strong>, run the following command next to update the package cache:</p>
-<p><code>sudo apt update -y</code></p>
-<p>Then try installing nginx again:</p>
 <p><code>sudo apt install nginx</code></p>
 <p>Verify that the service installed correctly by running </p>
 <p><code>systemctl status nginx</code></p>
