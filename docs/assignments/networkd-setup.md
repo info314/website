@@ -1,4 +1,4 @@
-# Networkd Setup for Raspbian (2020-01-22)
+# Networkd Setup for Raspbian
 ## Intro to Systemd
 An **init provider** is the first process that is launched on a Linux system. It is responsible for loading other essential services, and it ultimately becomes the parent of every other process on the system. Among the differences between different Linux distributions is the choice of init system.
 

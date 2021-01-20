@@ -1,4 +1,4 @@
-# Raspberry Pi Setup Guide (2020-01-14)
+# Raspberry Pi Setup Guide
 ## Overview 
 
 This guide will walk you through the steps necessary to install Raspberry Pi OS on your Pi and connect it to Wifi. While we encourage you to search online and use other resources when you encounter questions, it's important that you follow our instructions closely. Though there are many different guides that can help you accomplish the same objectives, this guide has been built based on the needs and requirements of our projects and introduces you to tools you will need throughout the quarter.
@@ -7,7 +7,7 @@ The core sections of this guide will walk you through the following steps:
 
 1. Installing Raspberry Pi OS on a MicroSD and enabling SSH
 2. Updating defaults and other preliminary setup steps
-3. Configuring a wifi connection
+3. Configuring a WiFi connection
 4. Updating Raspberry Pi OS and installing additional packages with `apt`
 
 Before you start setting up your Pi, please review the tasks in the following section. These steps are particularly important for students running Windows and Linux.
@@ -21,12 +21,12 @@ Download and install **Etcher** from https://etcher.io. Etcher is among the easi
 Except when otherwise noted, I recommend that Windows users complete all Linux networking exercises within Windows PowerShell rather than Git Bash or the Command Prompt.
 
 !!! info Recommendation
-    For a much improved working experience, you should download the new __Windows Terminal__ application. This app is available in the __Microsoft Store__ or from https://github.com/microsoft/terminal/releases. By default, the terminal will run PowerShell, but it also supports Command Prompt and Windows Subsystem for Linux. 
+    For a much improved working experience, you should download the new __Windows Terminal__ application. This app is available in the __[Microsoft Store](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701)__ or from https://github.com/microsoft/terminal/releases. By default, the terminal will run PowerShell, but it also supports Command Prompt and Windows Subsystem for Linux.                                            ***If you download and install it via the Microsoft Store, it will likely prompt you several times to log in with a Microsoft Account. This is optional - Clicking Cancel, Close, Skip, etc. should still allow you to install the application.***
 
 #### Text Editor
 Among the many subtle differences between Windows and Unix-based machines is a difference in the control characters used to terminate lines in text files. In many cases, this difference will prevent Linux from parsing a file you've written and copied from Windows.
 
-To avoid this issue, install a code-oriented text editor that can be configured to use Unix-style line endings and use it exclusively for the labs and projects throughout this course. __Visual Studio Code__ and __Atom__ are common options.
+To avoid this issue, install a code-oriented text editor that can be configured to use Unix-style line endings and use it exclusively for the labs and projects throughout this course. __Visual Studio Code__, __Atom__, and __Notepad++__ are common options.
 
 To configure __VS Code__ to use Unix-style line endings:
 
@@ -39,6 +39,14 @@ To configure __Atom__ to use Unix-style line endings:
 1. Open Settings
 2. Navigate to Packages / Line Ending Selector
 3. Change the _Default line ending_ to _LF_
+
+To configure __Notepad++__ to use Unix-style line endings:
+
+1. Click on the Edit menu
+2. Locate and click on EOL Conversion
+3. Select *Unix (LF)*
+
+
 
 #### Verify Support for mDNS
 Please check the full version of Windows that you have installed by running `Get-ComputerInfo -Property Windows*` in a PowerShell console. After a moment, you'll receive a message describing your current Windows installation (as illustrated below). 
@@ -277,12 +285,10 @@ To complete this guide, you will need to establish Internet connectivity for you
 ### Configure the WPA Supplicant
 Wireless settings for the Pi are controlled by a service called _wpa_supplicant_, which stores network connection settings inside `/etc/wpa_supplicant/wpa_supplicant.conf`. You can edit this directly on the Pi using the nano text editor (or vi for the daring). Alternatively, you can create the file on your local system and copy it into place on the Pi.
 
-**If this course if being taught remotely and not in a classroom setting, you must configure a connection to the your home WiFi network if at home, or Eduoroam if living on campus, or both. It's also a good idea at this time to configure connections to any other networks you might want to use the Pi on, such as a work WiFi network.**
-
-**If this course if being taught in a classroom setting and not remotely, you must configure a connection to the Eduroam network. It's also a good idea at this time to configure connections to any other networks you might want to use the Pi on, such as a home or work WiFi network.****
+**Since this course is being taught remotely (as opposed to a classroom setting), you must configure a connection to the WiFi network where you live, or Eduoroam if living on campus, or both. It's also a good idea at this time to configure connections to any other networks you might want to use the Pi on, such as a work WiFi network.**
 
 !!! warning 
-    **Do not associate your Pi with *University of Washington* unless given direct instructions to do so. Because the network requires a browser-based login, it has been a major source of trouble for former students.**
+    **Do not associate your Pi with the *University of Washington* SSID unless given direct instructions to do so. Because the network requires a browser-based login, it has been a major source of trouble for former students.**
 
 Begin your `wpa_supplicant.conf` file with the following lines. 
 
@@ -299,9 +305,10 @@ Afterwards add one or more network blocks (**including a connection to either yo
 
 When you are finished updating `wpa_supplicant.conf` reconfigure the wireless interface by calling `wpa_cli -i wlan0 reconfigure`. The command should return `OK` after a few seconds. Check that you are attached to the wireless network  by calling `wpa_cli -i wlan0 status`.
 
-??? example "Example of what `wlan0 status` should print"
+??? example "Example of what `wlan0 status` should print (your output will contain different values)"
     ```
     wpa_cli -i wlan0 status
+    ```
 
     bssid=ac:a3:1e:eb:53:c1
     freq=2462

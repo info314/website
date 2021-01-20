@@ -1,10 +1,10 @@
-# WPA Supplicant Configuration Reference (2020-01-18)
+# WPA Supplicant Configuration Reference 
 
 ## Basic Configuration
 
 Wireless settings for the Pi are controlled by a service called **wpa_supplicant**, which stores information about known wireless networks in a text-based configuration file in **`/etc/wpa_supplicant/`**. By default, in Raspbian, the name of this file is **`wpa_supplicant.conf`**. You may also encounter an interface-specific configuration where the interface name is appended to the file, e.g., **`wpa_supplicant-wlan0.conf`**. In both cases, the file is owned by **root** and requires **root** privileges to read or edit.
 
-??? danger "Security Risk"
+!!! danger "Security Risk"
     **`wpa_supplicant.conf`** is protected from casual reading due to the fact that it is a sensitive file that will likely contain your home network keys and a hash of your UW NetID password. While hashes typically provide some extra protection of a stored password, MD4 is nearly useless in this regard except with really strong passwords.
 
     Practice caution with this file:
@@ -15,7 +15,7 @@ Wireless settings for the Pi are controlled by a service called **wpa_supplicant
 
 You can edit **wpa_supplicant** configs directly on the Pi using any terminal-based text editor. Alternatively, you can create the file on your local system and copy it into place on the Pi (as described later in this guide). 
 
-??? warning "Warning: Windows line-endings and rich text format"
+!!! warning "Warning: Windows line-endings and rich text format"
     As students get started with Linux networking, we frequently encounter problems related to the overall file format. As a rule, the configuration files you create in this class must be plain text with standard line endings. 
     
     You'll want to stick to using a code-oriented text editor, as opposed to options like macOS TextEdit and Windows Notepad that often save files as _rich text_ rather than plain text.
