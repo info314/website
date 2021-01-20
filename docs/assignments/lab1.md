@@ -255,7 +255,7 @@ You should receive a permission denied error. The /root path is owned by the roo
 
 Since root is a special user, the restriction does not apply in the other direction. Demonstrate this difference in permissions by listing the contents of the new user’s home directory from the **root user’s shell**, e.g., 
 
-`ls -al /home/clinton` 
+`ls -al /home/dfs`
 
 from your root login and view the contents of my user’s home directory.
 
@@ -332,6 +332,14 @@ Once you are logged back in, resume your script by running
 `script -a user-session`
 
 Install the nginx web service using the command:
+
+`sudo apt install nginx`
+
+NOTE: If you receive an error message such as ***"Unable to locate package nginx"***, run the following command next to update the package cache:
+
+`sudo apt update -y`
+
+Then try installing nginx again:
 
 `sudo apt install nginx`
 
