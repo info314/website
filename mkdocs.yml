@@ -58,7 +58,7 @@ nav:
       - Basic IP Address Planning: resources/address-planning.md
 #      - Introduction to Iptables: resources/iptables.md
 #      - Understanding Netfilter/Iptables Hooks: resources/netfilter-hooks.md
-#      - Linux Wireless Configuration: resources/wifi-reference.md
+      - Linux Wireless Configuration: resources/wifi-reference.md
 #      - Zone File Reference: resources/zone-file-format.md
 #      - Special Network Interfaces (VLANs and Dummies): resources/vlans-and-dummies.md
 #      - Configuring Routing Links: resources/configure-routing-links.md
