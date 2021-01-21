@@ -89,6 +89,10 @@
 </li>
             
 <li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
     <a href="../../resources/ssh-agent/" class="dropdown-item">Using ssh-agent</a>
 </li>
     </ul>
@@ -219,10 +223,11 @@
 <p>To get started defining your own zone, create a new sub-directory called <code>zones</code> in <code>/etc/bind</code> as shown below and copy the existing <code>db.local</code> into it as a starting point for creating your zone. Our advice is to follow the convention of naming your zone file after your selected domain, e.g., gradebook.pi is defined in <code>/etc/bind/zones/db.gradebook.pi.</code></p>
 <div class="admonition instructions">
 <p class="admonition-title">Creating your starter zone file</p>
-<pre class="highlight"><code>sudo mkdir -p /etc/bind/zones
-sudo cp /etc/bind/db.local /etc/bind/zones/db.gradebook.pi</code></pre>
+<div class="highlight"><pre><span></span><code>sudo mkdir -p /etc/bind/zones
+sudo cp /etc/bind/db.local /etc/bind/zones/db.gradebook.pi
+</code></pre></div>
 <p>The initial contents of your zone file will look similar to this:</p>
-<pre class="highlight"><code>;
+<div class="highlight"><pre><span></span><code>;
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
@@ -235,7 +240,8 @@ $TTL    604800
 ;
 @   IN  NS  localhost.
 @   IN  A   127.0.0.1
-@   IN  AAAA    ::1</code></pre>
+@   IN  AAAA    ::1
+</code></pre></div>
 <p>As is stated in the comment at the start of the file, this file is defining a special purpose zone for the localhost domain to ensure proper handling when the name is passed to BIND.</p>
 </div>
 <h2 id="customize-the-localhost-zone-file-for-your-own-domain">Customize the localhost zone file for your own domain<a class="headerlink" href="#customize-the-localhost-zone-file-for-your-own-domain" title="Permanent link">&para;</a></h2>
@@ -266,14 +272,15 @@ $TTL    604800
 <div class="admonition instructions">
 <p class="admonition-title">Instructions</p>
 <p>Open <code>/etc/bind/named.conf.local</code> and add a new zone reference:</p>
-<pre class="highlight"><code>// Replace references to corp.gradebook.pi with your own domain name.
-zone "gradebook.pi" IN {
-    //  We're setting up the master server for the zone. In DNS, masters contain
+<div class="highlight"><pre><span></span><code>// Replace references to corp.gradebook.pi with your own domain name.
+zone &quot;gradebook.pi&quot; IN {
+    //  We&#39;re setting up the master server for the zone. In DNS, masters contain
     //  the zone file for a domain while slaves read the zone contents from a 
     //  master server.
     type master;
-    file "/etc/bind/zones/db.gradebook.pi";
-};</code></pre>
+    file &quot;/etc/bind/zones/db.gradebook.pi&quot;;
+};
+</code></pre></div>
 </div>
 <h2 id="validate-and-test-your-configuration">Validate and test your configuration<a class="headerlink" href="#validate-and-test-your-configuration" title="Permanent link">&para;</a></h2>
 <p>Run <code>named-checkconf -z</code> to identify any immediate errors in your configuration or zone file and restart the <code>bind9</code> service using <code>systemctl</code>.</p>

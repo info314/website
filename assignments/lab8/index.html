@@ -89,6 +89,10 @@
 </li>
             
 <li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
     <a href="../../resources/ssh-agent/" class="dropdown-item">Using ssh-agent</a>
 </li>
     </ul>
@@ -204,8 +208,9 @@
 </ol>
 <p>The structure of a POST, PUT, and other HTTP requests expands on the GET request, allowing a chunk of raw data to be appended after the CRLF that signals the end of the HTTP headers. Unlike the lines that came before, this data is raw, i.e., unstructured, and it will require a different approach based on the expected length of the data. As such, we need to find out the length of the body component before we can determine whether it's been received completely.</p>
 <p>In HTTP 1.0, the body length is defined by an HTTP header called <code>Content-Length</code>.<sup id="fnref:oversimplification"><a class="footnote-ref" href="#fn:oversimplification">1</a></sup> The value of <code>Content-Length</code> will be a numeric string that defines the length of the body payload. If you see this field while you are parsing your headers, you should record it's value within a variable and add it to your message dictionary, e.g.,</p>
-<pre class="highlight"><code class="language-python">if header['name'] == 'Content-Length':
-    message['Content-Length'] = int(header['value'])</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">header</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Content-Length&#39;</span><span class="p">:</span>
+    <span class="n">message</span><span class="p">[</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+</code></pre></div>
 <p>Taking into account that a message may contain a payload, we need to make sure that <code>parse_message</code> waits for the complete payload before returning a valid message back to the main recv() loop. You will need to check for several possible edge cases in order to handle this correctly.</p>
 <ol>
 <li>If content-length is defined and greater than zero, you need to look at the unparsed portion of the buffer for the message body.</li>
@@ -220,16 +225,17 @@ Extend your parser to handle both types of messages based on an additional `mess
 
 A standard way to represent a value representing a message type is using an enumeration, e.g.:
 
-<pre class="highlight"><code class="language-python"># Required imports
-from enum import Enum, auto
+<div class="highlight"><pre><span></span><code><span class="c1"># Required imports</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span><span class="p">,</span> <span class="n">auto</span>
 
-# Enumeration to represent message types 
-class MessageType(Enum):
-    REQUEST = auto()
-    RESPONSE = auto()
+<span class="c1"># Enumeration to represent message types </span>
+<span class="k">class</span> <span class="nc">MessageType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">REQUEST</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
+    <span class="n">RESPONSE</span> <span class="o">=</span> <span class="n">auto</span><span class="p">()</span>
 
-# Use the is operator rather than == to test an enumeration …
-# if message[‘type’] is MessageType.REQUEST:</code></pre>
+<span class="c1"># Use the is operator rather than == to test an enumeration …</span>
+<span class="c1"># if message[‘type’] is MessageType.REQUEST:</span>
+</code></pre></div>
 
 [^http-syntax]: More information available at [HTTP syntax overview](/assignments/proxy-labs)  -->
 
@@ -237,43 +243,44 @@ class MessageType(Enum):
 <p>Our HTTP/1.0 proxy will expect exactly one HTTP request to be delivered per connection. After our parsing logic determines that we have received a complete/valid message, we can break out of our receiving loop and continue processing the request. Our next step in processing a request is to determine where the browser intended to send the message. We'll use this information in order to open a client socket to the destination server.</p>
 <p>The information we need to locate the destination is contained in the URI of the request. If you followed the sample code from the previous lab, this value should have been saved as the <code>'uri'</code> element of the message dictionary. Parsing this field with the Python <code>urllib</code> library will provide us with a host name/address and port that you can use to establish a client socket with the target (see echo-client.py for syntax to open a client socket).</p>
 <p>Since Python provides a URL parsing module, this is theoretically an easy task. However, it turns out that real browsers produce a variety of edge cases that will cause <code>urllib</code> to choke. In order to constrain the difficulty of this lab, we are providing you with the following function to complete this section.</p>
-<pre class="highlight"><code class="language-python"># Be sure to add the import to the top of your code
-from urllib.parse import urlparse
+<div class="highlight"><pre><span></span><code><span class="c1"># Be sure to add the import to the top of your code</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
 
-# returns the host and port
-# run by doing:  h, p = parse_uri(dest)
-def parse_uri(uri):
-    uri_parts = urlparse(uri)
-    scheme = uri_parts.scheme
-    host = uri_parts.hostname
-    # urlparse can't deal with partial URI's that don't include the 
-    # protocol, e.g., push.services.mozilla.com:443
-    if host: # correctly parsed
-        if uri_parts.port:
-            port = uri_parts.port
-        else:
-            port = socket.getservbyname(scheme)
-    else: # incorrectly parsed
-        uri_parts = uri.split(':')
-        host = uri_parts[0]
-        if len(uri) &gt; 1:
-            port = int(uri_parts[1])
-        else:
-            port = 80
-    return host, port</code></pre>
+<span class="c1"># returns the host and port</span>
+<span class="c1"># run by doing:  h, p = parse_uri(dest)</span>
+<span class="k">def</span> <span class="nf">parse_uri</span><span class="p">(</span><span class="n">uri</span><span class="p">):</span>
+    <span class="n">uri_parts</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+    <span class="n">scheme</span> <span class="o">=</span> <span class="n">uri_parts</span><span class="o">.</span><span class="n">scheme</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">uri_parts</span><span class="o">.</span><span class="n">hostname</span>
+    <span class="c1"># urlparse can&#39;t deal with partial URI&#39;s that don&#39;t include the </span>
+    <span class="c1"># protocol, e.g., push.services.mozilla.com:443</span>
+    <span class="k">if</span> <span class="n">host</span><span class="p">:</span> <span class="c1"># correctly parsed</span>
+        <span class="k">if</span> <span class="n">uri_parts</span><span class="o">.</span><span class="n">port</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="n">uri_parts</span><span class="o">.</span><span class="n">port</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getservbyname</span><span class="p">(</span><span class="n">scheme</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c1"># incorrectly parsed</span>
+        <span class="n">uri_parts</span> <span class="o">=</span> <span class="n">uri</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+        <span class="n">host</span> <span class="o">=</span> <span class="n">uri_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">uri_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="mi">80</span>
+    <span class="k">return</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span>
+</code></pre></div>
 <h3 id="build-message">Build Message<a class="headerlink" href="#build-message" title="Permanent link">&para;</a></h3>
 <p>At this point, we have a request, and we know it's destination. The last objective for this week is to create a new function that takes a decomposed message (the dictionary returned from your parser) and generates a new message in byte form. This function is the inverse of the parsing logic you wrote in the last two labs (with one modification for now).<sup id="fnref:really?"><a class="footnote-ref" href="#fn:really?">2</a></sup> </p>
 <p>The easiest way to rebuild a message from it's parts is to use Python3 format strings, as shown in the example below. At this point, we would like you to make one change to the original request. Regardless of which HTTP version is defined, rebuild the message as an HTTP/1.0 request.</p>
-<pre class="highlight"><code class="language-python">def build_message(message):
-    # Please note that we are replacing the original version (this is intentional)
-    message_header = '{} {} {}\r\n'.format(message['method'], message['uri'], 'HTTP/1.0')
-    for header in message['headers']:
-        data = data + '{}\r\n'.format('TODO') # Format each header properly
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">build_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="c1"># Please note that we are replacing the original version (this is intentional)</span>
+    <span class="n">message_header</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">message</span><span class="p">[</span><span class="s1">&#39;method&#39;</span><span class="p">],</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;uri&#39;</span><span class="p">],</span> <span class="s1">&#39;HTTP/1.0&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">header</span> <span class="ow">in</span> <span class="n">message</span><span class="p">[</span><span class="s1">&#39;headers&#39;</span><span class="p">]:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;TODO&#39;</span><span class="p">)</span> <span class="c1"># Format each header properly</span>
 
-    # Don't forget to add a terminating CRLF
-    # Encode the header portion of the message as bytes
-    # Do you have a message body? Add it back now
-</code></pre>
+    <span class="c1"># Don&#39;t forget to add a terminating CRLF</span>
+    <span class="c1"># Encode the header portion of the message as bytes</span>
+    <span class="c1"># Do you have a message body? Add it back now</span>
+</code></pre></div>
 <!-- Replace the HTTP version you received with `HTTP/1.0`
 -   Add or update a `Via` header (per RFC 7230) for the proxied connection, e.g.,
     -   `Via: 1.0 127.0.0.1:9999`
@@ -304,9 +311,10 @@ def parse_uri(uri):
 <p>The resources directory of the project repository contains a simple
 python script called test.py that you can use to send HTTP requests from
 a file into your proxy code.</p>
-<pre class="highlight"><code># Send the request from sample-request.txt on port 9999 250 bytes at a time with a short delay between
+<div class="highlight"><pre><span></span><code># Send the request from sample-request.txt on port 9999 250 bytes at a time with a short delay between
 
-python3 test.py 9999 get_request.http 250</code></pre>
+python3 test.py 9999 get_request.http 250
+</code></pre></div>
 <p>Note: Testing at this stage can be more challenging. Please ask for help via the course Slack if you need it.</p>
 <h3 id="capturing-proxied-requests-for-testing">Capturing proxied requests for testing<a class="headerlink" href="#capturing-proxied-requests-for-testing" title="Permanent link">&para;</a></h3>
 <p>Use the following method to capture valid requests that you can use for

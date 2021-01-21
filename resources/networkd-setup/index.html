@@ -89,6 +89,10 @@
 </li>
             
 <li>
+    <a href="../wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
     <a href="../ssh-agent/" class="dropdown-item">Using ssh-agent</a>
 </li>
     </ul>
@@ -213,9 +217,10 @@
 <p>We will enable <strong>networkd</strong> in several steps. Try to complete this process in one sitting to avoid "bricking" your Pi (at least making it inaccessible over the network).</p>
 <h3 id="retain-journald-logs">Retain journald logs<a class="headerlink" href="#retain-journald-logs" title="Permanent link">&para;</a></h3>
 <p><strong>systemd-networkd</strong> stores its logs in <strong>systemd-journald</strong>. We want <strong>journald</strong> to keep these logs between boots, which we enable by creating the persistent log path.</p>
-<pre class="highlight"><code class="language-bash"># Create the location for persistent log messages
+<div class="highlight"><pre><span></span><code><span class="c1"># Create the location for persistent log messages</span>
 sudo mkdir -p /var/log/journal
-sudo systemd-tmpfiles --create --prefix /var/log/journal</code></pre>
+sudo systemd-tmpfiles --create --prefix /var/log/journal
+</code></pre></div>
 <h3 id="configure-network-interfaces">Configure network interfaces<a class="headerlink" href="#configure-network-interfaces" title="Permanent link">&para;</a></h3>
 <p>To configure the network with <strong>networkd</strong>, we create files in <strong><code>/etc/systemd/network/</code></strong> that match named network interfaces and define our desired settings settings. </p>
 <p>Enabling link local addresses is a critical component of these default configurations so that you can still communicate with the Pi when DHCP is not available.</p>
@@ -236,7 +241,7 @@ sudo systemd-tmpfiles --create --prefix /var/log/journal</code></pre>
 <p><strong>Create the following <code>.network</code> files  in **<code>/etc/systemd/network/</code> **to handle the default settings for wired and wireless interfaces.</strong> </p>
 <h4 id="default-ethernet-configuration"><strong>Default ethernet configuration</strong><a class="headerlink" href="#default-ethernet-configuration" title="Permanent link">&para;</a></h4>
 <p><strong><code>/etc/systemd/network/99-eth.network</code></strong>
-<pre class="highlight"><code>[Match]
+<div class="highlight"><pre><span></span><code>[Match]
 # Applies to eth0, eth1, ...
 Name=eth*
 
@@ -245,20 +250,22 @@ Name=eth*
 DHCP=ipv4
 
 # Enable link local addresses for IPv4 (169.254.x.y) and IPv6 (FE80::)
-LinkLocalAddressing=yes</code></pre></p>
+LinkLocalAddressing=yes
+</code></pre></div></p>
 <h4 id="default-wireless-configuration"><strong>Default wireless configuration</strong><a class="headerlink" href="#default-wireless-configuration" title="Permanent link">&para;</a></h4>
 <p><strong><code>/etc/systemd/network/99-wlan.network</code></strong>
-<pre class="highlight"><code>[Match]
+<div class="highlight"><pre><span></span><code>[Match]
 Name=wlan*
 [Network]
-DHCP=ipv4</code></pre></p>
+DHCP=ipv4
+</code></pre></div></p>
 <h3 id="disable-default-networking">Disable default networking<a class="headerlink" href="#disable-default-networking" title="Permanent link">&para;</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip: Backup new configuration before proceeding<p>If you've made any mistakes, you may lose access to your Pi after performing the following steps. </p>
 <p>Make an offline backup <strong>before</strong> you proceed by copying files to your local system with <strong><code>scp</code></strong>.</p>
 </p>
 </div>
-<pre class="highlight"><code># Disable default Raspbian networking
+<div class="highlight"><pre><span></span><code># Disable default Raspbian networking
 sudo systemctl mask dhcpcd.service
 
 # Disable legacy Debian networking
@@ -266,26 +273,30 @@ sudo systemctl mask networking.service
 
 # Disable resolvconf service, which manages DNS servers for the OS
 sudo nano /etc/resolvconf.conf
-# Add the line resolvconf=NO to the beginning of the file</code></pre>
+# Add the line resolvconf=NO to the beginning of the file
+</code></pre></div>
 <h3 id="enable-systemd-network-services">Enable systemd network services<a class="headerlink" href="#enable-systemd-network-services" title="Permanent link">&para;</a></h3>
-<pre class="highlight"><code># Enable systemd-networkd to replace Raspbian and Debian networking
+<div class="highlight"><pre><span></span><code># Enable systemd-networkd to replace Raspbian and Debian networking
 sudo systemctl enable systemd-networkd
 
 # Enable systemd-resolved to replace the resolvconf service
-sudo systemctl enable systemd-resolved</code></pre>
+sudo systemctl enable systemd-resolved
+</code></pre></div>
 <p>DNS resolvers for Linux are loaded from the <strong><code>/etc/resolv.conf</code></strong>. Rather than manage this directly or through <strong>resolvconf</strong>, we want to load resolvers dynamically from <strong>systemd-resolved</strong>. This is as simple as creating a link </p>
-<pre class="highlight"><code># Set up a symbolic link from systemd-resolved resolv.conf to the system resolv.conf
-sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf</code></pre>
+<div class="highlight"><pre><span></span><code># Set up a symbolic link from systemd-resolved resolv.conf to the system resolv.conf
+sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+</code></pre></div>
 <h3 id="modify-wireless-startup">Modify Wireless Startup<a class="headerlink" href="#modify-wireless-startup" title="Permanent link">&para;</a></h3>
 <p>Our original setup was driven by assumptions about <strong>dhcpcd</strong>. Before we reboot, we'll make a few brief changes to manage <strong>wpa_supplicant</strong> on an interface-by-interface basis. </p>
-<pre class="highlight"><code># Rename configuration as a per-interface file
+<div class="highlight"><pre><span></span><code># Rename configuration as a per-interface file
 sudo mv /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant-wlan0.conf
 
 # Enable the wpa_supplicant service specifically for wlan0
 sudo systemctl enable wpa_supplicant@wlan0
 
 # Disable the non-interface specific service
-sudo systemctl disable wpa_supplicant</code></pre>
+sudo systemctl disable wpa_supplicant
+</code></pre></div>
 <h2 id="test-your-configuration">Test Your Configuration<a class="headerlink" href="#test-your-configuration" title="Permanent link">&para;</a></h2>
 <p>Call <strong><code>sudo reboot now</code></strong> to reboot the Pi. Log back in and verify that your Pi is fully operational:</p>
 <ul>
@@ -296,7 +307,7 @@ sudo systemctl disable wpa_supplicant</code></pre>
 <h3 id="general-guidance">General Guidance<a class="headerlink" href="#general-guidance" title="Permanent link">&para;</a></h3>
 <p>When logging back into your Pi, you may find that some of the functionality is failing. In addition to validating log files and checking that you completed all instructions, log files can provide valuable information for detecting where an error is occurring.</p>
 <p>We have already mentioned <strong>journald</strong> earlier in this guide. In order to evaluate logs that are created by <strong>journald</strong>, we make use of the <strong><code>journalctl</code></strong> command. <a href="https://www.lifewire.com/what-to-know-less-command-4051972">Read up</a> on the <strong><code>less</code></strong> utility to learn how to efficiently navigate <strong><code>journalctl</code></strong> output.</p>
-<pre class="highlight"><code># Show log messages
+<div class="highlight"><pre><span></span><code># Show log messages
 journalctl
 
 # Include messages marked secure
@@ -318,7 +329,8 @@ journalctl -u wpa_supplicant@wlan0
 journalctl -D /PATH/TO/JOURNAL_FILE
 
 # Learn more about journald
-man journalctl</code></pre>
+man journalctl
+</code></pre></div>
 <h3 id="accessing-a-bricked-pi">Accessing a Bricked Pi<a class="headerlink" href="#accessing-a-bricked-pi" title="Permanent link">&para;</a></h3>
 <p>If you made a mistake at the wrong point in the previous process, you may not even be able to connect anymore from the network. The only way to debug at this point will be to attach a keyboard/monitor to the Pi or to mount the memory card from another Linux machine or VM.</p>
 <h3 id="rebuilding-raspbian">Rebuilding Raspbian<a class="headerlink" href="#rebuilding-raspbian" title="Permanent link">&para;</a></h3>

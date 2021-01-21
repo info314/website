@@ -89,6 +89,10 @@
 </li>
             
 <li>
+    <a href="../wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
     <a href="../ssh-agent/" class="dropdown-item">Using ssh-agent</a>
 </li>
     </ul>
@@ -252,7 +256,7 @@
 <p><code>dig @&lt;name server IP&gt; &lt;domain name&gt;</code>: Override the system's name server (often helpful to determine if other resolvers are returning different records).</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<pre class="highlight"><code>pi@titan.local:~ $ dig @1.1.1.1 cname uw.edu
+<div class="highlight"><pre><span></span><code>pi@titan.local:~ $ dig @1.1.1.1 cname uw.edu
 
 ; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @1.1.1.1 cname uw.edu
 ; (1 server found)
@@ -272,7 +276,8 @@ uw.edu.         600 IN  SOA hanna.cac.washington.edu. domainmaster.cac.washingto
 ;; Query time: 40 msec
 ;; SERVER: 1.1.1.1#53(1.1.1.1)
 ;; WHEN: Sun Jan 26 23:32:59 PST 2020
-;; MSG SIZE  rcvd: 105    </code></pre>
+;; MSG SIZE  rcvd: 105    
+</code></pre></div>
 </div>
 <h3 id="resolving-dns-with-powershell">Resolving DNS with PowerShell<a class="headerlink" href="#resolving-dns-with-powershell" title="Permanent link">&para;</a></h3>
 <p>PowerShell for Windows provides a powerful, scriptable DNS client that can be called via <code>Resolve-DnsName</code>. This tool replicates many of the features provided by dig, such as overriding the query type with the <code>-type &lt;type&gt;</code> option or the target server with <code>-server &lt;name server IP&gt;</code>.</p>

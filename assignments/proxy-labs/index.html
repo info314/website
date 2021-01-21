@@ -89,6 +89,10 @@
 </li>
             
 <li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
     <a href="../../resources/ssh-agent/" class="dropdown-item">Using ssh-agent</a>
 </li>
     </ul>
@@ -254,25 +258,26 @@ the end of a line in HTTP messages.</p>
 maximum versatility.</p>
 <p>RFC 7230 defines the structures used to represent HTTP/1.1 requests and
 responses <a href="https://tools.ietf.org/html/rfc7230#section-3">https://tools.ietf.org/html/rfc7230#section-3</a> .</p>
-<pre class="highlight"><code>    HTTP-message   = start-line
+<div class="highlight"><pre><span></span><code>    HTTP-message   = start-line
                       *( header-field CRLF )
                       CRLF
-                      [ message-body ]</code></pre>
+                      [ message-body ]
+</code></pre></div>
 <h4 id="requests">Requests<a class="headerlink" href="#requests" title="Permanent link">&para;</a></h4>
-<pre class="highlight"><code>request-line - method, URI,  and protocol version
+<div class="highlight"><pre><span></span><code>request-line - method, URI,  and protocol version
 [header]*
 empty line
 [message body]
-</code></pre>
+</code></pre></div>
 <h4 id="responses">Responses<a class="headerlink" href="#responses" title="Permanent link">&para;</a></h4>
-<pre class="codehilite"><code>status-line:
+<div class="codehilite"><pre><span></span><code>status-line:
         protocol version, 
         a success or error code, 
         and textual reason phrase
 [header]*
 empty line
 [message body]
-</code></pre></div>
+</code></pre></div></div>
             </div>
         </div>
 

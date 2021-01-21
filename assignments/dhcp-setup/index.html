@@ -89,6 +89,10 @@
 </li>
             
 <li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
     <a href="../../resources/ssh-agent/" class="dropdown-item">Using ssh-agent</a>
 </li>
     </ul>
@@ -206,7 +210,7 @@
 </details>
 <p>Create a file named <code>20-eth0.network</code> in  <code>/etc/systemd/network/</code> (you'll need to use <code>sudo</code>) and define a static configuration that includes your chosen IP address and CIDR range. This path should already contain a default configuration for ethernet interfaces, e.g., <code>99-eth.network</code>. We are overriding this configuration for <code>eth0</code> by naming the file in such a way that <strong>networkd</strong> will load it first and by ensuring that the configuration will match <code>eth0</code> exactly.</p>
 <p>Your file should look something like:</p>
-<pre class="highlight"><code>[Match]
+<div class="highlight"><pre><span></span><code>[Match]
 # We only want to match the eth0 interface
 Name=eth0
 
@@ -217,7 +221,8 @@ Address=192.168.0.1/24
 
 
 # Enable link local addresses for IPv6 (FE80::)
-LinkLocalAddressing=ipv6</code></pre>
+LinkLocalAddressing=ipv6
+</code></pre></div>
 <div class="admonition warning important">
 <p class="admonition-title">Warning</p>
 <p>Some online references will have you add a gateway and DNS settings for your new interface. You don't need to (and definitely shouldn't) add either to this interface. </p>
@@ -235,8 +240,9 @@ LinkLocalAddressing=ipv6</code></pre>
 </div>
 <h2 id="install-and-configure-dhcp">Install and Configure DHCP<a class="headerlink" href="#install-and-configure-dhcp" title="Permanent link">&para;</a></h2>
 <p>For this part of the exercise, we'll use the ISC DHCP Server. The ISC server is available in <code>apt</code> repositories, so it can be installed using:</p>
-<pre class="highlight"><code class="language-bash">sudo apt update
-sudo apt install isc-dhcp-server</code></pre>
+<div class="highlight"><pre><span></span><code>sudo apt update
+sudo apt install isc-dhcp-server
+</code></pre></div>
 <div class="admonition warning important">
 <p class="admonition-title">Warning</p>
 <p>Right after installation, isc-dhcp-server will report that it failed to run, and spit out lots of nasty-looking errors. This is normal, as the DHCP server has not yet been configured.</p>
@@ -260,16 +266,17 @@ sudo apt install isc-dhcp-server</code></pre>
 <p>Use <code>systemctl</code> to restart the DHCP service as shown here:</p>
 <p><code>sudo systemctl restart isc-dhcp-server.service</code></p>
 <p>If you see errors such as the one shown here, you’ll need to continue troubleshooting the DHCP server (see next section).</p>
-<pre class="highlight"><code>pi@titan:~ $ sudo systemctl restart isc-dhcp-server.service
+<div class="highlight"><pre><span></span><code>pi@titan:~ $ sudo systemctl restart isc-dhcp-server.service
 Job for isc-dhcp-server.service failed because the control process exited with error code.
-See "systemctl status isc-dhcp-server.service" and "journalctl -xe" for details.</code></pre>
+See &quot;systemctl status isc-dhcp-server.service&quot; and &quot;journalctl -xe&quot; for details.
+</code></pre></div>
 <p>Check your local machine to confirm that an IP address in the specified network range was provided.</p>
 <p>Try running <code>ping</code> from both directions (laptop -&gt; pi and pi -&gt; laptop) to confirm that the IP address and related settings are configured correctly.</p>
 <div class="admonition warning important">
 <p class="admonition-title">Warning</p>
 <p>If you are on Windows, incoming <code>ping</code> requests (those from pi -&gt; laptop) will not get any response. This is because by default Windows Firewall blocks these requests from being answered. To disable this, run a PowerShell prompt as Administrator and enter these commands:
-<pre class="highlight"><code>New-NetFirewallRule -DisplayName "Allow inbound ICMPv4" -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -Action Allow
-</code></pre></p>
+<div class="highlight"><pre><span></span><code>New-NetFirewallRule -DisplayName &quot;Allow inbound ICMPv4&quot; -Direction Inbound -Protocol ICMPv4 -IcmpType 8 -Action Allow
+</code></pre></div></p>
 <p>New-NetFirewallRule -DisplayName "Allow inbound ICMPv6" -Direction Inbound -Protocol ICMPv6 -IcmpType 8 -Action Allow
 ```</p>
 </div>

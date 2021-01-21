@@ -89,6 +89,10 @@
 </li>
             
 <li>
+    <a href="../wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
     <a href="../ssh-agent/" class="dropdown-item">Using ssh-agent</a>
 </li>
     </ul>
@@ -192,46 +196,52 @@
 <p>Depending on your installation, <em>buster-backports</em> may already be listed as a valid software source. We found this to be the case for Debian 10.3 on DigitalOcean, though on Raspbian, we needed to manually add <em>buster-backports</em> as a new source and import the signing keys used to verify the integrity of software installed from the repositories. </p>
 <h4 id="check-existing-package-sources">Check Existing Package Sources<a class="headerlink" href="#check-existing-package-sources" title="Permanent link">&para;</a></h4>
 <p>Before you proceed, determine whether manual configuration of backports is necessary:</p>
-<pre class="highlight"><code class="language-bash"># Search existing apt package source locations
-apt-cache policy | grep buster-backports</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Search existing apt package source locations</span>
+apt-cache policy <span class="p">|</span> grep buster-backports
+</code></pre></div>
 <h4 id="manually-configure-backports">Manually Configure Backports<a class="headerlink" href="#manually-configure-backports" title="Permanent link">&para;</a></h4>
 <p>After completing the following steps, <em>apt</em> operations will consider packages from the backports repository while still preferring stable software versions from the mainline repository when available.</p>
-<pre class="highlight"><code class="language-bash"># Import the PGP/GPG signing keys for buster-backports from a key server
+<div class="highlight"><pre><span></span><code><span class="c1"># Import the PGP/GPG signing keys for buster-backports from a key server</span>
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138
 
-# Add the backports repositories to the apt configuration
-echo "deb http://deb.debian.org/debian/ buster-backports main  contrib non-free" | sudo tee -a /etc/apt/sources.list.d/debian-backports.list
+<span class="c1"># Add the backports repositories to the apt configuration</span>
+<span class="nb">echo</span> <span class="s2">&quot;deb http://deb.debian.org/debian/ buster-backports main  contrib non-free&quot;</span> <span class="p">|</span> sudo tee -a /etc/apt/sources.list.d/debian-backports.list
 
-# Update the local software catalog via apt
-sudo apt update</code></pre>
+<span class="c1"># Update the local software catalog via apt</span>
+sudo apt update
+</code></pre></div>
 <h3 id="install-linux-kernel-headers">Install Linux Kernel Headers<a class="headerlink" href="#install-linux-kernel-headers" title="Permanent link">&para;</a></h3>
 <p>The WireGuard package in backports repository attempts to compile a kernel module in order to add WireGuard networking capabilities. To complete this task, the compiler must have access to kernel headers, a set of files that define the interface of kernel functions and data structures.</p>
 <p>The kernel headers are available as a package and accessible via <em>apt</em>. Installation depends on your chosen distribution:</p>
 <h4 id="installing-kernel-headers-for-raspbian">Installing Kernel Headers for Raspbian<a class="headerlink" href="#installing-kernel-headers-for-raspbian" title="Permanent link">&para;</a></h4>
-<pre class="highlight"><code class="language-bash">sudo apt install raspberrypi-kernel-headers</code></pre>
+<div class="highlight"><pre><span></span><code>sudo apt install raspberrypi-kernel-headers
+</code></pre></div>
 <h4 id="installing-kernel-headers-for-debian">Installing Kernel Headers for Debian<a class="headerlink" href="#installing-kernel-headers-for-debian" title="Permanent link">&para;</a></h4>
-<pre class="highlight"><code class="language-bash"># `uname -r` is used to specify the proper kernel version
-sudo apt install linux-headers-$(uname -r)</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># `uname -r` is used to specify the proper kernel version</span>
+sudo apt install linux-headers-<span class="k">$(</span>uname -r<span class="k">)</span>
+</code></pre></div>
 <h3 id="install-wireguard-and-the-dkms-based-module">Install WireGuard and the DKMS-based module<a class="headerlink" href="#install-wireguard-and-the-dkms-based-module" title="Permanent link">&para;</a></h3>
 <p>Finally, with the pre-requisites in place, we can use <em>apt</em> to install WireGuard and all of its supporting components. Once installed, you can use <em>modprobe</em> as shown below to verify that it the WireGuard kernel module is recognized by the kernel.</p>
-<pre class="highlight"><code class="language-bash"># Install
+<div class="highlight"><pre><span></span><code><span class="c1"># Install</span>
 sudo apt install wireguard wireguard-dkms
 
-# Verify (should return without any output/error)
-sudo modprobe wireguard</code></pre>
+<span class="c1"># Verify (should return without any output/error)</span>
+sudo modprobe wireguard
+</code></pre></div>
 <h2 id="getting-started-with-wireguard">Getting Started with WireGuard<a class="headerlink" href="#getting-started-with-wireguard" title="Permanent link">&para;</a></h2>
 <p>The aim of the WireGuard project is to provide a fast and simple VPN that relies on rock-solid, modern cryptography. </p>
 <h3 id="generate-a-wireguard-key-pair-for-each-server">Generate a WireGuard Key Pair for each Server<a class="headerlink" href="#generate-a-wireguard-key-pair-for-each-server" title="Permanent link">&para;</a></h3>
 <p>Every node participating in a WireGuard VPN is required to have a private key for its own use and a public key that will be distributed to each of its peers. Before setting up our own VPN, we need to generate these keys on each server. </p>
 <p>The following commands open a root-privileged shell in order to generate the keys. This extra step allows us to ensure proper file ownership and permissions via <em>umask</em> (which doesn't work smoothly with sudo)</p>
-<pre class="highlight"><code class="language-bash"># Open a root shell
+<div class="highlight"><pre><span></span><code><span class="c1"># Open a root shell</span>
 sudo bash
-# Override default file creation permissions
-umask 077
-# Create the public and private keys in /etc/wireguard
-wg genkey | tee -a /etc/wireguard/privatekey | wg pubkey &gt; /etc/wireguard/publickey
-# Close the root shell
-exit</code></pre>
+<span class="c1"># Override default file creation permissions</span>
+<span class="nb">umask</span> <span class="m">077</span>
+<span class="c1"># Create the public and private keys in /etc/wireguard</span>
+wg genkey <span class="p">|</span> tee -a /etc/wireguard/privatekey <span class="p">|</span> wg pubkey &gt; /etc/wireguard/publickey
+<span class="c1"># Close the root shell</span>
+<span class="nb">exit</span>
+</code></pre></div>
 <p>After generating the keys for your servers, be sure to document the publickey for each endpoint. You’ll need it again in order to configure each of your VPN peers.</p>
 <h3 id="identify-additional-parameters-for-your-vpn">Identify Additional Parameters for your VPN<a class="headerlink" href="#identify-additional-parameters-for-your-vpn" title="Permanent link">&para;</a></h3>
 <h4 id="endpoint-ip-and-ports">Endpoint IP and Ports<a class="headerlink" href="#endpoint-ip-and-ports" title="Permanent link">&para;</a></h4>
@@ -247,25 +257,27 @@ exit</code></pre>
 <h3 id="create-wireguard-interfaces">Create WireGuard Interfaces<a class="headerlink" href="#create-wireguard-interfaces" title="Permanent link">&para;</a></h3>
 <p>In order to send and receive network traffic through a VPN, each peer is configured with a virtual network interface. Any traffic sent to this interface will be transported over the VPN tunnel. Incoming traffic will egress on this interface after being processed and decrypted by WireGuard.</p>
 <p>The following examples demonstrate the use of the <em>ip</em> command to manually set up the virtual interface for WireGuard. You should be aware that any configuration you set up with this utility is not persistent. It will be reset after a reboot. Persistent WireGuard configuration will be covered separately.</p>
-<pre class="highlight"><code># Create the virtual interface
+<div class="highlight"><pre><span></span><code># Create the virtual interface
 sudo ip link add dev wg0 type wireguard
 
 # Assign a tunnel address to the interface (your second peer will reverse the order of these arguments)
 sudo ip addr add dev wg0 10.99.0.2 peer 10.99.0.3
 
 # Bring the interface online
-sudo ip link set up dev wg0</code></pre>
+sudo ip link set up dev wg0
+</code></pre></div>
 <h3 id="create-your-peers">Create your Peers<a class="headerlink" href="#create-your-peers" title="Permanent link">&para;</a></h3>
 <p>Configure wireguard to use the new virtual interface to maintain a tunnel with its peer. As in the previous step, we’ll use the CLI interface to do this manually and come back later to add a persistent configuration.</p>
-<pre class="highlight"><code># Gather the public addresses for your peers (as applicable). You should have a public address for your DO peer, and you will need it to set up the Pi. Since the Pi is behind a NAT on your home network, we can't reach it directly with a public IPv4 address. As such, we'll always rely on the Pi to initiate the connection to Digital Ocean. I'll discuss implications of this later and how to deal with any limitations.
+<div class="highlight"><pre><span></span><code># Gather the public addresses for your peers (as applicable). You should have a public address for your DO peer, and you will need it to set up the Pi. Since the Pi is behind a NAT on your home network, we can&#39;t reach it directly with a public IPv4 address. As such, we&#39;ll always rely on the Pi to initiate the connection to Digital Ocean. I&#39;ll discuss implications of this later and how to deal with any limitations.
 
 # The core command looks like `wg set &lt;INTERFACE&gt; listen-port &lt;PORT&gt; private-key &lt;PRIVATE KEY PATH&gt; peer &lt;PUBLIC KEY OF PEER&gt; allowed-ips &lt;List of CIDR IP ranges&gt; endpoint &lt;PUBLIC IP OF PEER&gt;:&lt;PORT&gt;`. 
 
 # Raspberry Pi / no public IP to listen on (replace public key and address of DO endpoint)
 sudo wg set wg0 private-key /etc/wireguard/privatekey peer ABCDEFG allowed-ips 0.0.0.0/0 endpoint A.B.C.D:51280
 
-# DigitalOcean / has its own public IP to listen on but can't reach RPi directly
-wg set wg0 listen-port 51280 private-key /etc/wireguard/privatekey peer ABCDEFG allowed-ips 0.0.0.0/0</code></pre>
+# DigitalOcean / has its own public IP to listen on but can&#39;t reach RPi directly
+wg set wg0 listen-port 51280 private-key /etc/wireguard/privatekey peer ABCDEFG allowed-ips 0.0.0.0/0
+</code></pre></div>
 <p>Observe how we adjusted the command when one of the peers doesn’t have a routable public IP. The downside of this scenario is that the tunnel can only be initiated from one side of the link, and we won’t be able to receive inbound traffic until it’s open. We’ll come back to discuss how to set up a keep-alive so that the tunnel is always open. When we have the luxury of public IP addresses for both peers, we should aim to set up both ends to listen and to connect to the peer endpoint.</p>
 <h3 id="test-your-tunnel">Test your Tunnel<a class="headerlink" href="#test-your-tunnel" title="Permanent link">&para;</a></h3>
 <p>If everything has gone well to this point, make sure that you can ping each peer using its tunnel IP address. This may not seem like the most impressive feat , but we’ll quickly expand the functionality by adding the ability to forward traffic between other attached networks. In order to do this, we need to set up routes for each subnet and add iptables rules that allow traffic to be forwarded on our new interfaces.</p>
