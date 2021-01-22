@@ -66,6 +66,10 @@
 <li>
     <a href="../../assignments/lab1/" class="dropdown-item">Lab 1 - Core Technical Skills</a>
 </li>
+                                    
+<li>
+    <a href="../../assignments/lab2/" class="dropdown-item">Lab 2 - Analyze DNS & HTTP in Wireshark</a>
+</li>
                                 </ul>
                             </li>
                             <li class="dropdown active">
@@ -218,23 +222,20 @@ by key-based SSH authentication with OpenSSH on your macOS or Windows 10 device.
 </ol>
 <h3 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
 <p>Edit or create <code>~/.ssh/config</code> so that <code>ssh-agent</code> and macOS KeyChain are used automatically to manage private keys and passphrases. This configuration is required by the version of <code>ssh</code> distributed by Apple since macOS Sierra 10.12.2. </p>
-<div class="highlight"><pre><span></span><code>Host *
+<pre class="highlight"><code>Host *
     AddKeysToAgent yes
-    UseKeyChain yes
-</code></pre></div>
+    UseKeyChain yes</code></pre>
 <h3 id="step-2">Step 2<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
 <p>Launch the <code>ssh-agent</code> as a background service.
-<div class="highlight"><pre><span></span><code><span class="c1"># The eval $() syntax is used to update the current environment based on the output of the ssh-agent command</span>
-$ <span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>ssh-agent -s<span class="k">)</span><span class="s2">&quot;</span>
-</code></pre></div></p>
+<pre class="highlight"><code class="language-bash"># The eval $() syntax is used to update the current environment based on the output of the ssh-agent command
+$ eval "$(ssh-agent -s)"</code></pre></p>
 <p>Add your key to the <code>ssh-agent</code> using the <code>ssh-add</code> utility. </p>
 <h3 id="step-3">Step 3<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># The -K option is required for some versions of macOS. Omit if it returns an error.</span>
+<pre class="highlight"><code class="language-bash"># The -K option is required for some versions of macOS. Omit if it returns an error.
 ssh-add -K ~/.ssh/id_ed25519
 
-<span class="c1"># Check that your key is loaded by listing current keys in the agent</span>
-ssh-add -l
-</code></pre></div>
+# Check that your key is loaded by listing current keys in the agent
+ssh-add -l</code></pre>
 <h2 id="configuring-ssh-agent-for-windows-10">Configuring <code>ssh-agent</code> for Windows 10<a class="headerlink" href="#configuring-ssh-agent-for-windows-10" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Enable the <code>ssh-agent</code> Windows Service (disabled by default).</li>
@@ -243,39 +244,35 @@ ssh-add -l
 </ol>
 <h3 id="step-1_1">Step 1<a class="headerlink" href="#step-1_1" title="Permanent link">&para;</a></h3>
 <p>Launch Powershell <strong>with administrator privileges</strong> and set the startup mode for the <code>ssh-agent</code> service to <code>Manual</code> since it is configured by default as <code>Disabled</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">Set-Service</span> <span class="n">-Name</span> <span class="n">ssh-agent</span> <span class="n">-StartupType</span> <span class="n">Manual</span>
-</code></pre></div>
+<pre class="highlight"><code class="language-powershell">Set-Service -Name ssh-agent -StartupType Manual</code></pre>
 <h3 id="step-2_1">Step 2<a class="headerlink" href="#step-2_1" title="Permanent link">&para;</a></h3>
 <p>Open a <strong>normal (non-administrator)</strong> Powershell console and edit/create a profile script to automatically launch the <code>ssh-agent</code> service. </p>
 <p>In order to do this, we need to enable the ability to run basic scripts on the system and then find the location of the script (automatically assigned by Windows to the <code>$PROFILE</code> variable).</p>
-<div class="highlight"><pre><span></span><code><span class="c"># Modify Powershell policy to allow basic powershell scripts to run</span>
-<span class="c"># This command may prompt you with a security warning. Press &quot;Yes&quot; if it does.</span>
-<span class="nb">Set-ExecutionPolicy</span> <span class="n">-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>
+<pre class="highlight"><code class="language-powershell"># Modify Powershell policy to allow basic powershell scripts to run
+# This command may prompt you with a security warning. Press "Yes" if it does.
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-<span class="c"># Test whether the profile script exists</span>
-<span class="nb">Test-Path</span> <span class="nv">$PROFILE</span>
+# Test whether the profile script exists
+Test-Path $PROFILE
 
-<span class="c"># If the previous command returns False, create the file</span>
-<span class="nb">New-Item</span> <span class="n">-path</span> <span class="nv">$PROFILE</span> <span class="n">-type</span> <span class="n">file</span> <span class="n">-force</span>
+# If the previous command returns False, create the file
+New-Item -path $PROFILE -type file -force
 
-<span class="c"># Launch Notepad.exe to create a script</span>
-<span class="n">notepad</span><span class="p">.</span><span class="n">exe</span> <span class="nv">$PROFILE</span>
-</code></pre></div>
+# Launch Notepad.exe to create a script
+notepad.exe $PROFILE</code></pre>
 <p>Use Notepad to add the following code to your profile script. This will be run each time you launch a new console.
-<div class="highlight"><pre><span></span><code><span class="c"># Launch the service if it&#39;s not already running</span>
-<span class="nv">$agentService</span> <span class="p">=</span> <span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="n">ssh-agent</span>
-<span class="k">if</span> <span class="p">(</span><span class="nv">$agentService</span><span class="p">.</span><span class="n">Status</span> <span class="o">-ne</span> <span class="s2">&quot;Running&quot;</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nb">Start-Service</span> <span class="n">-Name</span> <span class="n">ssh-agent</span>
-<span class="p">}</span>
-</code></pre></div></p>
+<pre class="highlight"><code class="language-powershell"># Launch the service if it's not already running
+$agentService = Get-Service -Name ssh-agent
+if ($agentService.Status -ne "Running") {
+  Start-Service -Name ssh-agent
+}</code></pre></p>
 <h3 id="step-3_1">Step 3<a class="headerlink" href="#step-3_1" title="Permanent link">&para;</a></h3>
 <p>Open a fresh Powershell console and add your keys to the agent.
-<div class="highlight"><pre><span></span><code><span class="c"># Add the private key to the ssh-agent</span>
-<span class="n">ssh-add</span> <span class="nv">$HOME</span><span class="p">\.</span><span class="n">ssh</span><span class="p">\</span><span class="n">id_ed25519</span>
+<pre class="highlight"><code class="language-powershell"># Add the private key to the ssh-agent
+ssh-add $HOME\.ssh\id_ed25519
 
-<span class="c"># Check that your key is loaded by listing current keys in the agent</span>
-<span class="n">ssh-add</span> <span class="n">-l</span>
-</code></pre></div></p></div>
+# Check that your key is loaded by listing current keys in the agent
+ssh-add -l</code></pre></p></div>
             </div>
         </div>
 
