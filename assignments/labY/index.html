@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="Daniel Schwalbe">
-        <link rel="canonical" href="https://info314.giantfirewall.com/notes/router-overview/">
+        <link rel="canonical" href="https://info314.giantfirewall.com/assignments/labY/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Routers - INFO 314 Course Resources</title>
+        <title>Lab 3 - Analyze Zeroconf in Wireshark - INFO 314 Course Resources</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -45,11 +45,11 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../../assignments/pi-setup/" class="dropdown-item">Raspberry Pi Setup</a>
+    <a href="../pi-setup/" class="dropdown-item">Raspberry Pi Setup</a>
 </li>
             
 <li>
-    <a href="../../assignments/networkd-setup/" class="dropdown-item">networkd Setup</a>
+    <a href="../networkd-setup/" class="dropdown-item">networkd Setup</a>
 </li>
             
 <li>
@@ -64,15 +64,15 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../assignments/lab1/" class="dropdown-item">Lab 1 - Core Technical Skills</a>
+    <a href="../lab1/" class="dropdown-item">Lab 1 - Core Technical Skills</a>
 </li>
                                     
 <li>
-    <a href="../../assignments/lab2/" class="dropdown-item">Lab 2 - Analyze DNS & HTTP in Wireshark</a>
+    <a href="../lab2/" class="dropdown-item">Lab 2 - Analyze DNS & HTTP in Wireshark</a>
 </li>
                                     
 <li>
-    <a href="../../assignments/lab3/" class="dropdown-item">Lab 3 - Analyzing DHCP and ARP with Wireshark</a>
+    <a href="../lab3/" class="dropdown-item">Lab 3 - Analyzing DHCP and ARP with Wireshark</a>
 </li>
                                 </ul>
                             </li>
@@ -173,25 +173,37 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#routers" class="nav-link">Routers</a>
+            <li class="nav-item" data-level="1"><a href="#lab-3-analyze-zeroconf-in-wireshark" class="nav-link">Lab 3 - Analyze Zeroconf in Wireshark</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#what-is-a-router" class="nav-link">What is a Router</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#routers-vs-multi-homed-hosts" class="nav-link">Routers vs Multi-homed Hosts</a>
+            <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">Overview</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#routers-and-incoming-packets" class="nav-link">Routers and Incoming Packets</a>
+            <li class="nav-item" data-level="2"><a href="#resources" class="nav-link">Resources</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#routers-and-outgoing-packets" class="nav-link">Routers and Outgoing Packets</a>
+            <li class="nav-item" data-level="2"><a href="#part-i-identification" class="nav-link">Part I - Identification</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#terminology" class="nav-link">Terminology</a>
+            <li class="nav-item" data-level="2"><a href="#part-ii-powering-on-your-pi" class="nav-link">Part II - Powering on your Pi</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#part-iii-contacting-your-pi" class="nav-link">Part III - Contacting your Pi</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#part-iv-manually-querying-mdns-devices" class="nav-link">Part IV - Manually Querying mDNS devices</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#part-v-protocol-research" class="nav-link">Part V - Protocol Research</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#extra-credit-optional" class="nav-link">Extra Credit (Optional)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -202,31 +214,88 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="routers">Routers<a class="headerlink" href="#routers" title="Permanent link">&para;</a></h1>
-<p>Routers and routing are frequent topics when we discuss networking, and it is all too easy for newcomers to overlook or misunderstand some of the assumptions we make about these terms. Let’s take a step back and review the fundamentals.</p>
-<h2 id="what-is-a-router">What is a Router<a class="headerlink" href="#what-is-a-router" title="Permanent link">&para;</a></h2>
-<p>A router is a computing device that is attached to two or more networks <em>and</em> is set up so that it can forward packets from one network to another. Both of these conditions are necessary in order for us to call something a router. You might think that all routers are special purpose, embedded devices like the ones you see on most home or office networks. In reality, most computers<sup id="fnref:hotspots"><a class="footnote-ref" href="#fn:hotspots">1</a></sup> are capable of routing, so long as the hardware supports multiple network connections and the software supports forwarding between networks.</p>
-<h2 id="routers-vs-multi-homed-hosts">Routers vs Multi-homed Hosts<a class="headerlink" href="#routers-vs-multi-homed-hosts" title="Permanent link">&para;</a></h2>
-<p>It is not uncommon for a device to be connected to multiple networks without being configured to route traffic. A device with this configuration, e.g., your Pi prior to checkpoint #3, is known as a multi-homed host. A non-routing, multi-homed hosts will drop packets that aren’t directly addressed to it at both Layer-2 (MAC address) and Layer-3 (IP address). This behavior is exactly the same as an ordinary host attached to a single network.</p>
-<h2 id="routers-and-incoming-packets">Routers and Incoming Packets<a class="headerlink" href="#routers-and-incoming-packets" title="Permanent link">&para;</a></h2>
-<p>On an ethernet-based network, a router will process any frame for which the destination MAC address matches the MAC of the NIC on which the frame was received. After processing Layer-2, the router examines the packet’s IP headers. Assuming that the destination IP address is not a match for the router’s IP address, the router will consult its route table in order to forward the packet closer to its final destination. Packets addressed directly to the router will continue to be processed so that they can be delivered to an internal process via a socket. </p>
-<h2 id="routers-and-outgoing-packets">Routers and Outgoing Packets<a class="headerlink" href="#routers-and-outgoing-packets" title="Permanent link">&para;</a></h2>
-<p>Most of the unique magic that distinguishes routers from ordinary hosts takes place on inbound packets. You might be surprised to learn that the process of sending a packet is the same for packets from local applications as it is for packets forwarded between networks. </p>
-<p>No matter where a packet comes from or where it is going, packet-communication occurs on a hop-by-hop basis. Every host starts this process by comparing its destination address to entries defined in its own routing table. Matches are identified when the network bits of the destination match a network id in the based on the correspondence netmask or CIDR defined in the routing table<sup id="fnref:longest-match"><a class="footnote-ref" href="#fn:longest-match">2</a></sup>.</p>
-<p>After finding a match, the network stack can start the process of forwarding to the next hop. If the final destination is on a directly attached network, ARP is used to determine the MAC address of the destination and the packet will be forwarded directly. Otherwise, the routing table can be used to find a <em>next hop</em> IP address for a directly attached network. Once again, with the next hop IP, ARP can be used to determine the MAC address so that the packet can be forwarded directly.</p>
-<h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h2>
-<p>Routing terminology is a common sticking point for many students and professionals. In particular, it can be useful to understand the finer distinctions between the terms <em>routing</em> and <em>forwarding</em>. At Layer-3, the word forwarding describes the mechanics of passing an inbound packet from its origin interface back onto a different network through an outbound interface. The mechanics of finding a matching route and pushing the packet out the appropriate interface are all part of the forwarding process. In contrast, routing refers to the entire end-to-end process that gets a packet to the right place.</p>
-<div class="footnote">
-<hr />
+<h1 id="lab-3-analyze-zeroconf-in-wireshark">Lab 3 - Analyze Zeroconf in Wireshark<a class="headerlink" href="#lab-3-analyze-zeroconf-in-wireshark" title="Permanent link">&para;</a></h1>
+<p><a href="https://canvas.uw.edu/courses/1373089/assignments/5369619">Lab 3 Assignment page on Canvas</a></p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Most of the time, our discussion about IP addresses are focused on globally routable addresses or on RFC1918 private addresses. In this lab, we are going to explore another type of address that can be used without any explicit configuration (either by a user or network administrator). We’re also going to look at how these addresses fit in to a group of protocols called the zero-configuration networking (zeroconf) protocols and explore how zeroconf appears in this class and in our daily use of network technology.</p>
+<p>This lab will require a combination of Wireshark analysis and Internet research. We’ve provided links to several references as a starting point, but you are free to look up other resources as needed. </p>
+<p><em>Please cite all sources in your deliverable.</em></p>
+<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
+<p><a href="https://en.wikipedia.org/wiki/Link-local_address">https://en.wikipedia.org/wiki/Link-local_address (Links to an external site.)</a></p>
+<p><a href="https://tools.ietf.org/html/rfc3927">https://tools.ietf.org/html/rfc3927 (Links to an external site.)</a></p>
+<p><a href="https://en.wikipedia.org/wiki/.local">https://en.wikipedia.org/wiki/.local (Links to an external site.)</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Zero-configuration_networking">https://en.wikipedia.org/wiki/Zero-configuration_networking (Links to an external site.)</a></p>
+<h2 id="part-i-identification">Part I - Identification<a class="headerlink" href="#part-i-identification" title="Permanent link">&para;</a></h2>
+<p><strong>Report:</strong></p>
 <ol>
-<li id="fn:hotspots">
-<p>When we say most computers, we mean it. Have you ever used your mobile phone as a hotspot for your tablet or computer? Give it a shot, and if you’re able, use <code>traceroute</code> or <code>tracert</code> to observe the routing process in action.&#160;<a class="footnote-backref" href="#fnref:hotspots" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:longest-match">
-<p>It is possible for a routing table to find multiple matches. In this case, ties are broken by looking for the most specific entry, i.e., the longest matching network prefix. Other metrics may be used if there are multiple entries for a given network ID.&#160;<a class="footnote-backref" href="#fnref:longest-match" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<li>Before you start, take a moment to record some details about your computer and your Ethernet network adapter. These details may be helpful to you in your analysis:<ul>
+<li>Hostname (Computer, Pi)</li>
+<li>MAC Address (Computer, Pi)</li>
+</ul>
 </li>
 </ol>
-</div></div>
+<h2 id="part-ii-powering-on-your-pi">Part II - Powering on your Pi<a class="headerlink" href="#part-ii-powering-on-your-pi" title="Permanent link">&para;</a></h2>
+<p>If you already started your Pi, shut it down and disconnect power before you begin.</p>
+<p>Launch a new Wireshark capture over the Ethernet connection to your Pi. Linux users should listen on the “All” interface and may want to disable their wireless connection before capturing to reduce noise and focus on the important details.</p>
+<p>With your capture running, power on the Pi. You’ll be keeping an eye on the capture in order to see what happens when your computer and your Pi first connect to the network.</p>
+<p><strong>Report:</strong></p>
+<ol start="2">
+<li>
+<p>Identify the link-local addresses and mDNS names associated with your computer and your Pi.</p>
+</li>
+<li>
+<p>Using your capture as a reference, identify the messages that your Pi sends while autoconfiguring its own IP addresses.</p>
+</li>
+<li>
+<p>Describe the autoconfiguration process used by hosts to choose a link-local address and confirm that it is unique on the local network segment.</p>
+</li>
+</ol>
+<h2 id="part-iii-contacting-your-pi">Part III - Contacting your Pi<a class="headerlink" href="#part-iii-contacting-your-pi" title="Permanent link">&para;</a></h2>
+<p>With your capture still running, let’s try to contact your Pi. Try pinging your Pi based on the hostname “raspberrypi.local” (substitute your own hostname if you’ve already changed it). Likewise, try connecting to your pi via SSH.</p>
+<p><strong>Report:</strong> </p>
+<ol start="5">
+<li>
+<p>Using your capture, identify an example of an IPv4 and IPv6 mDNS request.</p>
+</li>
+<li>
+<p>Identify the multicast addresses used by mDNS in IPv4 and IPv6.</p>
+</li>
+<li>
+<p>Using your capture, identify an example of an IPv4 and IPv6 mDNS response.</p>
+</li>
+<li>
+<p>Are mDNS responses sent to a multicast address or to a specific unicast address.</p>
+</li>
+<li>
+<p>Identify the destination addresses used to reach your Pi in the final ICMP echo request (ping) and SSH connection.</p>
+</li>
+</ol>
+<h2 id="part-iv-manually-querying-mdns-devices">Part IV - Manually Querying mDNS devices<a class="headerlink" href="#part-iv-manually-querying-mdns-devices" title="Permanent link">&para;</a></h2>
+<p>Lastly, let’s look at some tools that will allow us to manually query mDNS devices on our network. Unlike DNS, we should see that individual devices answer their own queries. Windows users can use the powershell command <code>Resolve-DNSName</code> while macOS and Linux users should be able to use <code>dns-sd</code>.</p>
+<p><strong>Report:</strong></p>
+<ol start="10">
+<li>Use <code>man</code> to look up more information about the relevant command and to determine the correct syntax for making an mDNS request to your Pi. Provide a screenshot of your mDNS request and the output received.</li>
+</ol>
+<h2 id="part-v-protocol-research">Part V - Protocol Research<a class="headerlink" href="#part-v-protocol-research" title="Permanent link">&para;</a></h2>
+<p>Perform your own research into these protocols and answer the following questions. We recommend starting with the resources listed at the end of this guide.</p>
+<ol start="11">
+<li>
+<p>Describe the major difference between how link local addresses are assigned and used in IPv4 versus in IPv6.</p>
+</li>
+<li>
+<p>In your own words, summarize how RFC 3927 says we can determine whether hosts are located on the same network link.</p>
+</li>
+<li>
+<p>Based on what you’ve learned, describe how we are able to connect with a Pi based on a pre-defined hostname without the need for any infrastructure like a DHCP or DNS server.</p>
+</li>
+<li>
+<p>Based on what you’ve learned about link-local addresses, describe how you might use Wireshark in conjunction with other network utilities to troubleshoot the connection to a headless device (i.e., a device like the Pi that you can only access over the network).</p>
+</li>
+</ol>
+<h2 id="extra-credit-optional">Extra Credit (Optional)<a class="headerlink" href="#extra-credit-optional" title="Permanent link">&para;</a></h2>
+<ol start="15">
+<li>Perform an mDNS scavenger hunt with Wireshark on a couple of different networks. Provide a short (about ½ page) analysis of your search along with capture samples. What types of devices were you able to discover? How does mDNS make your life more convenient?</li>
+</ol></div>
             </div>
         </div>
 

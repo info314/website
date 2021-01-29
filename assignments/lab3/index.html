@@ -8,7 +8,7 @@
         <meta name="author" content="Daniel Schwalbe">
         <link rel="canonical" href="https://info314.giantfirewall.com/assignments/lab3/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Lab 3 - Analyze Zeroconf in Wireshark - INFO 314 Course Resources</title>
+        <title>Lab 3 - Analyzing DHCP and ARP with Wireshark - INFO 314 Course Resources</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -59,7 +59,7 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -69,6 +69,10 @@
                                     
 <li>
     <a href="../lab2/" class="dropdown-item">Lab 2 - Analyze DNS & HTTP in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Lab 3 - Analyzing DHCP and ARP with Wireshark</a>
 </li>
                                 </ul>
                             </li>
@@ -149,6 +153,16 @@
                             </a>
                         </li>
                             <li class="nav-item">
+                                <a rel="prev" href="../lab2/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../resources/pi-materials/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="https://github.com/info314/website" class="nav-link">info314/website</a>
                             </li>
                     </ul>
@@ -169,37 +183,23 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#lab-3-analyze-zeroconf-in-wireshark" class="nav-link">Lab 3 - Analyze Zeroconf in Wireshark</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">Overview</a>
+            <li class="nav-item" data-level="1"><a href="#lab-3-analyzing-dhcp-and-arp-with-wireshark" class="nav-link">Lab 3 - Analyzing DHCP and ARP with Wireshark</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#resources" class="nav-link">Resources</a>
+            
+            <li class="nav-item" data-level="1"><a href="#overview" class="nav-link">Overview</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#part-i-identification" class="nav-link">Part I - Identification</a>
+            
+            <li class="nav-item" data-level="1"><a href="#instructions" class="nav-link">Instructions</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#dhcp" class="nav-link">DHCP</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#part-ii-powering-on-your-pi" class="nav-link">Part II - Powering on your Pi</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#part-iii-contacting-your-pi" class="nav-link">Part III - Contacting your Pi</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#part-iv-manually-querying-mdns-devices" class="nav-link">Part IV - Manually Querying mDNS devices</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#part-v-protocol-research" class="nav-link">Part V - Protocol Research</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#extra-credit-optional" class="nav-link">Extra Credit (Optional)</a>
+            <li class="nav-item" data-level="2"><a href="#arp" class="nav-link">ARP</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -210,87 +210,61 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="lab-3-analyze-zeroconf-in-wireshark">Lab 3 - Analyze Zeroconf in Wireshark<a class="headerlink" href="#lab-3-analyze-zeroconf-in-wireshark" title="Permanent link">&para;</a></h1>
-<p><a href="https://canvas.uw.edu/courses/1373089/assignments/5369619">Lab 3 Assignment page on Canvas</a></p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>Most of the time, our discussion about IP addresses are focused on globally routable addresses or on RFC1918 private addresses. In this lab, we are going to explore another type of address that can be used without any explicit configuration (either by a user or network administrator). We’re also going to look at how these addresses fit in to a group of protocols called the zero-configuration networking (zeroconf) protocols and explore how zeroconf appears in this class and in our daily use of network technology.</p>
-<p>This lab will require a combination of Wireshark analysis and Internet research. We’ve provided links to several references as a starting point, but you are free to look up other resources as needed. </p>
-<p><em>Please cite all sources in your deliverable.</em></p>
-<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
-<p><a href="https://en.wikipedia.org/wiki/Link-local_address">https://en.wikipedia.org/wiki/Link-local_address (Links to an external site.)</a></p>
-<p><a href="https://tools.ietf.org/html/rfc3927">https://tools.ietf.org/html/rfc3927 (Links to an external site.)</a></p>
-<p><a href="https://en.wikipedia.org/wiki/.local">https://en.wikipedia.org/wiki/.local (Links to an external site.)</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Zero-configuration_networking">https://en.wikipedia.org/wiki/Zero-configuration_networking (Links to an external site.)</a></p>
-<h2 id="part-i-identification">Part I - Identification<a class="headerlink" href="#part-i-identification" title="Permanent link">&para;</a></h2>
-<p><strong>Report:</strong></p>
+<h1 id="lab-3-analyzing-dhcp-and-arp-with-wireshark">Lab 3 - Analyzing DHCP and ARP with Wireshark<a class="headerlink" href="#lab-3-analyzing-dhcp-and-arp-with-wireshark" title="Permanent link">&para;</a></h1>
+<p><a href="https://canvas.uw.edu/courses/1434918/assignments/5995602">Lab 3 Assignment page on Canvas</a></p>
+<h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h1>
+<p>In this lab, we'll further flex our wireshark skills and take closer look at the ARP &amp; DHCP protocols.</p>
+<p>There will be multiple correct ways to complete this lab, we highly recommend using search engines to help you find solutions.</p>
+<h1 id="instructions">Instructions<a class="headerlink" href="#instructions" title="Permanent link">&para;</a></h1>
+<h2 id="dhcp">DHCP<a class="headerlink" href="#dhcp" title="Permanent link">&para;</a></h2>
+<h3 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h3>
+<p>Stop any ongoing captures and configure a new capture on your wireless interface with capture filter <code>arp || udp portrange 67-68</code>. This filter will prevent Wireshark from capturing excessive amounts of traffic so that we can leave the capture running for the entire lab.</p>
+<p>While our current capture should be fairly quiet owing to the previous capture filter, create a display filter to further reduce the number of visible packets (Hint: Type <code>dhcp</code> into the display filter input below the main wireshark toolbar).</p>
+<p><em>At the end of the lab, save your capture and submit it with your assignment.</em></p>
+<h3 id="request-a-new-dhcp-lease">Request a new DHCP Lease<a class="headerlink" href="#request-a-new-dhcp-lease" title="Permanent link">&para;</a></h3>
+<p>In order to properly complete this lab, you will need to terminate your current DHCP lease so that you can capture the process of DHCP initializing your network interface. This process will differ depending on your OS. </p>
+<p>Follow the instructions linked on <a href="/resources/host-config/#renewing-dhcp-leases">the resources site</a> to complete this process.</p>
+<h3 id="report">Report<a class="headerlink" href="#report" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Before you start, take a moment to record some details about your computer and your Ethernet network adapter. These details may be helpful to you in your analysis:<ul>
-<li>Hostname (Computer, Pi)</li>
-<li>MAC Address (Computer, Pi)</li>
+<li>Based on your capture, create an outline of your complete DHCP exchange. <u>For each message:</u><ul>
+<li>Include a screenshot of the packet details summary.</li>
+<li>Include a brief written summary, identifying: DHCP message type, DHCP transaction ID, source and destination Ethernet addresses, source and destination IP addresses, and UDP source and destination UDP ports associated.</li>
 </ul>
 </li>
+<li>How can you determine which messages were sent by your own device versus the DHCP server?</li>
+<li>Based on the outline you created above, determine the purpose of the 0.0.0.0 address appearing within the DHCP exchange.</li>
+<li>What Ethernet-layer (Layer 2) address corresponds to the 255.255.255.255 (Layer 3) IP address? Using online resources as necessary, determine the purpose of these special addresses.</li>
+<li>Which of the fields that you have observed can be used to distinguish between different conversations between the same client and server?</li>
 </ol>
-<h2 id="part-ii-powering-on-your-pi">Part II - Powering on your Pi<a class="headerlink" href="#part-ii-powering-on-your-pi" title="Permanent link">&para;</a></h2>
-<p>If you already started your Pi, shut it down and disconnect power before you begin.</p>
-<p>Launch a new Wireshark capture over the Ethernet connection to your Pi. Linux users should listen on the “All” interface and may want to disable their wireless connection before capturing to reduce noise and focus on the important details.</p>
-<p>With your capture running, power on the Pi. You’ll be keeping an eye on the capture in order to see what happens when your computer and your Pi first connect to the network.</p>
-<p><strong>Report:</strong></p>
-<ol start="2">
-<li>
-<p>Identify the link-local addresses and mDNS names associated with your computer and your Pi.</p>
-</li>
-<li>
-<p>Using your capture as a reference, identify the messages that your Pi sends while autoconfiguring its own IP addresses.</p>
-</li>
-<li>
-<p>Describe the autoconfiguration process used by hosts to choose a link-local address and confirm that it is unique on the local network segment.</p>
-</li>
+<p>If you look closely at the packet details for each message, you'll notice that each DHCP message contains a variety of options. In DHCP, options allow DHCP clients and servers to adapt the protocol to their own needs. Like many other protocols, DHCP encodes options as a <em>type</em>, a <em>length</em>, and a <em>value</em>. Based on this structure, we can continue to extend the protocol without needing to change the basic foundation.</p>
+<ol start="6">
+<li>Using your search engine of choice, identify the IETF RFC (# and name) that defines the common option types for the DHCP protocol.</li>
+<li>Which DHCP Option (#) tells us the DHCP message type? How many bytes are required to encode the type?</li>
+<li>Which DHCP Option (#) tells us the length of a DHCP lease? How many bytes are required to encode the duration of the lease?</li>
+<li>According to the RFC, is it possible to specify the lease length in any unit of time other than seconds?</li>
+<li>Compare the Lease Time option of the Discover message with the value in the Offer message. Did your device request a particular duration? If so, did the server honor this request?</li>
+<li>Using online resources as needed, determine what happens at the end of a DHCP address lease.</li>
+<li>Based on the order of the messages in the capture and the details we've asked you to examine, offer an explanation of how the DHCP protocol works to configure your network interface with appropriate settings. How does the protocol make use of Ethernet and IP broadcast functionality, and why is that important? Use your capture to illustrate your point.</li>
 </ol>
-<h2 id="part-iii-contacting-your-pi">Part III - Contacting your Pi<a class="headerlink" href="#part-iii-contacting-your-pi" title="Permanent link">&para;</a></h2>
-<p>With your capture still running, let’s try to contact your Pi. Try pinging your Pi based on the hostname “raspberrypi.local” (substitute your own hostname if you’ve already changed it). Likewise, try connecting to your pi via SSH.</p>
-<p><strong>Report:</strong> </p>
-<ol start="5">
-<li>
-<p>Using your capture, identify an example of an IPv4 and IPv6 mDNS request.</p>
+<h2 id="arp">ARP<a class="headerlink" href="#arp" title="Permanent link">&para;</a></h2>
+<h3 id="setup_1">Setup<a class="headerlink" href="#setup_1" title="Permanent link">&para;</a></h3>
+<p>You may continue to use the same capture for this section. If you launch a new capture, please save the first capture and submit both with your assignment.</p>
+<p>Before you begin the analysis questions, clear the ARP cache per instructions linked <a href="/resources/host-config/#managing-arp-cache">on the resources site</a> and generate some Internet traffic, e.g., browse the web.</p>
+<p>Remove any existing display filters and create a new filter that will only show ARP related traffic. (Hint: type <code>arp</code> in the display filter input).</p>
+<h3 id="report_1">Report<a class="headerlink" href="#report_1" title="Permanent link">&para;</a></h3>
+<ol start="13">
+<li>Outline a complete ARP exchange (request and response). <u>For each message:</u> <ul>
+<li>Include a screenshot of the packet details summary.  </li>
+<li>Include a brief written summary, identifying: ARP Opcode, Sender and Target Ethernet addresses, Sender and Target IP addresses.</li>
+</ul>
 </li>
-<li>
-<p>Identify the multicast addresses used by mDNS in IPv4 and IPv6.</p>
-</li>
-<li>
-<p>Using your capture, identify an example of an IPv4 and IPv6 mDNS response.</p>
-</li>
-<li>
-<p>Are mDNS responses sent to a multicast address or to a specific unicast address.</p>
-</li>
-<li>
-<p>Identify the destination addresses used to reach your Pi in the final ICMP echo request (ping) and SSH connection.</p>
-</li>
-</ol>
-<h2 id="part-iv-manually-querying-mdns-devices">Part IV - Manually Querying mDNS devices<a class="headerlink" href="#part-iv-manually-querying-mdns-devices" title="Permanent link">&para;</a></h2>
-<p>Lastly, let’s look at some tools that will allow us to manually query mDNS devices on our network. Unlike DNS, we should see that individual devices answer their own queries. Windows users can use the powershell command <code>Resolve-DNSName</code> while macOS and Linux users should be able to use <code>dns-sd</code>.</p>
-<p><strong>Report:</strong></p>
-<ol start="10">
-<li>Use <code>man</code> to look up more information about the relevant command and to determine the correct syntax for making an mDNS request to your Pi. Provide a screenshot of your mDNS request and the output received.</li>
-</ol>
-<h2 id="part-v-protocol-research">Part V - Protocol Research<a class="headerlink" href="#part-v-protocol-research" title="Permanent link">&para;</a></h2>
-<p>Perform your own research into these protocols and answer the following questions. We recommend starting with the resources listed at the end of this guide.</p>
-<ol start="11">
-<li>
-<p>Describe the major difference between how link local addresses are assigned and used in IPv4 versus in IPv6.</p>
-</li>
-<li>
-<p>In your own words, summarize how RFC 3927 says we can determine whether hosts are located on the same network link.</p>
-</li>
-<li>
-<p>Based on what you’ve learned, describe how we are able to connect with a Pi based on a pre-defined hostname without the need for any infrastructure like a DHCP or DNS server.</p>
-</li>
-<li>
-<p>Based on what you’ve learned about link-local addresses, describe how you might use Wireshark in conjunction with other network utilities to troubleshoot the connection to a headless device (i.e., a device like the Pi that you can only access over the network).</p>
-</li>
-</ol>
-<h2 id="extra-credit-optional">Extra Credit (Optional)<a class="headerlink" href="#extra-credit-optional" title="Permanent link">&para;</a></h2>
-<ol start="15">
-<li>Perform an mDNS scavenger hunt with Wireshark on a couple of different networks. Provide a short (about ½ page) analysis of your search along with capture samples. What types of devices were you able to discover? How does mDNS make your life more convenient?</li>
+<li>Identify the 48-bit hardware address associated with your network interface and use this information to specify which message(s) originated from your local device?</li>
+<li>Determine which messages are sent to a broadcast destination.</li>
+<li>Why do you think the ARP protocol makes use of the broadcast destination?</li>
+<li>Aside from the broadcast address, what other differences do you notice between the contents of ARP requests and replies?</li>
+<li>Spend a moment comparing the overall packet structure (as seen in the Packet Details view) between DHCP and ARP. Identify any <em>layers</em> that are present in one protocol but not in the other.</li>
+<li>In order for a network message to be considered an IP packet, the message must contain an Internet Protocol layer that includes an IP header for the rest of the message. Does the ARP protocol use IP packets to communicate?</li>
+<li>Describe in your own words how ARP works to allow hosts to communicate in a Layer-2 network based on IP address. Use your capture to illustrate your points.</li>
 </ol></div>
             </div>
         </div>
