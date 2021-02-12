@@ -69,7 +69,7 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -87,6 +87,10 @@
                                     
 <li>
     <a href="../lab4/" class="dropdown-item">Lab 4 - Analyze Zeroconf in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Lab 5 - Analyze TCP with ncat and Wireshark</a>
 </li>
                                 </ul>
                             </li>
@@ -185,6 +189,16 @@
                             </a>
                         </li>
                             <li class="nav-item">
+                                <a rel="prev" href="../lab4/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../notes/dns-overview/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="https://github.com/info314/website" class="nav-link">info314/website</a>
                             </li>
                     </ul>
@@ -231,10 +245,6 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#bonus-optional" class="nav-link">Bonus (Optional)</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -244,7 +254,7 @@
 
 <h1 id="lab-5-analyze-tcp-with-ncat-and-wireshark">Lab 5 - Analyze TCP with ncat and Wireshark<a class="headerlink" href="#lab-5-analyze-tcp-with-ncat-and-wireshark" title="Permanent link">&para;</a></h1>
 <p><a href="https://www.cloudflare.com/img/learning/cdn/tls-ssl/tcp-handshake-diagram.png"><img alt="" src="https://www.cloudflare.com/img/learning/cdn/tls-ssl/tcp-handshake-diagram.png" /></a></p>
-<p><a href="https://canvas.uw.edu/courses/1373089/assignments/5369621">Lab 5 Assignment page on Canvas</a></p>
+<p><a href="https://canvas.uw.edu/courses/1434918/assignments/5995605">Lab 5 Assignment page on Canvas</a></p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>The purpose of this lab is for students to gain hands on experience with TCP connections. By the end of the lab you will be familiar with:</p>
 <ul>
@@ -413,26 +423,7 @@
 <li>
 <p>Describe how you would identify stream anomalies by using sequence and acknowledgement numbers of TCP segments.</p>
 </li>
-</ol>
-<h2 id="bonus-optional">Bonus (Optional)<a class="headerlink" href="#bonus-optional" title="Permanent link">&para;</a></h2>
-<h3 id="report_4">Report<a class="headerlink" href="#report_4" title="Permanent link">&para;</a></h3>
-<ol start="17">
-<li><strong>(5 points)</strong> Create a basic sequence diagram of the TCP segments sent in <em>wikipedia.org</em> session.</li>
-</ol>
-<details class="danger"><summary>Do not diagram all 100+</summary><p>Do not diagram all 100+ frames of the wikipedia.org session, but you should include enough to illustrate the TLS handshake, the first few frames of encrypted data, and the closing of the TCP socket.</p>
-</details>
-<p>You can draw this out on paper and submit a scan or use any other tool capable of building diagrams. Take a look at <a href="https://websequencediagrams.com">https://websequencediagrams.com</a>.</p>
-<p>Your diagram should include annotations for the following details:</p>
-<ul>
-<li>Frame # (on each message)</li>
-<li>TCP Flags (on the setup/teardown handshake)</li>
-<li>TLS Handshake Protocol steps (if applicable)</li>
-<li># of bytes transferred (messages carrying data)</li>
-</ul>
-<blockquote>
-<p>Hint: Be careful to exclude reassembled messages from your diagram (e.g., frames labeled HTTP that represent multiple TCP segments).</p>
-</blockquote>
-<p><img style="height:400px;max-width:600px;" src="https://serverdensity-wpengine.netdna-ssl.com/wp-content/uploads/2017/02/Blog_TCP_IP_V2.png" /></p></div>
+</ol></div>
             </div>
         </div>
 
