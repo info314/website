@@ -81,6 +81,30 @@
 </li>
     </ul>
   </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">4 - Configure a DNS Resolver</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../resolver-setup/" class="dropdown-item">DNS Resolver Setup</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Optional - Configure an Authoritative Name Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../dns-zone-setup/" class="dropdown-item">Authoritative Zone Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">DNS Zone Reference</a>
+</li>
+    </ul>
+  </li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -151,7 +175,31 @@
 </li>
             
 <li>
+    <a href="../../resources/netfilter-hooks/" class="dropdown-item">Understanding Netfilter/Iptables Hooks</a>
+</li>
+            
+<li>
     <a href="../../resources/wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">Zone File Reference</a>
+</li>
+            
+<li>
+    <a href="../../resources/vlans-and-dummies/" class="dropdown-item">Special Network Interfaces (VLANs and Dummies)</a>
+</li>
+            
+<li>
+    <a href="../../resources/configure-routing-links/" class="dropdown-item">Configuring Routing Links</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-wireguard/" class="dropdown-item">Install and Configure WireGuard</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-frr/" class="dropdown-item">Install Free Range Routing (FRR)</a>
 </li>
             
 <li>
@@ -291,11 +339,14 @@ Name=eth0
 
 # Here we define the static IPv4 address of the RPi that you 
 # selected in your LAN Plan. It is written in CIDR notation.
-# 10.10.10.5/25 is only an example. Replace it with the IP
-# you selected for your RPi in your plan:
+# 10.10.10.1/25 is only an example. It will be the IP you 
+# use to ssh into the RPi from now on, and also the DHCP 
+# server IP address. Later on, it will serve as the default 
+# gateway. Replace the example below with the IP you selected 
+# for your RPi in your LAN plan:
 
 [Network]
-Address=10.10.10.5/25
+Address=10.10.10.1/25
 
 # Enable link local addresses for IPv6 (FE80::) - this is important
 LinkLocalAddressing=ipv6</code></pre>
