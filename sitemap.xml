@@ -1,155 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://info314.giantfirewall.com/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/assignments/pi-setup/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/assignments/networkd-setup/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/wifi-reference/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/assignments/dhcp-setup/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/assignments/router-setup/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/iptables/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/assignments/resolver-setup/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://info314.giantfirewall.com/assignments/dns-zone-setup/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <loc>https://info314.giantfirewall.com/assignments/pihole-project-1/</loc>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
-     <loc>https://info314.giantfirewall.com/resources/zone-file-format/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <loc>https://info314.giantfirewall.com/assignments/pihole-project-2/</loc>
+     <lastmod>2021-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://info314.giantfirewall.com/assignments/pihole-project-3/</loc>
+     <lastmod>2021-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://info314.giantfirewall.com/assignments/pihole-project-4/</loc>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/assignments/lab1/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/assignments/lab2/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/assignments/lab3/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/assignments/lab4/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/assignments/lab5/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/notes/dns-overview/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/notes/router-overview/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/notes/ethernet-switches/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/pi-materials/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/digital-ocean/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/address-planning/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/iptables/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/netfilter-hooks/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/wifi-reference/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/zone-file-format/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/vlans-and-dummies/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/configure-routing-links/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/setup-wireguard/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/setup-frr/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/ssh-agent/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://info314.giantfirewall.com/assignments/dns-zone-setup/</loc>
+     <lastmod>2021-03-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://info314.giantfirewall.com/resources/zone-file-format/</loc>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/markdown/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/bash/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/host-config/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/wireshark-install/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/tshark-install/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/manage-dhcp/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/resources/dns-clients/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://info314.giantfirewall.com/contact/</loc>
-     <lastmod>2021-02-24</lastmod>
+     <lastmod>2021-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

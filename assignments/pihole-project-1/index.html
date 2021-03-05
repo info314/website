@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Daniel Schwalbe">
+        <link rel="canonical" href="https://info314.giantfirewall.com/assignments/pihole-project-1/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Part 1 - Installing the Raspberry Pi OS - INFO 314 Course Resources</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">INFO 314 Course Resources</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">1 - Pi Setup</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../pi-setup/" class="dropdown-item">Raspberry Pi Setup</a>
+</li>
+            
+<li>
+    <a href="../networkd-setup/" class="dropdown-item">networkd Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Wifi Reference</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">2 - Set up a DHCP Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../dhcp-setup/" class="dropdown-item">Installing and Configuring the ISC DHCP Server</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">3 - Configure Routing and NAT</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../router-setup/" class="dropdown-item">Router Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/iptables/" class="dropdown-item">Introduction to iptables</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">4 - Configure a DNS Resolver</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../resolver-setup/" class="dropdown-item">DNS Resolver Setup</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">5 - Extra Credit - Build a Pi-Hole (Optional)</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="./" class="dropdown-item active">Part 1 - Installing the Raspberry Pi OS</a>
+</li>
+            
+<li>
+    <a href="../pihole-project-2/" class="dropdown-item">Part 2 - Installing the Pi-Hole Application</a>
+</li>
+            
+<li>
+    <a href="../pihole-project-3/" class="dropdown-item">Part 3 - Installing the recursive DNS Server</a>
+</li>
+            
+<li>
+    <a href="../pihole-project-4/" class="dropdown-item">Part 4 - Make Pi-Hole work for you!</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../lab1/" class="dropdown-item">Lab 1 - Core Technical Skills</a>
+</li>
+                                    
+<li>
+    <a href="../lab2/" class="dropdown-item">Lab 2 - Analyze DNS & HTTP in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab3/" class="dropdown-item">Lab 3 - Analyzing DHCP and ARP with Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab4/" class="dropdown-item">Lab 4 - Analyze Zeroconf in Wireshark</a>
+</li>
+                                    
+<li>
+    <a href="../lab5/" class="dropdown-item">Lab 5 - Analyze TCP with ncat and Wireshark</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Concepts and Theory</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../notes/dns-overview/" class="dropdown-item">Domain Name System (DNS)</a>
+</li>
+            
+<li>
+    <a href="../../notes/router-overview/" class="dropdown-item">Routers</a>
+</li>
+            
+<li>
+    <a href="../../notes/ethernet-switches/" class="dropdown-item">Ethernet Switches</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Guides</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/pi-materials/" class="dropdown-item">Getting Pi Materials</a>
+</li>
+            
+<li>
+    <a href="../../resources/digital-ocean/" class="dropdown-item">Digital Ocean Signup</a>
+</li>
+            
+<li>
+    <a href="../../resources/address-planning/" class="dropdown-item">Basic IP Address Planning</a>
+</li>
+            
+<li>
+    <a href="../../resources/iptables/" class="dropdown-item">Introduction to Iptables</a>
+</li>
+            
+<li>
+    <a href="../../resources/netfilter-hooks/" class="dropdown-item">Understanding Netfilter/Iptables Hooks</a>
+</li>
+            
+<li>
+    <a href="../../resources/wifi-reference/" class="dropdown-item">Linux Wireless Configuration</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">Zone File Reference</a>
+</li>
+            
+<li>
+    <a href="../../resources/vlans-and-dummies/" class="dropdown-item">Special Network Interfaces (VLANs and Dummies)</a>
+</li>
+            
+<li>
+    <a href="../../resources/configure-routing-links/" class="dropdown-item">Configuring Routing Links</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-wireguard/" class="dropdown-item">Install and Configure WireGuard</a>
+</li>
+            
+<li>
+    <a href="../../resources/setup-frr/" class="dropdown-item">Install Free Range Routing (FRR)</a>
+</li>
+            
+<li>
+    <a href="../../resources/ssh-agent/" class="dropdown-item">Using ssh-agent</a>
+</li>
+            
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Configure an Authoritative Name Server</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../dns-zone-setup/" class="dropdown-item">Authoritative Zone Setup</a>
+</li>
+            
+<li>
+    <a href="../../resources/zone-file-format/" class="dropdown-item">DNS Zone Reference</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Quick Reference</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../resources/markdown/" class="dropdown-item">Intro to Markdown</a>
+</li>
+            
+<li>
+    <a href="../../resources/bash/" class="dropdown-item">Intro to Bash</a>
+</li>
+            
+<li>
+    <a href="../../resources/host-config/" class="dropdown-item">Mac/Win/Linux Networking</a>
+</li>
+            
+<li>
+    <a href="../../resources/wireshark-install/" class="dropdown-item">Install Wireshark</a>
+</li>
+            
+<li>
+    <a href="../../resources/tshark-install/" class="dropdown-item">Install TShark</a>
+</li>
+            
+<li>
+    <a href="../../resources/manage-dhcp/" class="dropdown-item">Troubleshooting DHCP</a>
+</li>
+            
+<li>
+    <a href="../../resources/dns-clients/" class="dropdown-item">Managing DNS Clients</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../contact/" class="nav-link">Contact Us</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../resolver-setup/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../pihole-project-2/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/info314/website" class="nav-link">info314/website</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#pi-hole-personal-rdns-server-appliance-setup-guide" class="nav-link">Pi-Hole &amp; Personal rDNS Server Appliance Setup Guide</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#part-1-installing-the-raspberry-pi-os" class="nav-link">Part 1: Installing the Raspberry Pi OS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#getting-started" class="nav-link">Getting Started</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#install-raspberry-pi-os" class="nav-link">Install Raspberry Pi OS</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#initial-boot" class="nav-link">Initial Boot</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#passwordless-login-is-optional" class="nav-link">Passwordless Login is Optional</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#no-systemd-networking-wifi-wlan0-wpa_supplicant" class="nav-link">No systemd networking / WiFi / wlan0 / wpa_supplicant</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#update-software-packages" class="nav-link">Update Software Packages</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#graceful-shutdown" class="nav-link">Graceful Shutdown</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#troubleshooting" class="nav-link">Troubleshooting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="pi-hole-personal-rdns-server-appliance-setup-guide">Pi-Hole &amp; Personal rDNS Server Appliance Setup Guide<a class="headerlink" href="#pi-hole-personal-rdns-server-appliance-setup-guide" title="Permanent link">&para;</a></h1>
+<p><br></p>
+<h2 id="part-1-installing-the-raspberry-pi-os">Part 1: Installing the Raspberry Pi OS<a class="headerlink" href="#part-1-installing-the-raspberry-pi-os" title="Permanent link">&para;</a></h2>
+<p><br></p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This guide will walk you through the steps necessary to install and configure a Pi-Hole on your Raspberry Pi, along with a personal recursive DNS server that will keep your DNS queries out of your ISP's immediate view. </p>
+<p>The core sections of this guide are broken down into 4 parts:</p>
+<ol>
+<li><strong>Installing the Raspberry Pi OS</strong> (you are here)</li>
+<li><a href="/assignments/pihole-project-2">Installing the Pi-Hole Application</a></li>
+<li><a href="/assignments/pihole-project-3">Installing the recursive DNS Server</a></li>
+<li><a href="/assignments/pihole-project-4">Make Pi-Hole work for you!</a></li>
+</ol>
+<p><br></p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p>The following steps may seem familiar, because they largely reflect the instructions from Project 1, "Pi Setup." Because by now we are all more experienced with Pi administration, these steps are streamlined. If you get stuck, feel free to reference the <a href="/assignments/pi-setup/">Pi Setup</a> page from earlier in the quarter.</p>
+<p>If you no longer have <strong>Etcher</strong> on your laptop, get it again from <a href="https://etcher.io">https://etcher.io</a>. We will use it to install a clean version of the Raspberry Pi OS.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We will start with a clean version of the Raspberry Pi OS in order to eliminate any possibility that previous configuration changes will prevent you from successfully completing this project. This means however that everything you have configured during checkpoints 1 through 4 <strong>will be lost</strong>. You should have copies of all of your config files in your GitHub repo, but your Pi will function differently after you complete this project. If you want to preserve your work to date in an easily reusable way, you should use a separate / new microSD card for this project. It is not trivial to just copy off the entire content of your existing microSD card in Windows or MacOS, because it contains a full file system with partitions that isn't easily accessible without "mounting" the card as a drive in Linux.</p>
+</div>
+<p><br></p>
+<h2 id="install-raspberry-pi-os">Install Raspberry Pi OS<a class="headerlink" href="#install-raspberry-pi-os" title="Permanent link">&para;</a></h2>
+<p>This step is identical to what we did during the initial Pi setup at the beginning of the quarter. </p>
+<h3 id="write-raspberry-pi-os-to-microsd">Write Raspberry Pi OS to MicroSD<a class="headerlink" href="#write-raspberry-pi-os-to-microsd" title="Permanent link">&para;</a></h3>
+<p>Download <strong>"Raspberry Pi OS Lite"</strong> from <a href="https://www.raspberrypi.org/software/operating-systems/">https://www.raspberrypi.org/software/operating-systems/</a>. </p>
+<p>Use Etcher to write the image you've downloaded to your microSD. Be aware that <strong>this process will overwrite any data that was already stored on the card</strong>. This means all the work you have done for Checkpoints 1 through 4. </p>
+<h3 id="update-configuration">Update Configuration<a class="headerlink" href="#update-configuration" title="Permanent link">&para;</a></h3>
+<p>Etcher will eject the microSD once the image is completely rewritten. We want to edit some files on the SD, so you will need to briefly remove the card before inserting it again.</p>
+<p>On macOS or Windows, you'll be limited to accessing the boot partition of the card. Use Explorer or Finder to locate and open the partition. </p>
+<p>You must complete the following step before the first boot.</p>
+<h4 id="enable-ssh">Enable SSH<a class="headerlink" href="#enable-ssh" title="Permanent link">&para;</a></h4>
+<p>Due to security considerations, the newest versions of Raspberry Pi OS disable SSH by default, but it's easy to turn the feature on so that we can use it for initial setup. </p>
+<p>To enable SSH on the first boot, add an empty file named ssh to the boot volume. Instructions will vary slightly between macOS and Windows:</p>
+<p><strong>For Mac and Linus users</strong>
+<pre class="highlight"><code># Unix-based systems mount external storage to a path in the directory tree. 
+# For a freshly written Raspberry Pi OS image, this path will be /Volumes/boot.
+
+touch /Volumes/boot/ssh</code></pre></p>
+<p><strong>For Windows users</strong>
+<pre class="highlight"><code># Windows mounts external storage to a drive letter. Replace E: with the letter assigned on your system.
+
+New-Item -type File E:\ssh</code></pre></p>
+<p>Raspberry Pi OS will check for this file during the first startup and proceed to configure the SSH <em>daemon</em> to start automatically. The term daemon, by the way, is the name Unix operating systems use to describe a service that runs in the background (e.g., to respond to network requests). </p>
+<p><br></p>
+<h2 id="initial-boot">Initial Boot<a class="headerlink" href="#initial-boot" title="Permanent link">&para;</a></h2>
+<p>It's time to boot the Pi for the first time with its clean image. Close your editor and any windows that are open to the microSD so that you can eject the card gracefully from your OS.</p>
+<ul>
+<li>Remove the microSD and insert into the card slot on your Pi.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Here is where we start to diverge from the original instructions. Instead of connecting the Pi to your Laptop or Desktop via the Ethernet cord directly, we need to connect the Pi using the Ethernet cord to an open slot on the back of your WiFi Router, Cable /DSL Modem, or similar device that has Ethernet jacks and is able to issue IP addresses via DHCP.</p>
+</div>
+<ul>
+<li>Attach to your Pi with an Ethernet cable to your  WiFi Router, Cable / DSL Modem, or similar device that has Ethernet jacks and is able to issue IP addresses via DHCP</li>
+<li>Connect power to the designated USB-C port of your Pi</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This setup should allow your Pi to obtain an IP address from your WiFi router, Cable / DSL Modem, or similar device via DHCP (the eth0 interface comes with a DHCP Client enabled out of the box), and place it on the same subnet as your Laptop or Desktop's WiFi connection.</p>
+</div>
+<ul>
+<li>From terminal or PowerShell, connect to the Pi for the first time by running the following command:</li>
+</ul>
+<pre class="highlight"><code class="language-bash"># The default password for pi is raspberry
+ssh pi@raspberrypi.local</code></pre>
+<p>This command directs your local SSH client to connect to a network host named <code>raspberrypi.local</code> with the username <code>pi</code>. </p>
+<p>Since you previously connected to a host by the same name (<code>raspberrypi.local</code>- your "previous incarnation of the Pi used for Checkpoints 1-4), you will likely see this warning:</p>
+<div class="local">
+<pre class="highlight"><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!</code></pre>
+</div>
+
+<p>The first time you connect to a host, SSH will bind a cryptographic signature to the hostname, e.g., <code>raspberrypi.local</code> and store it within <code>~/.ssh/known_hosts</code>. To prevent attacks, SSH warns us when the signature changes for a known host. The signature has changed because SSH will create a new private key every time we set up or rebuild a Raspberry Pi. </p>
+<p>Since this is not an attack scenario, resolve the conflict by executing <code>ssh-keygen -R raspberrypi.local</code> from the same terminal that gave you the warning, and it which will remove the existing entry. Now try logging in again via </p>
+<p><code>ssh pi@raspberrypi.local</code></p>
+<p>Using the mDNS service, your computer will resolve the hostname to an IP address SSH will ask you to accept the connection of an unknown device before presenting you with a password prompt. </p>
+<pre class="highlight"><code>$ ssh pi@raspberrypi.local
+The authenticity of host 'raspberrypi.local (some_IP_address)' can't be established.
+ECDSA key fingerprint is SHA256:&lt;some_hash&gt;.
+Are you sure you want to continue connecting (yes/no)?</code></pre>
+<p>After confirming the prompt shown above, you will see another short message followed by a password prompt.</p>
+<pre class="highlight"><code>Warning: Permanently added 'raspberrypi.local,fe80::1b9c:bcf2:acd6:bbbe%42' (ECDSA) to the list of known hosts.
+pi@raspberrypi.local's password:</code></pre>
+<p>The default password for the <code>pi</code> user is <code>raspberry</code>. After a successful login, you should see the familiar <code>pi@raspberrypi:~ $</code> prompt.</p>
+<h3 id="choose-a-new-password">Choose a New Password<a class="headerlink" href="#choose-a-new-password" title="Permanent link">&para;</a></h3>
+<p>Security is still important, so you need to change the default password via the <code>passwd</code> command. You will be guided through three prompts to enter the current password and then to update/confirm the new password.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure you write down the new SSH password for your Pi in a safe place (like a password manager, but even a notebook or other place you will remember). You will only need to SSH into your Pi on rare occasions after the initial setup, but if you forget this password, it will be a real pain to deal with.</p>
+</div>
+<h3 id="default-configuration">Default Configuration<a class="headerlink" href="#default-configuration" title="Permanent link">&para;</a></h3>
+<p>After you changed the password, make the following changes to make your sysadmin life easier:</p>
+<p>Setting your local time zone (example for US Pacific Time) </p>
+<pre class="highlight"><code># You can see a list of timezones by running `timedatectl list-timezones`
+sudo timedatectl set-timezone America/Los_Angeles</code></pre>
+<p>Set the locale and keymap to US to prevent issues</p>
+<pre class="highlight"><code># Update /etc/locale.gen with your preferences
+sudo nano /etc/locale.gen # Find and uncomment the en_US.UTF-8 locale 
+
+# Re-generate locale information after updating the locale.gen file
+sudo locale-gen
+
+# Apply new settings
+sudo localectl set-locale "LANG=en_US.UTF-8"
+sudo localectl set-keymap us</code></pre>
+<p>Set a familiar editor as default</p>
+<pre class="highlight"><code># Update default editor selections for the pi user
+select-editor
+
+# Modify the same setting for commands that require root privileges.
+sudo select-editor</code></pre>
+<h3 id="update-hostname">Update Hostname<a class="headerlink" href="#update-hostname" title="Permanent link">&para;</a></h3>
+<p>Use the <code>hostnamectl</code> command to set a new name for your device: <code>pihole</code></p>
+<pre class="highlight"><code class="language-bash"># Name it pihole
+sudo hostnamectl set-hostname pihole</code></pre>
+<p>The main change that <strong>hostnamectl</strong> makes is visible in <code>/etc/hostname</code>. **Don't forget to change the hostname in <code>/etc/hosts</code> **</p>
+<pre class="highlight"><code class="language-bash"># Confirm your hostname is up to date in /etc/hostname
+cat /etc/hostname
+
+# Replace any references to raspberrypi in /etc/hosts
+sudo nano /etc/hosts</code></pre>
+<p><br></p>
+<h2 id="passwordless-login-is-optional">Passwordless Login is Optional<a class="headerlink" href="#passwordless-login-is-optional" title="Permanent link">&para;</a></h2>
+<p>After the initial setup, you will only need to SSH into your Pi on rare occasions. The main interaction will be over a Web Admin interface, which uses a separate password. You can set up login via SSH public key like we did originally, but it's optional and not required.</p>
+<p><br></p>
+<h2 id="no-systemd-networking-wifi-wlan0-wpa_supplicant">No systemd networking / WiFi / wlan0 / wpa_supplicant<a class="headerlink" href="#no-systemd-networking-wifi-wlan0-wpa_supplicant" title="Permanent link">&para;</a></h2>
+<p>We will neither configure a WiFi (wlan0) connection as part of the Pi-Hole setup, nor will we switch teh default networking to systemd networking. This was an important learning opportunity during Checkpoints 1-4, but for the Pi-Hole, it is not necessary and we will keep the stock networking configuration.</p>
+<p>Your PiHole will get access to the Internet to download updates and make DNS queries via the wired Ethernet connection. To act as a DNS Server for your entire network, the connection must be reliable, and WiFi can be to temperamental and is generally not recommended for a Pi-Hole.
+<br></p>
+<h2 id="update-software-packages">Update Software Packages<a class="headerlink" href="#update-software-packages" title="Permanent link">&para;</a></h2>
+<p>Since this is a brand new install, we need to update it again (this can take a few minutes on slow networks):</p>
+<pre class="highlight"><code class="language-bash">sudo apt update
+sudo apt upgrade
+sudo apt dist-upgrade
+
+# We've found that an additional update is sometimes needed after a dist-upgrade
+sudo apt update
+
+# Install some useful packages while you're at it
+sudo apt install dnsutils</code></pre>
+<p><br></p>
+<h2 id="graceful-shutdown">Graceful Shutdown<a class="headerlink" href="#graceful-shutdown" title="Permanent link">&para;</a></h2>
+<p>Remember, don't yank the power from your Pi is you can at all avoid it! It can lead to data corruption on the microSD (they aren't as resilient as the drives installed in your laptop). Either issue the <code>sudo poweroff</code> command from an SSH connection, or once you have access to the Pi-Hole web interface, there will be a graceful shutdown option from there as well.</p>
+<p><br></p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>If you run into issues, you will likely know by now what to check and how to fix things. You can always reference the <a href="/assignments/pi-setup/">Checkpoint 1</a> troubleshooting guides.</p>
+<p><br></p>
+<h3 id="next-up-installing-the-pi-hole-application">Next Up: <a href="/assignments/pihole-project-2">Installing the Pi-Hole Application</a><a class="headerlink" href="#next-up-installing-the-pi-hole-application" title="Permanent link">&para;</a></h3></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2020 Daniel Schwalbe</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
