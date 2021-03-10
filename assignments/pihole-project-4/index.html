@@ -358,6 +358,10 @@
 <p>In order to take full advantage of the Pi-Hole &amp; rDNS appliance you just created, you have to tell your computer (and any other device you want to have access to the awesome ad-blocking power of Pi-Hole) to use the Pi-Hole as its primary DNS server. </p>
 <p>Any time you access a website, not only does your browser use DNS to figure out what the IP address of the underlying webserver, but it also makes dozens of secondary lookups for 3<sup>rd</sup> party content on the pages that load. This could be useful content, but also ads and trackers. By using Pi-Hole as your DNS server, it has the ability to block any lookups that would result in loading ads or trackers, and as a result that resource never gets loaded on the page.</p>
 <p>The instructions are based on the assumption that the devices on your home network receive IP address assignments via DHCP. There is usually more than one way to accomplish this task, so if you know of a different way, you can certainly use it. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We just established that having a reliable DNS server is critical to a functioning network, and that without DNS, most modern browsers will not function properly. Once you make your Pi-Hole is active in your network, and all devices rely on it for DNS, you have to make sure it remains powered and connected to the network. If the Pi accidentally loses power, or the network cable becomes unplugged, your connected devices will likely experience many network failures. It is strongly recommended to keep your WiFi router and Pi-Hole in close physical proximity,  and use the same power strip or outlet to power them. That way, if one loses power, so does the other, and a failure will be obvious.</p>
+</div>
 <p>What follows are instructions for Windows 10 and MacOS. If you run Linux as your desktop OS, or if you assign your IP addresses manually, chances are you already know how to make the necessary changes.</p>
 <h2 id="option-1-manual-assignment-of-dns-server">Option 1: Manual Assignment of DNS Server<a class="headerlink" href="#option-1-manual-assignment-of-dns-server" title="Permanent link">&para;</a></h2>
 <p>This is probably best for initial testing, or if you only plan on using your Pi-Hole for yourself, on one or two devices. </p>
@@ -381,7 +385,20 @@
 <p>How you accomplish this depends in lot on the make and model of WiFi router or Cable/DSL modem you use where you live.</p>
 <p>Lifewire.com has a fairly comprehensive and reasonably up to date (14 Jul 2020) article that covers most popular router brands: <a href="https://www.lifewire.com/how-to-change-dns-servers-on-most-popular-routers-2617995">How to Change DNS Servers on Most Popular Routers</a></p>
 <p>The thing to remember is that the IP address that you want to specify in your router configuration is the static IP address you assigned to your Pi-Hole.</p>
-<h2 id="option-2b-use-pi-hole-as-your-dhcp-server">Option 2b: Use Pi-Hole as your DHCP Server<a class="headerlink" href="#option-2b-use-pi-hole-as-your-dhcp-server" title="Permanent link">&para;</a></h2></div>
+<h2 id="option-2b-use-pi-hole-as-your-dhcp-server">Option 2b: Use Pi-Hole as your DHCP Server<a class="headerlink" href="#option-2b-use-pi-hole-as-your-dhcp-server" title="Permanent link">&para;</a></h2>
+<p>This option requires that you <u>disable</u> the integrated DHCP server that's running on your <u>WiFi router or Cable/DSL Modem</u>, and <u>enable</u> the DHCP Server running on your <u>Pi-Hole</u>.</p>
+<p>Not all WiFi routers or Cable/DSL Modems support this, so you may not be able to turn off the built-in DHCP server. If that's the case, you are stuck with either Option 1 or 2a. You do not want to enable the DHCP Server on your Pi-Hole while the DHCP server on your WiFi router is still active - it will cause great confusion, and may "break" your network.</p>
+<p>Before you disable the DHCP server on the device that's currently serving your DHCP leases, take note of the DHCP scope / lease range, and what your network gateway IP address is. You will need to enter those values into the Pi-Hole as you configure its DHCP server.</p>
+<p>Bitdefender.com has a knowledgebase article describing how to disable the DHCP server that covers many of the common routers: <a href="https://www.bitdefender.com/consumer/support/answer/2390/">Disable the DHCP server feature on my router</a></p>
+<p>After you disabled the existing DHCP server, log into the Web Admin interface, and select Settings from the left side bar. </p>
+<p>On the page that loads, select "DHCP" from the top menu.</p>
+<p>Check the box next to "DHCP server enabled."</p>
+<p>Fill in the DHCP lease range you gleaned from your WiFi router or Cable/DSL Modem in the fields below "Range of IP addresses to hand out".</p>
+<p>Last but not least, fill in your network gateway IP address (likely your router's management IP address, usually ".1") in the field below "Router (gateway) IP address." The Advanced DHCP settings don't need to be changed to start with, you can always come back and tweak them as needed.</p>
+<p><strong>Make sure you scroll down and click the "Save" button on the very bottom right of the page!</strong></p>
+<p>The Pi-Hole DHCP server is now active and ready to hand out dynamic IP addresses. It may take some time until existing clients "find" the new DHCP server running on the Pi-Hole. You can expedite that process by rebooting / restarting those devices.</p>
+<p>If everything works correctly, you should start seeing new DHCP leases appear in the lower part of the page, under "Currently active DHCP leases."</p>
+<p>Enjoy your (mostly) ad free browsing experience powered by Pi-Hole!</p></div>
             </div>
         </div>
 
