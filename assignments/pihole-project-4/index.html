@@ -317,7 +317,19 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#headline" class="nav-link">Headline</a>
+            <li class="nav-item" data-level="2"><a href="#background" class="nav-link">Background</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#option-1-manual-assignment-of-dns-server" class="nav-link">Option 1: Manual Assignment of DNS Server</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#option-2a-assignment-of-dns-server-by-wifi-router-dhcp" class="nav-link">Option 2a: Assignment of DNS Server by WiFi Router DHCP</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#option-2b-use-pi-hole-as-your-dhcp-server" class="nav-link">Option 2b: Use Pi-Hole as your DHCP Server</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -342,9 +354,31 @@
 <li><strong>Make Pi-Hole work for you!</strong> (you are here)</li>
 </ol>
 <p><br></p>
-<h2 id="headline">Headline<a class="headerlink" href="#headline" title="Permanent link">&para;</a></h2>
-<p>Description</p>
-<p><br></p></div>
+<h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
+<p>In order to take full advantage of the Pi-Hole &amp; rDNS appliance you just created, you have to tell your computer (and any other device you want to have access to the awesome ad-blocking power of Pi-Hole) to use the Pi-Hole as its primary DNS server. </p>
+<p>Any time you access a website, not only does your browser use DNS to figure out what the IP address of the underlying webserver, but it also makes dozens of secondary lookups for 3<sup>rd</sup> party content on the pages that load. This could be useful content, but also ads and trackers. By using Pi-Hole as your DNS server, it has the ability to block any lookups that would result in loading ads or trackers, and as a result that resource never gets loaded on the page.</p>
+<p>The instructions are based on the assumption that the devices on your home network receive IP address assignments via DHCP. There is usually more than one way to accomplish this task, so if you know of a different way, you can certainly use it. </p>
+<p>What follows are instructions for Windows 10 and MacOS. If you run Linux as your desktop OS, or if you assign your IP addresses manually, chances are you already know how to make the necessary changes.</p>
+<h2 id="option-1-manual-assignment-of-dns-server">Option 1: Manual Assignment of DNS Server<a class="headerlink" href="#option-1-manual-assignment-of-dns-server" title="Permanent link">&para;</a></h2>
+<p>This is probably best for initial testing, or if you only plan on using your Pi-Hole for yourself, on one or two devices. </p>
+<h3 id="windows-10">Windows 10<a class="headerlink" href="#windows-10" title="Permanent link">&para;</a></h3>
+<p>In a Powershell window, type <code>ncpa.cpl</code> and hit Enter.</p>
+<p><em>Alternatively, click on the START button, click on Settings (gear cog icon on left sidebar), click on Network &amp; Internet. This should bring you to the "Status" view. Scroll down and click on "Change adapter options."</em></p>
+<p>In the window that opens, locate your network adapter. Most likely it will be named "Wi-Fi" and have your SSID listed just below that. </p>
+<p>Right-click on the adapter icon, and select "Properties". </p>
+<p>In the windows that opens, below "This connection uses the following items", look for "Internet Protocol Version 4" and double-click on it.</p>
+<p>In the window that opens, leave "Obtain an IP address automatically" if it is already pre-selected, and select "Use the following DNS server addresses:" Enter the static IP address that you picked for your Pi-Hole.</p>
+<p>Click OK on both open configuration windows and close the Network Connections window.</p>
+<h3 id="mac-os">Mac OS<a class="headerlink" href="#mac-os" title="Permanent link">&para;</a></h3>
+<p>Click on the Apple Menu and select System Preferences.</p>
+<p>Click Network.</p>
+<p>From the list on the left, locate your network connection. Most likely it will be Wi-Fi. </p>
+<p>Highlight it by single-clicking on it, and then click "Advanced" in the lower right areaof the window.</p>
+<p>Select DNS from the top row, then click the "Add" (+) button at the bottom of the DNS Servers list. Enter Enter the static IP address that you picked for your Pi-Hole.</p>
+<p>When you’re finished, click OK and close the Network Preferences.</p>
+<h3 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h2 id="option-2a-assignment-of-dns-server-by-wifi-router-dhcp">Option 2a: Assignment of DNS Server by WiFi Router DHCP<a class="headerlink" href="#option-2a-assignment-of-dns-server-by-wifi-router-dhcp" title="Permanent link">&para;</a></h2>
+<h2 id="option-2b-use-pi-hole-as-your-dhcp-server">Option 2b: Use Pi-Hole as your DHCP Server<a class="headerlink" href="#option-2b-use-pi-hole-as-your-dhcp-server" title="Permanent link">&para;</a></h2></div>
             </div>
         </div>
 
